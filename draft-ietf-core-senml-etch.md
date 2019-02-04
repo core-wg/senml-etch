@@ -32,8 +32,8 @@ normative:
   RFC8428:
 informative:
   IPSO:
-    target: https://github.com/IPSO-Alliance/pub
-    title: 'IP for Smart Objects - IPSO Objects'
+    target: https://www.omaspecworks.org/develop-with-oma-specworks/ipso-smart-objects/guidelines/
+    title: 'IPSO Smart Object Guidelines'
     author:
     - org: IPSO
     date: 2018
