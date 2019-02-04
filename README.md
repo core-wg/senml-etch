@@ -1,6 +1,6 @@
-# FETCH &amp; PATCH wi h Sensor Measuremen Lis s (SenML)
+# FETCH &amp; PATCH with Sensor Measuremen Lists (SenML)
 
-This is the working area for the IETF [CORE Working Group](https://datatracker.ietf.org/wg/core/documents/) Internet-Draft, "FETCH &amp; PATCH wi h Sensor Measuremen Lis s (SenML)".
+This is the working area for the IETF [CORE Working Group](https://datatracker.ietf.org/wg/core/documents/) Internet-Draft, "FETCH &amp; PATCH with Sensor Measuremen Lists (SenML)".
 
 * [Editor's Copy](https://core-wg.github.io/senml-etch/#go.draft-ietf-core-senml-etch.html)
 * [Working Group Draft](https://tools.ietf.org/html/draft-ietf-core-senml-etch)
