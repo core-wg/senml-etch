@@ -259,7 +259,10 @@ machine communications and is not meant to be human readable.
 
 Security considerations: See {{seccons}} of RFC-AAAA.
 
-Interoperability considerations: TBD
+Interoperability considerations: Applications MUST ignore any key
+value pairs that they do not understand unless the key ends with the
+'_' character in which case an error MUST be generated. This allows
+backwards compatible extensions to this specification.
 
 Published specification: RFC-AAAA
 
