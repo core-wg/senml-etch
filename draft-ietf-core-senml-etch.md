@@ -18,7 +18,7 @@ pi:
   subcompact: 'no'
 title: FETCH & PATCH with Sensor Measurement Lists (SenML)
 abbrev: FETCH & PATCH with SenML
-date: 2018
+date: 2019
 author:
 - ins: A. Keranen
   name: Ari Keranen
@@ -32,8 +32,8 @@ normative:
   RFC8428:
 informative:
   IPSO:
-    target: https://github.com/IPSO-Alliance/pub
-    title: 'IP for Smart Objects - IPSO Objects'
+    target: https://www.omaspecworks.org/develop-with-oma-specworks/ipso-smart-objects/guidelines/
+    title: 'IPSO Smart Object Guidelines'
     author:
     - org: IPSO
     date: 2018
@@ -42,12 +42,12 @@ informative:
 --- abstract
 
 The Sensor Measurement Lists (SenML) media type and data model can be
-used to send collections of resources, such as batches of sensor data
-or configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods
-enable accessing and updating parts of a resource or multiple
-resources with one request. This document defines semantics for the
-CoAP iPATCH, and FETCH methods for resources represented with the
-SenML data model.
+used to send collections of resources, such as batches of sensor data or
+configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods
+enable accessing and updating parts of a resource or multiple resources
+with one request. This document defines new media types for the CoAP
+iPATCH, and FETCH methods for resources represented with the SenML data
+model.
 
 --- middle
 
@@ -78,9 +78,12 @@ The CoAP {{!RFC7252}} iPATCH and FETCH methods {{!RFC8132}} enable
 accessing and updating parts of a resource or multiple resources with
 one request.
 
-This document defines semantics for the CoAP iPATCH and FETCH
-methods for resources represented with the SenML data model. Same
-semantics apply also for the CoAP PATCH method.
+This document defines two new media types, one using the JavaScript
+Object Notation (JSON) {{!RFC8259}} and one using the Concise Binary
+Object Representation (CBOR) {{!RFC7049}}, that can be used with the CoAP
+iPATCH, PATCH, and FETCH methods for resources represented with the SenML
+data model. The semantics of the new media types are the same for the
+CoAP PATCH and iPATCH methods.
 
 
 # Terminology
@@ -99,8 +102,7 @@ Fetch Record:
 : One set of parameters that is used to match SenML Record(s).
 
 Fetch Pack:
-: One or more Fetch Records in an array structure. Presented using the
-SenML media type.
+: One or more Fetch Records in an array structure.
 
 Patch Record:
 : One set of parameters similar to Fetch Record but also containing
@@ -116,13 +118,13 @@ operation.
 
 # Using FETCH and iPATCH with SenML
 
-The FETCH and iPATCH methods use the same SenML media type to enable
-re-use of existing SenML parsers and generators, in particular on
-constrained devices.
-
-NOTE: it is currently under consideration whether new media types
-should be registered for FETCH/iPATCH instead of re-using the SenML
-media types.
+The FETCH/iPATCH media types for SenML are modeled as extensions to the
+SenML media type to enable re-use of existing SenML parsers and
+generators, in particular on constrained devices. Unless mentioned
+otherwise, FETCH and PATCH Packs are constructed with the same rules and
+constraints as SenML Packs. The only difference to SenML media type is
+allowing the use of "null" value for removing records with the iPATCH
+method.
 
 ## SenML FETCH
 
@@ -217,6 +219,130 @@ If the client is not allowed to do a GET or PUT on the full target
 resource (and thus all the names accessible through it), access
 control rules must be evaluated for each record in the pack.
 
+# IANA Considerations {#iana}
+
+This document registers two new media types and CoAP Content-Format IDs
+for both media types.
+
+Note to RFC Editor: Please replace all occurrences of "RFC-AAAA" with
+the RFC number of this document.
+
+## CoAP Content-Format Registration
+
+IANA is requested to assign CoAP Content-Format IDs for the SenML
+PATCH and FETCH media types in the "CoAP Content-Formats" sub-
+registry, within the "CoRE Parameters" registry {{RFC7252}}. All IDs
+are assigned from the "Expert Review" (0-255) range. The assigned IDs
+are show in {{tbl-coap-content-formats}}.
+
+| Media type                   | ID  |
+| application/senml-etch+json  | TBD |
+| application/senml-etch+cbor  | TBD |
+{: #tbl-coap-content-formats cols="l l" title="CoAP Content-Format IDs"}
+
+
+## senml-etch+json Media Type
+
+Type name: application
+
+Subtype name: senml-etch+json
+
+Required parameters: none
+
+Optional parameters: none
+
+Encoding considerations: Must be encoded as using a subset of the
+encoding allowed in {{!RFC8259}}. See RFC-AAAA for details. This
+simplifies implementation of very simple system and does not impose
+any significant limitations as all this data is meant for machine to
+machine communications and is not meant to be human readable.
+
+Security considerations: See {{seccons}} of RFC-AAAA.
+
+Interoperability considerations: Applications MUST ignore any key
+value pairs that they do not understand unless the key ends with the
+'_' character in which case an error MUST be generated. This allows
+backwards compatible extensions to this specification.
+
+Published specification: RFC-AAAA
+
+Applications that use this media type: Applications that use the
+SenML media type for resource representation.
+
+Fragment identifier considerations: N/A
+
+Additional information:
+
+Magic number(s): none
+
+File extension(s): senml-etchj
+
+Windows Clipboard Name: "SenML FETCH/PATCH format"
+
+Macintosh file type code(s): none
+
+Macintosh Universal Type Identifier code: org.ietf.senml-etch-json
+conforms to public.text
+
+Person & email address to contact for further information:
+Ari Keranen ari.keranen@ericsson.com
+
+Intended usage: COMMON
+
+Restrictions on usage: None
+
+Author: Ari Keranen ari.keranen@ericsson.com
+
+Change controller: IESG
+
+## senml-etch+cbor Media Type
+
+Type name: application
+
+Subtype name: senml-etch+cbor
+
+Required parameters: none
+
+Optional parameters: none
+
+Encoding considerations: Must be encoded as using {{!RFC7049}}. See
+RFC-AAAA for details.
+
+Security considerations: See {{seccons}} of RFC-AAAA.
+
+Interoperability considerations: Applications MUST ignore any key
+value pairs that they do not understand unless the key ends with the
+'_' character in which case an error MUST be generated. This allows
+backwards compatible extensions to this specification.
+
+Published specification: RFC-AAAA
+
+Applications that use this media type: Applications that use the
+SenML media type for resource representation.
+
+Fragment identifier considerations: N/A
+
+Additional information:
+
+Magic number(s): none
+
+File extension(s): senml-etchc
+
+Macintosh file type code(s): none
+
+Macintosh Universal Type Identifier code: org.ietf.senml-etch-cbor
+conforms to public.data
+
+Person & email address to contact for further information:
+Ari Keranen ari.keranen@ericsson.com
+
+Intended usage: COMMON
+
+Restrictions on usage: None
+
+Author: Ari Keranen ari.keranen@ericsson.com
+
+Change controller: IESG
 
 # Acknowledgements {#acks}
 
