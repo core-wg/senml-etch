@@ -269,7 +269,7 @@ Published specification: RFC-AAAA
 Applications that use this media type: Applications that use the
 SenML media type for resource representation.
 
-Fragment identifier considerations: TBD
+Fragment identifier considerations: N/A
 
 Additional information:
 
@@ -320,7 +320,7 @@ Published specification: RFC-AAAA
 Applications that use this media type: Applications that use the
 SenML media type for resource representation.
 
-Fragment identifier considerations: TBD
+Fragment identifier considerations: N/A
 
 Additional information:
 
