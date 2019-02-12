@@ -5,8 +5,8 @@
 Network Working Group                                         A. Keranen
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                              M. Mohajer
-Expires: August 10, 2019                                       u-blox UK
-                                                        February 6, 2019
+Expires: August 16, 2019                                       u-blox UK
+                                                       February 12, 2019
 
 
           FETCH & PATCH with Sensor Measurement Lists (SenML)
@@ -37,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 10, 2019.
+   This Internet-Draft will expire on August 16, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Keranen & Mohajer        Expires August 10, 2019                [Page 1]
+Keranen & Mohajer        Expires August 16, 2019                [Page 1]
 
 Internet-Draft          FETCH & PATCH with SenML           February 2019
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Keranen & Mohajer        Expires August 10, 2019                [Page 2]
+Keranen & Mohajer        Expires August 16, 2019                [Page 2]
 
 Internet-Draft          FETCH & PATCH with SenML           February 2019
 
@@ -165,7 +165,7 @@ Internet-Draft          FETCH & PATCH with SenML           February 2019
 
 
 
-Keranen & Mohajer        Expires August 10, 2019                [Page 3]
+Keranen & Mohajer        Expires August 16, 2019                [Page 3]
 
 Internet-Draft          FETCH & PATCH with SenML           February 2019
 
@@ -221,7 +221,7 @@ Internet-Draft          FETCH & PATCH with SenML           February 2019
 
 
 
-Keranen & Mohajer        Expires August 10, 2019                [Page 4]
+Keranen & Mohajer        Expires August 16, 2019                [Page 4]
 
 Internet-Draft          FETCH & PATCH with SenML           February 2019
 
@@ -277,7 +277,7 @@ Internet-Draft          FETCH & PATCH with SenML           February 2019
 
 
 
-Keranen & Mohajer        Expires August 10, 2019                [Page 5]
+Keranen & Mohajer        Expires August 16, 2019                [Page 5]
 
 Internet-Draft          FETCH & PATCH with SenML           February 2019
 
@@ -320,7 +320,7 @@ Internet-Draft          FETCH & PATCH with SenML           February 2019
    Applications that use this media type: Applications that use the
    SenML media type for resource representation.
 
-   Fragment identifier considerations: TBD
+   Fragment identifier considerations: N/A
 
    Additional information:
 
@@ -333,7 +333,7 @@ Internet-Draft          FETCH & PATCH with SenML           February 2019
 
 
 
-Keranen & Mohajer        Expires August 10, 2019                [Page 6]
+Keranen & Mohajer        Expires August 16, 2019                [Page 6]
 
 Internet-Draft          FETCH & PATCH with SenML           February 2019
 
@@ -379,7 +379,7 @@ Internet-Draft          FETCH & PATCH with SenML           February 2019
    Applications that use this media type: Applications that use the
    SenML media type for resource representation.
 
-   Fragment identifier considerations: TBD
+   Fragment identifier considerations: N/A
 
    Additional information:
 
@@ -389,7 +389,7 @@ Internet-Draft          FETCH & PATCH with SenML           February 2019
 
 
 
-Keranen & Mohajer        Expires August 10, 2019                [Page 7]
+Keranen & Mohajer        Expires August 16, 2019                [Page 7]
 
 Internet-Draft          FETCH & PATCH with SenML           February 2019
 
@@ -445,7 +445,7 @@ Internet-Draft          FETCH & PATCH with SenML           February 2019
 
 
 
-Keranen & Mohajer        Expires August 10, 2019                [Page 8]
+Keranen & Mohajer        Expires August 16, 2019                [Page 8]
 
 Internet-Draft          FETCH & PATCH with SenML           February 2019
 
@@ -501,4 +501,4 @@ Authors' Addresses
 
 
 
-Keranen & Mohajer        Expires August 10, 2019                [Page 9]
+Keranen & Mohajer        Expires August 16, 2019                [Page 9]
