@@ -46,19 +46,19 @@ used to send collections of resources, such as batches of sensor data or
 configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods
 enable accessing and updating parts of a resource or multiple resources
 with one request. This document defines new media types for the CoAP
-iPATCH, and FETCH methods for resources represented with the SenML data
-model.
+iPATCH, PATCH, and FETCH methods for resources represented with the SenML
+data model.
 
 --- middle
 
 
 # Introduction {#intro}
 
-The Sensor Measurement Lists (SenML) media type {{RFC8428} and data
+The Sensor Measurement Lists (SenML) media type {{RFC8428}} and data
 model can be used to transmit collections of resources, such as
 batches of sensor data or configuration parameters.
 
-Example of a SenML collection is shown below:
+An example of a SenML collection is shown below:
 
 ~~~
 [
@@ -74,17 +74,17 @@ a single SenML Pack with three SenML Records. All resources share the
 same base name "2001:db8::2/3306/0/", hence full names for resources
 are "2001:db8::2/3306/0/5850", etc.
 
-The CoAP {{!RFC7252}} iPATCH and FETCH methods {{!RFC8132}} enable
-accessing and updating parts of a resource or multiple resources with
-one request.
+The CoAP {{!RFC7252}} iPATCH, PATCH, and FETCH methods {{!RFC8132}}
+enable accessing and updating parts of a resource or multiple resources
+with one request.
 
 This document defines two new media types, one using the JavaScript
 Object Notation (JSON) {{!RFC8259}} and one using the Concise Binary
 Object Representation (CBOR) {{!RFC7049}}, that can be used with the CoAP
 iPATCH, PATCH, and FETCH methods for resources represented with the SenML
 data model. The semantics of the new media types are the same for the
-CoAP PATCH and iPATCH methods.
-
+CoAP PATCH and iPATCH methods. The rest of the document uses term
+"(i)PATCH" when referring to both methods.
 
 # Terminology
 
@@ -116,24 +116,34 @@ Target Record:
 a Fetch or Patch Record and hence is a target for a Fetch or Patch
 operation.
 
-# Using FETCH and iPATCH with SenML
+(i)PATCH:
+: A term that refers to both CoAP "PATCH" and "iPATCH" methods when
+there is no difference in which one is used.
 
-The FETCH/iPATCH media types for SenML are modeled as extensions to the
+# Using FETCH and (i)PATCH with SenML
+
+The FETCH/(i)PATCH media types for SenML are modeled as extensions to the
 SenML media type to enable re-use of existing SenML parsers and
 generators, in particular on constrained devices. Unless mentioned
 otherwise, FETCH and PATCH Packs are constructed with the same rules and
-constraints as SenML Packs. The only difference to SenML media type is
-allowing the use of "null" value for removing records with the iPATCH
-method.
+constraints as SenML Packs.
+
+The key difference to the SenML media type is allowing the use of "null"
+value for removing records with the (i)PATCH method. Also the Fetch and
+Patch Records do not have default time or base version when the fields
+are omitted.
 
 ## SenML FETCH
 
-The FETCH method can be used to select and return parts of one or more
-SenML Packs. The SenML Records are selected by giving the name(s) of
-the resources using the SenML "name" and/or "base name" Fields.
+The FETCH method can be used to select and return a subset of records, in
+sequence, of one or more SenML Packs. The SenML Records are selected by
+giving a set of names that, when resolved, match to resolved names in a
+SenML Pack. The names for Fetch Pack are given using the SenML "name"
+and/or "base name" Fields. The names are resolved by concatenating the
+base name with the name field as defined in {{RFC8428}}.
 
-For example, to select resources "5850" and "5851" from the example in
-{{intro}}, the following Fetch Pack can be used:
+For example, to select the IPSO resources "5850" and "5851" from the
+example in {{intro}}, the following Fetch Pack can be used:
 
 ~~~
 [
@@ -161,9 +171,9 @@ The resolved form of records (Section 4.6 of {{RFC8428}}) is used when
 comparing the names and times of the Target and Fetch Records to
 accommodate for differences in use of the base values.
 
-## SenML iPATCH
+## SenML (i)PATCH
 
-The iPATCH method can be used to change the values of SenML Records,
+The (i)PATCH method can be used to change the values of SenML Records,
 to add new Records, and to remove existing Records. The names and
 times of the Patch Records are given and matched in same way as for
 the Fetch Records, except each Patch Record can match at most one
@@ -171,9 +181,9 @@ Target Record. Patch Packs can also include new values and other SenML
 Fields for the Records.
 
 When the name in a Patch Record matches with the name in an existing
-Record, the time values are compared. If the time values do not exist
-or are equal in both Records, the Target Record is replaced with the
-contents of the Patch Record.
+Record, the time values are compared. If the time values either do not
+exist in both Records or are equal, the Target Record is replaced with
+the contents of the Patch Record.
 
 If a Patch Record contains a name, or combination of a time value and
 a name, that do not exist in any existing Record in the Pack, the
@@ -182,7 +192,7 @@ given Record, with all the fields it contains, is added to the Pack.
 If a Patch Record has a value field with value null, the matched
 Record (if any) is removed from the Pack.
 
-For example, the following document could be given as iPATCH payload
+For example, the following document could be given as (i)PATCH payload
 to change/set values of two SenML Records for the example in
 {{intro}}:
 
@@ -208,9 +218,9 @@ example SenML Pack would be as follows:
 # Security Considerations {#seccons}
 
 The security and privacy considerations of SenML apply also with the
-FETCH and iPATCH methods.
+FETCH and (i)PATCH methods.
 
-In FETCH and iPATCH requests, the client can pass arbitrary names to
+In FETCH and (i)PATCH requests, the client can pass arbitrary names to
 the target resource for manipulation. The resource implementer must
 take care to only allow access to names that are actually part of (or
 accessible through) the target resource.
@@ -346,12 +356,12 @@ Change controller: IESG
 
 # Acknowledgements {#acks}
 
-The use of FETCH and iPATCH methods with SenML was first introduced by
-the OMA SpecWorks LwM2M v1.1 specification. This document generalizes
-the use to any SenML representation. The authors would like to thank
-Carsten Bormann, Christian Amsuess, Jaime Jimenez, Klaus Hartke, and
-also everyone in the IETF CoRE and OMA SpecWorks DMSE working groups
-for their contributions and reviews.
+The use of FETCH and (i)PATCH methods with SenML was first introduced by
+the OMA SpecWorks LwM2M v1.1 specification. This document generalizes the
+use to any SenML representation. The authors would like to thank Carsten
+Bormann, Christian Amsuess, Jaime Jimenez, Klaus Hartke, and other
+participants from the IETF CoRE and OMA SpecWorks DMSE working groups who
+have contributed ideas and reviews.
 
 
 --- back
