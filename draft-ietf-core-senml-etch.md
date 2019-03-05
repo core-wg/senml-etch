@@ -163,9 +163,10 @@ The result to a FETCH request with the example above would be:
 
 When SenML Records contain also time values, a name may no longer
 uniquely identify a single Record. When no time is given in a Fetch
-Record, all SenML Records with the given name are matched. When time
-is given in the Fetch Record, only a SenML Record (if any) with equal
-time value and name is matched.
+Record, all SenML Records with the given name are matched (i.e., unlike
+with SenML Records, lack of time field in a Fetch Record does not imply
+time value zero). When time is given in the Fetch Record, only a SenML
+Record (if any) with equal time value and name is matched.
 
 The resolved form of records (Section 4.6 of {{RFC8428}}) is used when
 comparing the names and times of the Target and Fetch Records to
@@ -178,7 +179,7 @@ to add new Records, and to remove existing Records. The names and
 times of the Patch Records are given and matched in same way as for
 the Fetch Records, except each Patch Record can match at most one
 Target Record. Patch Packs can also include new values and other SenML
-Fields for the Records.
+Fields for the Records. Application of Patch Packs is idempotent.
 
 When the name in a Patch Record matches with the name in an existing
 Record, the time values are compared. If the time values either do not
@@ -262,10 +263,10 @@ Required parameters: none
 Optional parameters: none
 
 Encoding considerations: Must be encoded as using a subset of the
-encoding allowed in {{!RFC8259}}. See RFC-AAAA for details. This
-simplifies implementation of very simple system and does not impose
-any significant limitations as all this data is meant for machine to
-machine communications and is not meant to be human readable.
+encoding allowed in {{!RFC8259}}. This simplifies implementation of very
+simple system and does not impose any significant limitations as all this
+data is meant for machine to machine communications and is not meant to
+be human readable.
 
 Security considerations: See {{seccons}} of RFC-AAAA.
 
@@ -315,8 +316,7 @@ Required parameters: none
 
 Optional parameters: none
 
-Encoding considerations: Must be encoded as using {{!RFC7049}}. See
-RFC-AAAA for details.
+Encoding considerations: Must be encoded as using {{!RFC7049}}.
 
 Security considerations: See {{seccons}} of RFC-AAAA.
 
