@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/core-wg/senml-etch/issues/2",
+    "repository_url": "https://api.github.com/repos/core-wg/senml-etch",
+    "labels_url": "https://api.github.com/repos/core-wg/senml-etch/issues/2/labels{/name}",
+    "comments_url": "https://api.github.com/repos/core-wg/senml-etch/issues/2/comments",
+    "events_url": "https://api.github.com/repos/core-wg/senml-etch/issues/2/events",
+    "html_url": "https://github.com/core-wg/senml-etch/pull/2",
+    "id": 417552464,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MjU4NTI1NTU5",
+    "number": 2,
+    "title": "Fixes to Carsten's chair review",
+    "user": {
+      "login": "akeranen",
+      "id": 3415174,
+      "node_id": "MDQ6VXNlcjM0MTUxNzQ=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3415174?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/akeranen",
+      "html_url": "https://github.com/akeranen",
+      "followers_url": "https://api.github.com/users/akeranen/followers",
+      "following_url": "https://api.github.com/users/akeranen/following{/other_user}",
+      "gists_url": "https://api.github.com/users/akeranen/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/akeranen/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/akeranen/subscriptions",
+      "organizations_url": "https://api.github.com/users/akeranen/orgs",
+      "repos_url": "https://api.github.com/users/akeranen/repos",
+      "events_url": "https://api.github.com/users/akeranen/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/akeranen/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-03-05T23:36:06Z",
+    "updated_at": "2019-03-05T23:36:18Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/core-wg/senml-etch/pulls/2",
+      "html_url": "https://github.com/core-wg/senml-etch/pull/2",
+      "diff_url": "https://github.com/core-wg/senml-etch/pull/2.diff",
+      "patch_url": "https://github.com/core-wg/senml-etch/pull/2.patch"
+    },
+    "body": "* using \"(i)PATCH\" to refer to both PATCH methods\r\n* Clarified defaulting rules\r\n* Clarified name resolving rules\r\n* Clarified use of \"resource\"\r\n* Added note that application of Patch Packs is idempotent\r\n* Removed \"more details in RFC-AAA\" from media type encoding considerations (there are no more details actually)"
+  },
+  {
     "url": "https://api.github.com/repos/core-wg/senml-etch/issues/1",
     "repository_url": "https://api.github.com/repos/core-wg/senml-etch",
     "labels_url": "https://api.github.com/repos/core-wg/senml-etch/issues/1/labels{/name}",
