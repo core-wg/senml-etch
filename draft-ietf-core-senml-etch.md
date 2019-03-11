@@ -118,7 +118,7 @@ operation.
 
 (i)PATCH:
 : A term that refers to both CoAP "PATCH" and "iPATCH" methods when
-there is no difference in which one is used.
+there is no difference in this specification in which one is used.
 
 # Using FETCH and (i)PATCH with SenML
 
@@ -128,17 +128,17 @@ generators, in particular on constrained devices. Unless mentioned
 otherwise, FETCH and PATCH Packs are constructed with the same rules and
 constraints as SenML Packs.
 
-The key difference to the SenML media type is allowing the use of "null"
-value for removing records with the (i)PATCH method. Also the Fetch and
-Patch Records do not have default time or base version when the fields
-are omitted.
+The key difference to the SenML media type is allowing the use of a
+"null" value for removing records with the (i)PATCH method. Also the
+Fetch and Patch Records do not have default time or base version when the
+fields are omitted.
 
 ## SenML FETCH
 
 The FETCH method can be used to select and return a subset of records, in
 sequence, of one or more SenML Packs. The SenML Records are selected by
-giving a set of names that, when resolved, match to resolved names in a
-SenML Pack. The names for Fetch Pack are given using the SenML "name"
+giving a set of names that, when resolved, match resolved names in a
+SenML Pack. The names for a Fetch Pack are given using the SenML "name"
 and/or "base name" Fields. The names are resolved by concatenating the
 base name with the name field as defined in {{RFC8428}}.
 
@@ -166,7 +166,7 @@ uniquely identify a single Record. When no time is given in a Fetch
 Record, all SenML Records with the given name are matched (i.e., unlike
 with SenML Records, lack of time field in a Fetch Record does not imply
 time value zero). When time is given in the Fetch Record, only a SenML
-Record (if any) with equal time value and name is matched.
+Record (if any) with equal resolved time value and name is matched.
 
 The resolved form of records (Section 4.6 of {{RFC8428}}) is used when
 comparing the names and times of the Target and Fetch Records to
@@ -182,9 +182,9 @@ Target Record. Patch Packs can also include new values and other SenML
 Fields for the Records. Application of Patch Packs is idempotent.
 
 When the name in a Patch Record matches with the name in an existing
-Record, the time values are compared. If the time values either do not
-exist in both Records or are equal, the Target Record is replaced with
-the contents of the Patch Record.
+Record, the resolved time values are compared. If the time values either
+do not exist in both Records or are equal, the Target Record is replaced
+with the contents of the Patch Record.
 
 If a Patch Record contains a name, or combination of a time value and
 a name, that do not exist in any existing Record in the Pack, the
@@ -263,7 +263,7 @@ Required parameters: none
 Optional parameters: none
 
 Encoding considerations: Must be encoded as using a subset of the
-encoding allowed in {{!RFC8259}}. This simplifies implementation of very
+encoding allowed in {{!RFC8259}}. This simplifies implementation of a very
 simple system and does not impose any significant limitations as all this
 data is meant for machine to machine communications and is not meant to
 be human readable.
