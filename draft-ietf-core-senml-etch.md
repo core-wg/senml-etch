@@ -252,7 +252,7 @@ the RFC number of this document.
 
 IANA is requested to assign CoAP Content-Format IDs for the SenML PATCH
 and FETCH media types in the "CoAP Content-Formats" sub-registry, within
-the "CoRE Parameters" registry {{RFC7252}}. The assigned IDs are show in
+the "CoRE Parameters" registry {{RFC7252}}. The assigned IDs are shown in
 {{tbl-coap-content-formats}}.
 
 | Media type                   | Encoding | ID      |
