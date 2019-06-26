@@ -1,6 +1,108 @@
 [
 
   {
+    "url": "https://api.github.com/repos/core-wg/senml-etch/issues/5",
+    "repository_url": "https://api.github.com/repos/core-wg/senml-etch",
+    "labels_url": "https://api.github.com/repos/core-wg/senml-etch/issues/5/labels{/name}",
+    "comments_url": "https://api.github.com/repos/core-wg/senml-etch/issues/5/comments",
+    "events_url": "https://api.github.com/repos/core-wg/senml-etch/issues/5/events",
+    "html_url": "https://github.com/core-wg/senml-etch/pull/5",
+    "id": 461019331,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MjkyMDI4MTI0",
+    "number": 5,
+    "title": "Fixes to Klaus' review",
+    "user": {
+      "login": "akeranen",
+      "id": 3415174,
+      "node_id": "MDQ6VXNlcjM0MTUxNzQ=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3415174?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/akeranen",
+      "html_url": "https://github.com/akeranen",
+      "followers_url": "https://api.github.com/users/akeranen/followers",
+      "following_url": "https://api.github.com/users/akeranen/following{/other_user}",
+      "gists_url": "https://api.github.com/users/akeranen/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/akeranen/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/akeranen/subscriptions",
+      "organizations_url": "https://api.github.com/users/akeranen/orgs",
+      "repos_url": "https://api.github.com/users/akeranen/repos",
+      "events_url": "https://api.github.com/users/akeranen/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/akeranen/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-06-26T14:52:04Z",
+    "updated_at": "2019-06-26T14:52:04Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/core-wg/senml-etch/pulls/5",
+      "html_url": "https://github.com/core-wg/senml-etch/pull/5",
+      "diff_url": "https://github.com/core-wg/senml-etch/pull/5.diff",
+      "patch_url": "https://github.com/core-wg/senml-etch/pull/5.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/core-wg/senml-etch/issues/4",
+    "repository_url": "https://api.github.com/repos/core-wg/senml-etch",
+    "labels_url": "https://api.github.com/repos/core-wg/senml-etch/issues/4/labels{/name}",
+    "comments_url": "https://api.github.com/repos/core-wg/senml-etch/issues/4/comments",
+    "events_url": "https://api.github.com/repos/core-wg/senml-etch/issues/4/events",
+    "html_url": "https://github.com/core-wg/senml-etch/issues/4",
+    "id": 424876768,
+    "node_id": "MDU6SXNzdWU0MjQ4NzY3Njg=",
+    "number": 4,
+    "title": "Clarify null use",
+    "user": {
+      "login": "akeranen",
+      "id": 3415174,
+      "node_id": "MDQ6VXNlcjM0MTUxNzQ=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3415174?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/akeranen",
+      "html_url": "https://github.com/akeranen",
+      "followers_url": "https://api.github.com/users/akeranen/followers",
+      "following_url": "https://api.github.com/users/akeranen/following{/other_user}",
+      "gists_url": "https://api.github.com/users/akeranen/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/akeranen/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/akeranen/subscriptions",
+      "organizations_url": "https://api.github.com/users/akeranen/orgs",
+      "repos_url": "https://api.github.com/users/akeranen/repos",
+      "events_url": "https://api.github.com/users/akeranen/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/akeranen/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-03-25T12:31:31Z",
+    "updated_at": "2019-06-13T13:58:58Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "Should clarify that null value for deleting records should always be in \"v\" field regardless of the value type used in the Record."
+  },
+  {
     "url": "https://api.github.com/repos/core-wg/senml-etch/issues/3",
     "repository_url": "https://api.github.com/repos/core-wg/senml-etch",
     "labels_url": "https://api.github.com/repos/core-wg/senml-etch/issues/3/labels{/name}",
@@ -82,7 +184,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -91,8 +193,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-03-05T23:36:06Z",
-    "updated_at": "2019-03-11T22:15:41Z",
-    "closed_at": null,
+    "updated_at": "2019-03-11T22:18:58Z",
+    "closed_at": "2019-03-11T22:18:58Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/core-wg/senml-etch/pulls/2",
