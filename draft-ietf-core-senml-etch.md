@@ -220,7 +220,7 @@ payload to remove the two SenML Records:
 
 ~~~
 [
- {"bn":"2001:db8::2/3306/0/", "n":"5850", "v":null},
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "v":null},
  {"n":"5851", "v":null}
 ]
 ~~~
