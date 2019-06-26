@@ -246,9 +246,9 @@ the "CoRE Parameters" registry {{RFC7252}}. All IDs are assigned from the
 "IETF Review or IESG Approval" range. The assigned IDs are show in
 {{tbl-coap-content-formats}}.
 
-| Media type                   | ID  |
-| application/senml-etch+json  | TBD |
-| application/senml-etch+cbor  | TBD |
+| Media type                   | Encoding | ID  |
+| application/senml-etch+json  | -        | TBD |
+| application/senml-etch+cbor  | -        | TBD |
 {: #tbl-coap-content-formats cols="l l" title="CoAP Content-Format IDs"}
 
 
