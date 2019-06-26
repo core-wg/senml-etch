@@ -190,10 +190,10 @@ If a Patch Record contains a name, or combination of a time value and
 a name, that do not exist in any existing Record in the Pack, the
 given Record, with all the fields it contains, is added to the Pack.
 
-If a Patch Record has a value field with value null, the matched
+If a Patch Record has a value ("v") field with value null, the matched
 Record (if any) is removed from the Pack.
 
-For example, the following document could be given as (i)PATCH payload
+For example, the following document could be given as an (i)PATCH payload
 to change/set values of two SenML Records for the example in
 {{intro}}:
 
@@ -212,6 +212,16 @@ example SenML Pack would be as follows:
  {"bn":"2001:db8::2/3306/0/", "n":"5850", "vb":false},
  {"n":"5851", "v":10},
  {"n":"5750", "vs":"Ceiling light"}
+]
+~~~
+
+As another example, the following document could be given as an (i)PATCH
+payload to remove the two SenML Records:
+
+~~~
+[
+ {"bn":"2001:db8::2/3306/0/", "n":"5850", "v":null},
+ {"n":"5851", "v":null}
 ]
 ~~~
 
