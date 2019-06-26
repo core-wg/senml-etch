@@ -75,8 +75,8 @@ Table of Contents
      5.2.  senml-etch+json Media Type  . . . . . . . . . . . . . . .   6
      5.3.  senml-etch+cbor Media Type  . . . . . . . . . . . . . . .   7
    6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   8
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      7.2.  Informative References  . . . . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
@@ -235,10 +235,10 @@ Internet-Draft          FETCH & PATCH with SenML               June 2019
    a name, that do not exist in any existing Record in the Pack, the
    given Record, with all the fields it contains, is added to the Pack.
 
-   If a Patch Record has a value field with value null, the matched
-   Record (if any) is removed from the Pack.
+   If a Patch Record has a value ("v") field with value null, the
+   matched Record (if any) is removed from the Pack.
 
-   For example, the following document could be given as (i)PATCH
+   For example, the following document could be given as an (i)PATCH
    payload to change/set values of two SenML Records for the example in
    Section 1:
 
@@ -256,6 +256,14 @@ Internet-Draft          FETCH & PATCH with SenML               June 2019
     {"n":"5750", "vs":"Ceiling light"}
    ]
 
+   As another example, the following document could be given as an
+   (i)PATCH payload to remove the two SenML Records:
+
+   [
+    {"bn":"2001:db8::2/3306/0/", "n":"5850", "v":null},
+    {"n":"5851", "v":null}
+   ]
+
 4.  Security Considerations
 
    The security and privacy considerations of SenML apply also with the
@@ -266,14 +274,6 @@ Internet-Draft          FETCH & PATCH with SenML               June 2019
    must take care to only allow access to names that are actually part
    of (or accessible through) the target resource.
 
-   If the client is not allowed to do a GET or PUT on the full target
-   resource (and thus all the names accessible through it), access
-   control rules must be evaluated for each record in the pack.
-
-
-
-
-
 
 
 
@@ -281,6 +281,10 @@ Keranen & Mohajer       Expires December 28, 2019               [Page 5]
 
 Internet-Draft          FETCH & PATCH with SenML               June 2019
 
+
+   If the client is not allowed to do a GET or PUT on the full target
+   resource (and thus all the names accessible through it), access
+   control rules must be evaluated for each record in the pack.
 
 5.  IANA Considerations
 
@@ -325,10 +329,6 @@ Internet-Draft          FETCH & PATCH with SenML               June 2019
 
    Security considerations: See Section 4 of RFC-AAAA.
 
-   Interoperability considerations: Applications MUST ignore any key
-   value pairs that they do not understand unless the key ends with the
-   '_' character in which case an error MUST be generated.  This allows
-   backwards compatible extensions to this specification.
 
 
 
@@ -337,6 +337,11 @@ Keranen & Mohajer       Expires December 28, 2019               [Page 6]
 
 Internet-Draft          FETCH & PATCH with SenML               June 2019
 
+
+   Interoperability considerations: Applications MUST ignore any key
+   value pairs that they do not understand unless the key ends with the
+   '_' character in which case an error MUST be generated.  This allows
+   backwards compatible extensions to this specification.
 
    Published specification: RFC-AAAA
 
@@ -381,11 +386,6 @@ Internet-Draft          FETCH & PATCH with SenML               June 2019
 
    Encoding considerations: Must be encoded as using [RFC7049].
 
-   Security considerations: See Section 4 of RFC-AAAA.
-
-   Interoperability considerations: Applications MUST ignore any key
-   value pairs that they do not understand unless the key ends with the
-
 
 
 
@@ -394,6 +394,10 @@ Keranen & Mohajer       Expires December 28, 2019               [Page 7]
 Internet-Draft          FETCH & PATCH with SenML               June 2019
 
 
+   Security considerations: See Section 4 of RFC-AAAA.
+
+   Interoperability considerations: Applications MUST ignore any key
+   value pairs that they do not understand unless the key ends with the
    '_' character in which case an error MUST be generated.  This allows
    backwards compatible extensions to this specification.
 
@@ -435,10 +439,6 @@ Internet-Draft          FETCH & PATCH with SenML               June 2019
    Klaus Hartke, and other participants from the IETF CoRE and OMA
    SpecWorks DMSE working groups who have contributed ideas and reviews.
 
-7.  References
-
-7.1.  Normative References
-
 
 
 
@@ -449,6 +449,10 @@ Keranen & Mohajer       Expires December 28, 2019               [Page 8]
 
 Internet-Draft          FETCH & PATCH with SenML               June 2019
 
+
+7.  References
+
+7.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -491,10 +495,6 @@ Internet-Draft          FETCH & PATCH with SenML               June 2019
 
 Authors' Addresses
 
-   Ari Keranen
-   Ericsson
-
-   Email: ari.keranen@ericsson.com
 
 
 
@@ -506,16 +506,16 @@ Keranen & Mohajer       Expires December 28, 2019               [Page 9]
 Internet-Draft          FETCH & PATCH with SenML               June 2019
 
 
+   Ari Keranen
+   Ericsson
+
+   Email: ari.keranen@ericsson.com
+
+
    Mojan Mohajer
    u-blox UK
 
    Email: Mojan.Mohajer@u-blox.com
-
-
-
-
-
-
 
 
 
