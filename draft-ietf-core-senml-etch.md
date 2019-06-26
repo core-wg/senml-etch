@@ -32,8 +32,8 @@ normative:
   RFC8428:
 informative:
   IPSO:
-    target: https://www.omaspecworks.org/develop-with-oma-specworks/ipso-smart-objects/guidelines/
-    title: 'IPSO Smart Object Guidelines'
+    target: http://www.openmobilealliance.org/tech/profiles/lwm2m/3311.xml
+    title: 'IPSO Light Control Smart Object'
     author:
     - org: IPSO
     date: 2018
@@ -62,17 +62,17 @@ An example of a SenML collection is shown below:
 
 ~~~
 [
- {"bn":"2001:db8::2/3306/0/", "n":"5850", "vb":true},
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":true},
  {"n":"5851", "v":42},
  {"n":"5750", "vs":"Ceiling light"}
 ]
 ~~~
 
-Here three resources "3306/0/5850", "3306/0/5851", and "3306/0/5750",
+Here three resources "3311/0/5850", "3311/0/5851", and "3311/0/5750",
 of an IPSO dimmable light smart object {{IPSO}} are represented using
 a single SenML Pack with three SenML Records. All resources share the
-same base name "2001:db8::2/3306/0/", hence full names for resources
-are "2001:db8::2/3306/0/5850", etc.
+same base name "2001:db8::2/3311/0/", hence full names for resources
+are "2001:db8::2/3311/0/5850", etc.
 
 The CoAP {{!RFC7252}} iPATCH, PATCH, and FETCH methods {{!RFC8132}}
 enable accessing and updating parts of a resource or multiple resources
@@ -147,7 +147,7 @@ example in {{intro}}, the following Fetch Pack can be used:
 
 ~~~
 [
- {"bn":"2001:db8::2/3306/0/", "n":"5850"},
+ {"bn":"2001:db8::2/3311/0/", "n":"5850"},
  {"n":"5851"}
 ]
 ~~~
@@ -156,7 +156,7 @@ The result to a FETCH request with the example above would be:
 
 ~~~
 [
- {"bn":"2001:db8::2/3306/0/", "n":"5850", "vb":true},
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":true},
  {"n":"5851", "v":42},
 ]
 ~~~
@@ -199,7 +199,7 @@ to change/set values of two SenML Records for the example in
 
 ~~~
 [
- {"bn":"2001:db8::2/3306/0/", "n":"5850", "vb":false},
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":false},
  {"n":"5851", "v":10}
 ]
 ~~~
@@ -209,7 +209,7 @@ example SenML Pack would be as follows:
 
 ~~~
 [
- {"bn":"2001:db8::2/3306/0/", "n":"5850", "vb":false},
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":false},
  {"n":"5851", "v":10},
  {"n":"5750", "vs":"Ceiling light"}
 ]
@@ -359,9 +359,9 @@ Change controller: IESG
 The use of FETCH and (i)PATCH methods with SenML was first introduced by
 the OMA SpecWorks LwM2M v1.1 specification. This document generalizes the
 use to any SenML representation. The authors would like to thank Carsten
-Bormann, Christian Amsuess, Jaime Jimenez, Klaus Hartke, and other
-participants from the IETF CoRE and OMA SpecWorks DMSE working groups who
-have contributed ideas and reviews.
+Bormann, Christian Amsuess, Jaime Jimenez, Klaus Hartke, Michael
+Richardson, and other participants from the IETF CoRE and OMA SpecWorks
+DMSE working groups who have contributed ideas and reviews.
 
 
 --- back
