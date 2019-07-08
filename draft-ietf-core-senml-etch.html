@@ -400,12 +400,12 @@ ul.toc li {
 <p id="rfc.section.1.p.2">An example of a SenML collection is shown below:</p>
 <pre>
 [
- {"bn":"2001:db8::2/3306/0/", "n":"5850", "vb":true},
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":true},
  {"n":"5851", "v":42},
  {"n":"5750", "vs":"Ceiling light"}
 ]
 </pre>
-<p id="rfc.section.1.p.3">Here three resources &#8220;3306/0/5850&#8221;, &#8220;3306/0/5851&#8221;, and &#8220;3306/0/5750&#8221;, of an IPSO dimmable light smart object <a href="#IPSO" class="xref">[IPSO]</a> are represented using a single SenML Pack with three SenML Records. All resources share the same base name &#8220;2001:db8::2/3306/0/&#8221;, hence full names for resources are &#8220;2001:db8::2/3306/0/5850&#8221;, etc.</p>
+<p id="rfc.section.1.p.3">Here three resources &#8220;3311/0/5850&#8221;, &#8220;3311/0/5851&#8221;, and &#8220;3311/0/5750&#8221;, of an IPSO dimmable light smart object <a href="#IPSO" class="xref">[IPSO]</a> are represented using a single SenML Pack with three SenML Records. All resources share the same base name &#8220;2001:db8::2/3311/0/&#8221;, hence full names for resources are &#8220;2001:db8::2/3311/0/5850&#8221;, etc.</p>
 <p id="rfc.section.1.p.4">The CoAP <a href="#RFC7252" class="xref">[RFC7252]</a> iPATCH, PATCH, and FETCH methods <a href="#RFC8132" class="xref">[RFC8132]</a> enable accessing and updating parts of a resource or multiple resources with one request.</p>
 <p id="rfc.section.1.p.5">This document defines two new media types, one using the JavaScript Object Notation (JSON) <a href="#RFC8259" class="xref">[RFC8259]</a> and one using the Concise Binary Object Representation (CBOR) <a href="#RFC7049" class="xref">[RFC7049]</a>, that can be used with the CoAP iPATCH, PATCH, and FETCH methods for resources represented with the SenML data model. The semantics of the new media types are the same for the CoAP PATCH and iPATCH methods. The rest of the document uses term &#8220;(i)PATCH&#8221; when referring to both methods.</p>
 <h1 id="rfc.section.2">
@@ -441,14 +441,14 @@ ul.toc li {
 <p id="rfc.section.3.1.p.2">For example, to select the IPSO resources &#8220;5850&#8221; and &#8220;5851&#8221; from the example in <a href="#intro" class="xref">Section 1</a>, the following Fetch Pack can be used:</p>
 <pre>
 [
- {"bn":"2001:db8::2/3306/0/", "n":"5850"},
+ {"bn":"2001:db8::2/3311/0/", "n":"5850"},
  {"n":"5851"}
 ]
 </pre>
 <p id="rfc.section.3.1.p.3">The result to a FETCH request with the example above would be:</p>
 <pre>
 [
- {"bn":"2001:db8::2/3306/0/", "n":"5850", "vb":true},
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":true},
  {"n":"5851", "v":42},
 ]
 </pre>
@@ -464,14 +464,14 @@ ul.toc li {
 <p id="rfc.section.3.2.p.5">For example, the following document could be given as an (i)PATCH payload to change/set values of two SenML Records for the example in <a href="#intro" class="xref">Section 1</a>:</p>
 <pre>
 [
- {"bn":"2001:db8::2/3306/0/", "n":"5850", "vb":false},
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":false},
  {"n":"5851", "v":10}
 ]
 </pre>
 <p id="rfc.section.3.2.p.6">If the request is successful, the resulting representation of the example SenML Pack would be as follows:</p>
 <pre>
 [
- {"bn":"2001:db8::2/3306/0/", "n":"5850", "vb":false},
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":false},
  {"n":"5851", "v":10},
  {"n":"5750", "vs":"Ceiling light"}
 ]
@@ -570,7 +570,7 @@ ul.toc li {
 <h1 id="rfc.section.6">
 <a href="#rfc.section.6">6.</a> <a href="#acks" id="acks">Acknowledgements</a>
 </h1>
-<p id="rfc.section.6.p.1">The use of FETCH and (i)PATCH methods with SenML was first introduced by the OMA SpecWorks LwM2M v1.1 specification. This document generalizes the use to any SenML representation. The authors would like to thank Carsten Bormann, Christian Amsuess, Jaime Jimenez, Klaus Hartke, and other participants from the IETF CoRE and OMA SpecWorks DMSE working groups who have contributed ideas and reviews.</p>
+<p id="rfc.section.6.p.1">The use of FETCH and (i)PATCH methods with SenML was first introduced by the OMA SpecWorks LwM2M v1.1 specification. This document generalizes the use to any SenML representation. The authors would like to thank Carsten Bormann, Christian Amsuess, Jaime Jimenez, Klaus Hartke, Michael Richardson, and other participants from the IETF CoRE and OMA SpecWorks DMSE working groups who have contributed ideas and reviews.</p>
 <h1 id="rfc.references">
 <a href="#rfc.references">7.</a> References</h1>
 <h1 id="rfc.references.1">
@@ -617,7 +617,7 @@ ul.toc li {
 <table><tbody><tr>
 <td class="reference"><b id="IPSO">[IPSO]</b></td>
 <td class="top">
-<a>IPSO</a>, "<a href="https://www.omaspecworks.org/develop-with-oma-specworks/ipso-smart-objects/guidelines/">IPSO Smart Object Guidelines</a>", 2018.</td>
+<a>IPSO</a>, "<a href="http://www.openmobilealliance.org/tech/profiles/lwm2m/3311.xml">IPSO Light Control Smart Object</a>", 2018.</td>
 </tr></tbody></table>
 <h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
 <div class="avoidbreak">
