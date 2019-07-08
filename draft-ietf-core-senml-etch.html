@@ -78,13 +78,14 @@ table.header td, table#rfc\.headerblock td {
   line-height: 100%;
   margin: 10px 0 32px;
 }
-#rfc\.abstract+p, #rfc\.abstract p {
+#rfc\.abstract+p, #rfc\.abstract+p code, #rfc\.abstract+p samp, #rfc\.abstract+p tt {
   font-size: 20px;
   line-height: 28px;
 }
 
 samp, tt, code, pre, span.tt {
-  font: 13.5px Consolas, monospace;
+  font-size: 13.5px;
+  font-family: Consolas, monospace;
   font-size-adjust: none;
 }
 pre {
@@ -298,12 +299,12 @@ ul.toc li {
 <link href="#rfc.authors" rel="Chapter">
 
 
-  <meta name="generator" content="xml2rfc version 2.21.1 - https://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.23.1 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Keranen, A. and M. Mohajer" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-core-senml-etch-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-11" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-08" />
   <meta name="dct.abstract" content="The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP iPATCH, PATCH, and FETCH methods for resources represented with the SenML data model." />
   <meta name="description" content="The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP iPATCH, PATCH, and FETCH methods for resources represented with the SenML data model." />
 
@@ -327,12 +328,12 @@ ul.toc li {
 <td class="right">M. Mohajer</td>
 </tr>
 <tr>
-<td class="left">Expires: September 12, 2019</td>
+<td class="left">Expires: January 9, 2020</td>
 <td class="right">u-blox UK</td>
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">March 11, 2019</td>
+<td class="right">July 8, 2019</td>
 </tr>
 
     	
@@ -348,7 +349,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on September 12, 2019.</p>
+<p>This Internet-Draft will expire on January 9, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -459,8 +460,8 @@ ul.toc li {
 <p id="rfc.section.3.2.p.1">The (i)PATCH method can be used to change the values of SenML Records, to add new Records, and to remove existing Records. The names and times of the Patch Records are given and matched in same way as for the Fetch Records, except each Patch Record can match at most one Target Record. Patch Packs can also include new values and other SenML Fields for the Records. Application of Patch Packs is idempotent.</p>
 <p id="rfc.section.3.2.p.2">When the name in a Patch Record matches with the name in an existing Record, the resolved time values are compared. If the time values either do not exist in both Records or are equal, the Target Record is replaced with the contents of the Patch Record.</p>
 <p id="rfc.section.3.2.p.3">If a Patch Record contains a name, or combination of a time value and a name, that do not exist in any existing Record in the Pack, the given Record, with all the fields it contains, is added to the Pack.</p>
-<p id="rfc.section.3.2.p.4">If a Patch Record has a value field with value null, the matched Record (if any) is removed from the Pack.</p>
-<p id="rfc.section.3.2.p.5">For example, the following document could be given as (i)PATCH payload to change/set values of two SenML Records for the example in <a href="#intro" class="xref">Section 1</a>:</p>
+<p id="rfc.section.3.2.p.4">If a Patch Record has a value (&#8220;v&#8221;) field with value null, the matched Record (if any) is removed from the Pack.</p>
+<p id="rfc.section.3.2.p.5">For example, the following document could be given as an (i)PATCH payload to change/set values of two SenML Records for the example in <a href="#intro" class="xref">Section 1</a>:</p>
 <pre>
 [
  {"bn":"2001:db8::2/3306/0/", "n":"5850", "vb":false},
@@ -473,6 +474,13 @@ ul.toc li {
  {"bn":"2001:db8::2/3306/0/", "n":"5850", "vb":false},
  {"n":"5851", "v":10},
  {"n":"5750", "vs":"Ceiling light"}
+]
+</pre>
+<p id="rfc.section.3.2.p.7">As another example, the following document could be given as an (i)PATCH payload to remove the two SenML Records:</p>
+<pre>
+[
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "v":null},
+ {"n":"5851", "v":null}
 ]
 </pre>
 <h1 id="rfc.section.4">
@@ -489,23 +497,26 @@ ul.toc li {
 <h1 id="rfc.section.5.1">
 <a href="#rfc.section.5.1">5.1.</a> <a href="#coap-content-format-registration" id="coap-content-format-registration">CoAP Content-Format Registration</a>
 </h1>
-<p id="rfc.section.5.1.p.1">IANA is requested to assign CoAP Content-Format IDs for the SenML PATCH and FETCH media types in the &#8220;CoAP Content-Formats&#8221; sub-registry, within the &#8220;CoRE Parameters&#8221; registry <a href="#RFC7252" class="xref">[RFC7252]</a>. All IDs are assigned from the &#8220;IETF Review or IESG Approval&#8221; range. The assigned IDs are show in <a href="#tbl-coap-content-formats" class="xref">Table 1</a>.</p>
+<p id="rfc.section.5.1.p.1">IANA is requested to assign CoAP Content-Format IDs for the SenML PATCH and FETCH media types in the &#8220;CoAP Content-Formats&#8221; sub-registry, within the &#8220;CoRE Parameters&#8221; registry <a href="#RFC7252" class="xref">[RFC7252]</a>. The assigned IDs are shown in <a href="#tbl-coap-content-formats" class="xref">Table 1</a>.</p>
 <div id="rfc.table.1"></div>
 <div id="tbl-coap-content-formats"></div>
 <table cellpadding="3" cellspacing="0" class="tt full center">
 <caption>CoAP Content-Format IDs</caption>
 <thead><tr>
 <th class="left">Media type</th>
+<th class="left">Encoding</th>
 <th class="left">ID</th>
 </tr></thead>
 <tbody>
 <tr>
 <td class="left">application/senml-etch+json</td>
-<td class="left">TBD</td>
+<td class="left">-</td>
+<td class="left">TBD-320</td>
 </tr>
 <tr>
 <td class="left">application/senml-etch+cbor</td>
-<td class="left">TBD</td>
+<td class="left">-</td>
+<td class="left">TBD-322</td>
 </tr>
 </tbody>
 </table>
@@ -655,3 +666,4 @@ ul.toc li {
 
 </body>
 </html>
+
