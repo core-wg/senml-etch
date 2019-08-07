@@ -75,7 +75,7 @@ Table of Contents
      5.2.  senml-etch+json Media Type  . . . . . . . . . . . . . . .   6
      5.3.  senml-etch+cbor Media Type  . . . . . . . . . . . . . . .   7
    6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   8
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      7.2.  Informative References  . . . . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
@@ -343,7 +343,11 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
    Applications that use this media type: Applications that use the
    SenML media type for resource representation.
 
-   Fragment identifier considerations: N/A
+   Fragment identifier considerations: The syntax and semantics of
+   fragment identifiers specified for senml-etch+json SHOULD be as
+   specified for "application/json".  (At publication of this document,
+   there is no fragment identification syntax defined for "application/
+   json".)
 
    Additional information:
 
@@ -383,10 +387,6 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 
    Security considerations: See Section 4 of RFC-AAAA.
 
-   Interoperability considerations: Applications MUST ignore any key
-   value pairs that they do not understand unless the key ends with the
-
-
 
 
 Keranen & Mohajer       Expires February 8, 2020                [Page 7]
@@ -394,6 +394,8 @@ Keranen & Mohajer       Expires February 8, 2020                [Page 7]
 Internet-Draft          FETCH & PATCH with SenML             August 2019
 
 
+   Interoperability considerations: Applications MUST ignore any key
+   value pairs that they do not understand unless the key ends with the
    '_' character in which case an error MUST be generated.  This allows
    backwards compatible extensions to this specification.
 
@@ -402,7 +404,11 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
    Applications that use this media type: Applications that use the
    SenML media type for resource representation.
 
-   Fragment identifier considerations: N/A
+   Fragment identifier considerations: The syntax and semantics of
+   fragment identifiers specified for senml-etch+cbor SHOULD be as
+   specified for "application/cbor".  (At publication of this document,
+   there is no fragment identification syntax defined for "application/
+   cbor".)
 
    Additional information:
 
@@ -436,12 +442,6 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
    IETF CoRE and OMA SpecWorks DMSE working groups who have contributed
    ideas and reviews.
 
-7.  References
-
-
-
-
-
 
 
 
@@ -449,6 +449,8 @@ Keranen & Mohajer       Expires February 8, 2020                [Page 8]
 
 Internet-Draft          FETCH & PATCH with SenML             August 2019
 
+
+7.  References
 
 7.1.  Normative References
 
@@ -493,10 +495,8 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 
 Authors' Addresses
 
-   Ari Keranen
-   Ericsson
 
-   Email: ari.keranen@ericsson.com
+
 
 
 
@@ -506,16 +506,16 @@ Keranen & Mohajer       Expires February 8, 2020                [Page 9]
 Internet-Draft          FETCH & PATCH with SenML             August 2019
 
 
+   Ari Keranen
+   Ericsson
+
+   Email: ari.keranen@ericsson.com
+
+
    Mojan Mohajer
    u-blox UK
 
    Email: Mojan.Mohajer@u-blox.com
-
-
-
-
-
-
 
 
 
