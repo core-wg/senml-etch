@@ -271,11 +271,7 @@ Required parameters: none
 
 Optional parameters: none
 
-Encoding considerations: Must be encoded as using a subset of the
-encoding allowed in {{!RFC8259}}. This simplifies implementation of a very
-simple system and does not impose any significant limitations as all this
-data is meant for machine to machine communications and is not meant to
-be human readable.
+Encoding considerations: binary
 
 Security considerations: See {{seccons}} of RFC-AAAA.
 
@@ -325,7 +321,7 @@ Required parameters: none
 
 Optional parameters: none
 
-Encoding considerations: Must be encoded as using {{!RFC7049}}.
+Encoding considerations: binary
 
 Security considerations: See {{seccons}} of RFC-AAAA.
 
