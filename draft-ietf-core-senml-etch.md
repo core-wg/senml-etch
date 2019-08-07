@@ -285,7 +285,10 @@ Published specification: RFC-AAAA
 Applications that use this media type: Applications that use the
 SenML media type for resource representation.
 
-Fragment identifier considerations: N/A
+Fragment identifier considerations: The syntax and semantics of fragment
+identifiers specified for senml-etch+json SHOULD be as specified for
+"application/json". (At publication of this document, there is no fragment
+identification syntax defined for "application/json".)
 
 Additional information:
 
@@ -335,7 +338,10 @@ Published specification: RFC-AAAA
 Applications that use this media type: Applications that use the
 SenML media type for resource representation.
 
-Fragment identifier considerations: N/A
+Fragment identifier considerations: The syntax and semantics of fragment
+identifiers specified for senml-etch+cbor SHOULD be as specified for
+"application/cbor". (At publication of this document, there is no fragment
+identification syntax defined for "application/cbor".)
 
 Additional information:
 
