@@ -225,6 +225,10 @@ payload to remove the two SenML Records:
 ]
 ~~~
 
+# Fragment Identification
+
+Fragment identification is supported by analogously applying fragment
+identifiers as specified in section 9.1 of RFC 8428 to the Fetch/Patch Records.
 
 # Security Considerations {#seccons}
 
@@ -285,7 +289,9 @@ Published specification: RFC-AAAA
 Applications that use this media type: Applications that use the
 SenML media type for resource representation.
 
-Fragment identifier considerations: N/A
+Fragment identifier considerations: Fragment identification for
+application/senml-etch+json is supported by using fragment identifiers as
+specified by RFC AAAA.
 
 Additional information:
 
@@ -335,7 +341,9 @@ Published specification: RFC-AAAA
 Applications that use this media type: Applications that use the
 SenML media type for resource representation.
 
-Fragment identifier considerations: N/A
+Fragment identifier considerations: Fragment identification for
+application/senml-etch+cbor is supported by using fragment identifiers as
+specified by RFC AAAA.
 
 Additional information:
 
