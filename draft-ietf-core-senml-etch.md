@@ -228,7 +228,8 @@ payload to remove the two SenML Records:
 # Fragment Identification
 
 Fragment identification is supported by analogously applying fragment
-identifiers as specified in section 9.1 of RFC 8428 to the Fetch/Patch Records.
+identifiers as specified in Section 9.1 of {{RFC8428}} to the Fetch/Patch
+Records.
 
 # Security Considerations {#seccons}
 
