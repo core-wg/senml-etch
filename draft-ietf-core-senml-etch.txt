@@ -270,8 +270,8 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 4.  Fragment Identification
 
    Fragment identification is supported by analogously applying fragment
-   identifiers as specified in Section 9.1 of [RFC8428] to the Fetch/
-   Patch Records.
+   identifiers as specified in Section 9 of [RFC8428] to the Fetch/Patch
+   Records.
 
 
 
