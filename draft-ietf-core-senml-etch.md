@@ -131,10 +131,10 @@ generators, in particular on constrained devices. Unless mentioned
 otherwise, FETCH and PATCH Packs are constructed with the same rules and
 constraints as SenML Packs.
 
-The key difference to the SenML media type is allowing the use of a
-"null" value for removing records with the (i)PATCH method. Also the
-Fetch and Patch Records do not have default time or base version when the
-fields are omitted.
+The key differences to the SenML media type are allowing the use of a
+"null" value for removing records with the (i)PATCH method and lack of
+value fields in Fetch Records. Also the Fetch and Patch Records do not
+have default time or base version when the fields are omitted.
 
 ## SenML FETCH
 
@@ -173,7 +173,8 @@ Record (if any) with equal resolved time value and name is matched.
 
 The resolved form of records (Section 4.6 of {{RFC8428}}) is used when
 comparing the names and times of the Target and Fetch Records to
-accommodate for differences in use of the base values.
+accommodate for differences in use of the base values. All other Fetch
+Record fields than name, base name, time, and base time MUST be ignored.
 
 ## SenML (i)PATCH
 
