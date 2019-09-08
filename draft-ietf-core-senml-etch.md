@@ -80,11 +80,11 @@ with one request.
 
 This document defines two new media types, one using the JavaScript
 Object Notation (JSON) {{!RFC8259}} and one using the Concise Binary
-Object Representation (CBOR) {{!RFC7049}}, that can be used with the CoAP
+Object Representation (CBOR) {{!RFC7049}}, which can be used with the CoAP
 FETCH, PATCH, and iPATCH methods for resources represented with the SenML
-data model. The semantics of the new media types are the same for the
-CoAP PATCH and iPATCH methods. The rest of the document uses term
-"(i)PATCH" when referring to both methods.
+data model. The rest of the document uses term "(i)PATCH" when referring
+to both methods as the semantics of the new media types are the same for
+the CoAP PATCH and iPATCH methods.
 
 # Terminology
 
@@ -95,7 +95,7 @@ BCP 14 {{!RFC2119}} {{!RFC8174}} when, and only when, they appear in
 all capitals, as shown here.
 
 Readers should also be familiar with the terms and concepts discussed
-in {{RFC8132}} and {{RFC8428}}. Also the following terms are used in
+in {{RFC8132}} and {{RFC8428}}. The following additional terms are used in
 this document:
 
 Fetch Record:
