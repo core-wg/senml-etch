@@ -183,8 +183,13 @@ Pack can be used to retrieve the Record with time "1.276020091e+09":
 
 The resolved form of records (Section 4.6 of {{RFC8428}}) is used when
 comparing the names and times of the Target and Fetch Records to
-accommodate for differences in use of the base values. All other Fetch
-Record fields than name, base name, time, and base time MUST be ignored.
+accommodate for differences in use of the base values. In resolved form
+the SenML name in the example above becomes "2001:db8::2/3311/0/5850".
+Since there is no base time in the Pack, the time in resolved form is
+equal to the time in the example.
+
+All other Fetch Record fields than name, base name, time, and base time
+MUST be ignored.
 
 ## SenML (i)PATCH
 
