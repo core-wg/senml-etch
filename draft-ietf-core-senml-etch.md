@@ -198,7 +198,8 @@ to add new Records, and to remove existing Records. The names and
 times of the Patch Records are given and matched in same way as for
 the Fetch Records, except each Patch Record can match at most one
 Target Record. Patch Packs can also include new values and other SenML
-Fields for the Records. Application of Patch Packs is idempotent.
+Fields for the Records. Application of Patch Packs is idempotent; hence
+PATCH and iPATCH methods for SenML Packs are equivalent.
 
 When the name in a Patch Record matches with the name in an existing
 Record, the resolved time values are compared. If the time values either
