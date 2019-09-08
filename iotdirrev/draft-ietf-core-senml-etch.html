@@ -287,26 +287,27 @@ ul.toc li {
 <link href="#rfc.section.3" rel="Chapter" title="3 Using FETCH and (i)PATCH with SenML">
 <link href="#rfc.section.3.1" rel="Chapter" title="3.1 SenML FETCH">
 <link href="#rfc.section.3.2" rel="Chapter" title="3.2 SenML (i)PATCH">
-<link href="#rfc.section.4" rel="Chapter" title="4 Security Considerations">
-<link href="#rfc.section.5" rel="Chapter" title="5 IANA Considerations">
-<link href="#rfc.section.5.1" rel="Chapter" title="5.1 CoAP Content-Format Registration">
-<link href="#rfc.section.5.2" rel="Chapter" title="5.2 senml-etch+json Media Type">
-<link href="#rfc.section.5.3" rel="Chapter" title="5.3 senml-etch+cbor Media Type">
-<link href="#rfc.section.6" rel="Chapter" title="6 Acknowledgements">
-<link href="#rfc.references" rel="Chapter" title="7 References">
-<link href="#rfc.references.1" rel="Chapter" title="7.1 Normative References">
-<link href="#rfc.references.2" rel="Chapter" title="7.2 Informative References">
+<link href="#rfc.section.4" rel="Chapter" title="4 Fragment Identification">
+<link href="#rfc.section.5" rel="Chapter" title="5 Security Considerations">
+<link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations">
+<link href="#rfc.section.6.1" rel="Chapter" title="6.1 CoAP Content-Format Registration">
+<link href="#rfc.section.6.2" rel="Chapter" title="6.2 senml-etch+json Media Type">
+<link href="#rfc.section.6.3" rel="Chapter" title="6.3 senml-etch+cbor Media Type">
+<link href="#rfc.section.7" rel="Chapter" title="7 Acknowledgements">
+<link href="#rfc.references" rel="Chapter" title="8 References">
+<link href="#rfc.references.1" rel="Chapter" title="8.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="8.2 Informative References">
 <link href="#rfc.authors" rel="Chapter">
 
 
-  <meta name="generator" content="xml2rfc version 2.23.1 - https://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.26.0 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Keranen, A. and M. Mohajer" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-core-senml-etch-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-07" />
-  <meta name="dct.abstract" content="The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP iPATCH, PATCH, and FETCH methods for resources represented with the SenML data model." />
-  <meta name="description" content="The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP iPATCH, PATCH, and FETCH methods for resources represented with the SenML data model." />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-08" />
+  <meta name="dct.abstract" content="The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP FETCH, PATCH, and iPATCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP FETCH, PATCH, and iPATCH methods for resources represented with the SenML data model." />
+  <meta name="description" content="The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP FETCH, PATCH, and iPATCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP FETCH, PATCH, and iPATCH methods for resources represented with the SenML data model." />
 
 </head>
 
@@ -328,12 +329,12 @@ ul.toc li {
 <td class="right">M. Mohajer</td>
 </tr>
 <tr>
-<td class="left">Expires: February 8, 2020</td>
+<td class="left">Expires: March 11, 2020</td>
 <td class="right">u-blox UK</td>
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">August 7, 2019</td>
+<td class="right">September 8, 2019</td>
 </tr>
 
     	
@@ -344,12 +345,12 @@ ul.toc li {
   <span class="filename">draft-ietf-core-senml-etch-latest</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-<p>The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP iPATCH, PATCH, and FETCH methods for resources represented with the SenML data model.</p>
+<p>The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP FETCH, PATCH, and iPATCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP FETCH, PATCH, and iPATCH methods for resources represented with the SenML data model.</p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on February 8, 2020.</p>
+<p>This Internet-Draft will expire on March 11, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -369,23 +370,25 @@ ul.toc li {
 </li>
 <li>3.2.   <a href="#rfc.section.3.2">SenML (i)PATCH</a>
 </li>
-</ul><li>4.   <a href="#rfc.section.4">Security Considerations</a>
+</ul><li>4.   <a href="#rfc.section.4">Fragment Identification</a>
 </li>
-<li>5.   <a href="#rfc.section.5">IANA Considerations</a>
+<li>5.   <a href="#rfc.section.5">Security Considerations</a>
 </li>
-<ul><li>5.1.   <a href="#rfc.section.5.1">CoAP Content-Format Registration</a>
+<li>6.   <a href="#rfc.section.6">IANA Considerations</a>
 </li>
-<li>5.2.   <a href="#rfc.section.5.2">senml-etch+json Media Type</a>
+<ul><li>6.1.   <a href="#rfc.section.6.1">CoAP Content-Format Registration</a>
 </li>
-<li>5.3.   <a href="#rfc.section.5.3">senml-etch+cbor Media Type</a>
+<li>6.2.   <a href="#rfc.section.6.2">senml-etch+json Media Type</a>
 </li>
-</ul><li>6.   <a href="#rfc.section.6">Acknowledgements</a>
+<li>6.3.   <a href="#rfc.section.6.3">senml-etch+cbor Media Type</a>
 </li>
-<li>7.   <a href="#rfc.references">References</a>
+</ul><li>7.   <a href="#rfc.section.7">Acknowledgements</a>
 </li>
-<ul><li>7.1.   <a href="#rfc.references.1">Normative References</a>
+<li>8.   <a href="#rfc.references">References</a>
 </li>
-<li>7.2.   <a href="#rfc.references.2">Informative References</a>
+<ul><li>8.1.   <a href="#rfc.references.1">Normative References</a>
+</li>
+<li>8.2.   <a href="#rfc.references.2">Informative References</a>
 </li>
 </ul><li><a href="#rfc.authors">Authors' Addresses</a>
 </li>
@@ -406,13 +409,13 @@ ul.toc li {
 ]
 </pre>
 <p id="rfc.section.1.p.3">Here three resources &#8220;3311/0/5850&#8221;, &#8220;3311/0/5851&#8221;, and &#8220;3311/0/5750&#8221;, of an IPSO dimmable light smart object <a href="#IPSO" class="xref">[IPSO]</a> are represented using a single SenML Pack with three SenML Records. All resources share the same base name &#8220;2001:db8::2/3311/0/&#8221;, hence full names for resources are &#8220;2001:db8::2/3311/0/5850&#8221;, etc.</p>
-<p id="rfc.section.1.p.4">The CoAP <a href="#RFC7252" class="xref">[RFC7252]</a> iPATCH, PATCH, and FETCH methods <a href="#RFC8132" class="xref">[RFC8132]</a> enable accessing and updating parts of a resource or multiple resources with one request.</p>
-<p id="rfc.section.1.p.5">This document defines two new media types, one using the JavaScript Object Notation (JSON) <a href="#RFC8259" class="xref">[RFC8259]</a> and one using the Concise Binary Object Representation (CBOR) <a href="#RFC7049" class="xref">[RFC7049]</a>, that can be used with the CoAP iPATCH, PATCH, and FETCH methods for resources represented with the SenML data model. The semantics of the new media types are the same for the CoAP PATCH and iPATCH methods. The rest of the document uses term &#8220;(i)PATCH&#8221; when referring to both methods.</p>
+<p id="rfc.section.1.p.4">The CoAP <a href="#RFC7252" class="xref">[RFC7252]</a> FETCH, PATCH, and iPATCH methods <a href="#RFC8132" class="xref">[RFC8132]</a> enable accessing and updating parts of a resource or multiple resources with one request.</p>
+<p id="rfc.section.1.p.5">This document defines two new media types, one using the JavaScript Object Notation (JSON) <a href="#RFC8259" class="xref">[RFC8259]</a> and one using the Concise Binary Object Representation (CBOR) <a href="#RFC7049" class="xref">[RFC7049]</a>, which can be used with the CoAP FETCH, PATCH, and iPATCH methods for resources represented with the SenML data model. The rest of the document uses term &#8220;(i)PATCH&#8221; when referring to both methods as the semantics of the new media types are the same for the CoAP PATCH and iPATCH methods.</p>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#terminology" id="terminology">Terminology</a>
 </h1>
 <p id="rfc.section.2.p.1">The key words &#8220;MUST&#8221;, &#8220;MUST NOT&#8221;, &#8220;REQUIRED&#8221;, &#8220;SHALL&#8221;, &#8220;SHALL NOT&#8221;, &#8220;SHOULD&#8221;, &#8220;SHOULD NOT&#8221;, &#8220;RECOMMENDED&#8221;, &#8220;NOT RECOMMENDED&#8221;, &#8220;MAY&#8221;, and &#8220;OPTIONAL&#8221; in this document are to be interpreted as described in BCP 14 <a href="#RFC2119" class="xref">[RFC2119]</a> <a href="#RFC8174" class="xref">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.</p>
-<p id="rfc.section.2.p.2">Readers should also be familiar with the terms and concepts discussed in <a href="#RFC8132" class="xref">[RFC8132]</a> and <a href="#RFC8428" class="xref">[RFC8428]</a>. Also the following terms are used in this document:</p>
+<p id="rfc.section.2.p.2">Readers should also be familiar with the terms and concepts discussed in <a href="#RFC8132" class="xref">[RFC8132]</a> and <a href="#RFC8428" class="xref">[RFC8428]</a>. The following additional terms are used in this document:</p>
 <p></p>
 
 <dl>
@@ -426,6 +429,8 @@ ul.toc li {
 <dd style="margin-left: 8">One or more Patch Records in an array structure.</dd>
 <dt>Target Record:</dt>
 <dd style="margin-left: 8">A Record in a SenML Pack that is matching the selection criteria of a Fetch or Patch Record and hence is a target for a Fetch or Patch operation.</dd>
+<dt>Target Pack:</dt>
+<dd style="margin-left: 8">A SenML Pack that is a target for a Fetch or Patch operation.</dd>
 <dt>(i)PATCH:</dt>
 <dd style="margin-left: 8">A term that refers to both CoAP &#8220;PATCH&#8221; and &#8220;iPATCH&#8221; methods when there is no difference in this specification in which one is used.</dd>
 </dl>
@@ -433,11 +438,11 @@ ul.toc li {
 <a href="#rfc.section.3">3.</a> <a href="#using-fetch-and-ipatch-with-senml" id="using-fetch-and-ipatch-with-senml">Using FETCH and (i)PATCH with SenML</a>
 </h1>
 <p id="rfc.section.3.p.1">The FETCH/(i)PATCH media types for SenML are modeled as extensions to the SenML media type to enable re-use of existing SenML parsers and generators, in particular on constrained devices. Unless mentioned otherwise, FETCH and PATCH Packs are constructed with the same rules and constraints as SenML Packs.</p>
-<p id="rfc.section.3.p.2">The key difference to the SenML media type is allowing the use of a &#8220;null&#8221; value for removing records with the (i)PATCH method. Also the Fetch and Patch Records do not have default time or base version when the fields are omitted.</p>
+<p id="rfc.section.3.p.2">The key differences to the SenML media type are allowing the use of a &#8220;null&#8221; value for removing records with the (i)PATCH method and lack of value fields in Fetch Records. Also the Fetch and Patch Records do not have default time or base version when the fields are omitted.</p>
 <h1 id="rfc.section.3.1">
 <a href="#rfc.section.3.1">3.1.</a> <a href="#senml-fetch" id="senml-fetch">SenML FETCH</a>
 </h1>
-<p id="rfc.section.3.1.p.1">The FETCH method can be used to select and return a subset of records, in sequence, of one or more SenML Packs. The SenML Records are selected by giving a set of names that, when resolved, match resolved names in a SenML Pack. The names for a Fetch Pack are given using the SenML &#8220;name&#8221; and/or &#8220;base name&#8221; Fields. The names are resolved by concatenating the base name with the name field as defined in <a href="#RFC8428" class="xref">[RFC8428]</a>.</p>
+<p id="rfc.section.3.1.p.1">The FETCH method can be used to select and return a subset of records, in sequence, of one or more SenML Packs. The SenML Records are selected by giving a set of names that, when resolved, match resolved names in a Target SenML Pack. The names for a Fetch Pack are given using the SenML &#8220;name&#8221; and/or &#8220;base name&#8221; Fields. The names are resolved by concatenating the base name with the name field as defined in <a href="#RFC8428" class="xref">[RFC8428]</a>.</p>
 <p id="rfc.section.3.1.p.2">For example, to select the IPSO resources &#8220;5850&#8221; and &#8220;5851&#8221; from the example in <a href="#intro" class="xref">Section 1</a>, the following Fetch Pack can be used:</p>
 <pre>
 [
@@ -453,14 +458,21 @@ ul.toc li {
 ]
 </pre>
 <p id="rfc.section.3.1.p.4">When SenML Records contain also time values, a name may no longer uniquely identify a single Record. When no time is given in a Fetch Record, all SenML Records with the given name are matched (i.e., unlike with SenML Records, lack of time field in a Fetch Record does not imply time value zero). When time is given in the Fetch Record, only a SenML Record (if any) with equal resolved time value and name is matched.</p>
-<p id="rfc.section.3.1.p.5">The resolved form of records (Section 4.6 of <a href="#RFC8428" class="xref">[RFC8428]</a>) is used when comparing the names and times of the Target and Fetch Records to accommodate for differences in use of the base values.</p>
+<p id="rfc.section.3.1.p.5">For example, if the IPSO resource &#8220;5850&#8221; would have multiple sensor readings (SenML Records) with different time values, the following Fetch Pack can be used to retrieve the Record with time &#8220;1.276020091e+09&#8221;:</p>
+<pre>
+[
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "t":1.276020091e+09}
+]
+</pre>
+<p id="rfc.section.3.1.p.6">The resolved form of records (Section 4.6 of <a href="#RFC8428" class="xref">[RFC8428]</a>) is used when comparing the names and times of the Target and Fetch Records to accommodate for differences in use of the base values. In resolved form the SenML name in the example above becomes &#8220;2001:db8::2/3311/0/5850&#8221;.  Since there is no base time in the Pack, the time in resolved form is equal to the time in the example.</p>
+<p id="rfc.section.3.1.p.7">All other Fetch Record fields than name, base name, time, and base time MUST be ignored.</p>
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> <a href="#senml-ipatch" id="senml-ipatch">SenML (i)PATCH</a>
 </h1>
-<p id="rfc.section.3.2.p.1">The (i)PATCH method can be used to change the values of SenML Records, to add new Records, and to remove existing Records. The names and times of the Patch Records are given and matched in same way as for the Fetch Records, except each Patch Record can match at most one Target Record. Patch Packs can also include new values and other SenML Fields for the Records. Application of Patch Packs is idempotent.</p>
-<p id="rfc.section.3.2.p.2">When the name in a Patch Record matches with the name in an existing Record, the resolved time values are compared. If the time values either do not exist in both Records or are equal, the Target Record is replaced with the contents of the Patch Record.</p>
+<p id="rfc.section.3.2.p.1">The (i)PATCH method can be used to change the fields of SenML Records, to add new Records, and to remove existing Records. The names and times of the Patch Records are given and matched in same way as for the Fetch Records, except each Patch Record can match at most one Target Record. Patch Packs can also include new values and other SenML Fields for the Records. Application of Patch Packs is idempotent; hence PATCH and iPATCH methods for SenML Packs are equivalent.</p>
+<p id="rfc.section.3.2.p.2">When the name in a Patch Record matches with the name in an existing Record, the resolved time values are compared. If the time values either do not exist in both Records or are equal, the Target Record is replaced with the contents of the Patch Record. All Patch Records MUST contain at least a SenML Value or Sum field. A Patch Pack with invalid Records MUST be rejected.</p>
 <p id="rfc.section.3.2.p.3">If a Patch Record contains a name, or combination of a time value and a name, that do not exist in any existing Record in the Pack, the given Record, with all the fields it contains, is added to the Pack.</p>
-<p id="rfc.section.3.2.p.4">If a Patch Record has a value (&#8220;v&#8221;) field with value null, the matched Record (if any) is removed from the Pack.</p>
+<p id="rfc.section.3.2.p.4">If a Patch Record has a value (&#8220;v&#8221;) field with value null, it MUST NOT be added but the matched Record (if any) is removed from the Target Pack.</p>
 <p id="rfc.section.3.2.p.5">For example, the following document could be given as an (i)PATCH payload to change/set values of two SenML Records for the example in <a href="#intro" class="xref">Section 1</a>:</p>
 <pre>
 [
@@ -484,20 +496,24 @@ ul.toc li {
 ]
 </pre>
 <h1 id="rfc.section.4">
-<a href="#rfc.section.4">4.</a> <a href="#seccons" id="seccons">Security Considerations</a>
+<a href="#rfc.section.4">4.</a> <a href="#fragment-identification" id="fragment-identification">Fragment Identification</a>
 </h1>
-<p id="rfc.section.4.p.1">The security and privacy considerations of SenML apply also with the FETCH and (i)PATCH methods.</p>
-<p id="rfc.section.4.p.2">In FETCH and (i)PATCH requests, the client can pass arbitrary names to the target resource for manipulation. The resource implementer must take care to only allow access to names that are actually part of (or accessible through) the target resource.</p>
-<p id="rfc.section.4.p.3">If the client is not allowed to do a GET or PUT on the full target resource (and thus all the names accessible through it), access control rules must be evaluated for each record in the pack.</p>
+<p id="rfc.section.4.p.1">Fragment identification is supported by analogously applying fragment identifiers as specified in Section 9 of <a href="#RFC8428" class="xref">[RFC8428]</a> to the Fetch/Patch Records.</p>
 <h1 id="rfc.section.5">
-<a href="#rfc.section.5">5.</a> <a href="#iana" id="iana">IANA Considerations</a>
+<a href="#rfc.section.5">5.</a> <a href="#seccons" id="seccons">Security Considerations</a>
 </h1>
-<p id="rfc.section.5.p.1">This document registers two new media types and CoAP Content-Format IDs for both media types.</p>
-<p id="rfc.section.5.p.2">Note to RFC Editor: Please replace all occurrences of &#8220;RFC-AAAA&#8221; with the RFC number of this document.</p>
-<h1 id="rfc.section.5.1">
-<a href="#rfc.section.5.1">5.1.</a> <a href="#coap-content-format-registration" id="coap-content-format-registration">CoAP Content-Format Registration</a>
+<p id="rfc.section.5.p.1">The security and privacy considerations of SenML apply also with the FETCH and (i)PATCH methods.</p>
+<p id="rfc.section.5.p.2">In FETCH and (i)PATCH requests, the client can pass arbitrary names to the target resource for manipulation. The resource implementer must take care to only allow access to names that are actually part of (or accessible through) the target resource.</p>
+<p id="rfc.section.5.p.3">If the client is not allowed to do a GET or PUT on the full target resource (and thus all the names accessible through it), access control rules must be evaluated for each record in the pack.</p>
+<h1 id="rfc.section.6">
+<a href="#rfc.section.6">6.</a> <a href="#iana" id="iana">IANA Considerations</a>
 </h1>
-<p id="rfc.section.5.1.p.1">IANA is requested to assign CoAP Content-Format IDs for the SenML PATCH and FETCH media types in the &#8220;CoAP Content-Formats&#8221; sub-registry, within the &#8220;CoRE Parameters&#8221; registry <a href="#RFC7252" class="xref">[RFC7252]</a>. The assigned IDs are shown in <a href="#tbl-coap-content-formats" class="xref">Table 1</a>.</p>
+<p id="rfc.section.6.p.1">This document registers two new media types and CoAP Content-Format IDs for both media types.</p>
+<p id="rfc.section.6.p.2">Note to RFC Editor: Please replace all occurrences of &#8220;RFC-AAAA&#8221; with the RFC number of this document.</p>
+<h1 id="rfc.section.6.1">
+<a href="#rfc.section.6.1">6.1.</a> <a href="#coap-content-format-registration" id="coap-content-format-registration">CoAP Content-Format Registration</a>
+</h1>
+<p id="rfc.section.6.1.p.1">IANA is requested to assign CoAP Content-Format IDs for the SenML PATCH and FETCH media types in the &#8220;CoAP Content-Formats&#8221; sub-registry, within the &#8220;CoRE Parameters&#8221; registry <a href="#RFC7252" class="xref">[RFC7252]</a>. The assigned IDs are shown in <a href="#tbl-coap-content-formats" class="xref">Table 1</a>.</p>
 <div id="rfc.table.1"></div>
 <div id="tbl-coap-content-formats"></div>
 <table cellpadding="3" cellspacing="0" class="tt full center">
@@ -520,61 +536,61 @@ ul.toc li {
 </tr>
 </tbody>
 </table>
-<h1 id="rfc.section.5.2">
-<a href="#rfc.section.5.2">5.2.</a> <a href="#senml-etchjson-media-type" id="senml-etchjson-media-type">senml-etch+json Media Type</a>
+<h1 id="rfc.section.6.2">
+<a href="#rfc.section.6.2">6.2.</a> <a href="#senml-etchjson-media-type" id="senml-etchjson-media-type">senml-etch+json Media Type</a>
 </h1>
-<p id="rfc.section.5.2.p.1">Type name: application</p>
-<p id="rfc.section.5.2.p.2">Subtype name: senml-etch+json</p>
-<p id="rfc.section.5.2.p.3">Required parameters: none</p>
-<p id="rfc.section.5.2.p.4">Optional parameters: none</p>
-<p id="rfc.section.5.2.p.5">Encoding considerations: binary</p>
-<p id="rfc.section.5.2.p.6">Security considerations: See <a href="#seccons" class="xref">Section 4</a> of RFC-AAAA.</p>
-<p id="rfc.section.5.2.p.7">Interoperability considerations: Applications MUST ignore any key value pairs that they do not understand unless the key ends with the &#8216;_&#8217; character in which case an error MUST be generated. This allows backwards compatible extensions to this specification.</p>
-<p id="rfc.section.5.2.p.8">Published specification: RFC-AAAA</p>
-<p id="rfc.section.5.2.p.9">Applications that use this media type: Applications that use the SenML media type for resource representation.</p>
-<p id="rfc.section.5.2.p.10">Fragment identifier considerations: The syntax and semantics of fragment identifiers specified for senml-etch+json SHOULD be as specified for &#8220;application/json&#8221;. (At publication of this document, there is no fragment identification syntax defined for &#8220;application/json&#8221;.)</p>
-<p id="rfc.section.5.2.p.11">Additional information:</p>
-<p id="rfc.section.5.2.p.12">Magic number(s): none</p>
-<p id="rfc.section.5.2.p.13">File extension(s): senml-etchj</p>
-<p id="rfc.section.5.2.p.14">Windows Clipboard Name: &#8220;SenML FETCH/PATCH format&#8221;</p>
-<p id="rfc.section.5.2.p.15">Macintosh file type code(s): none</p>
-<p id="rfc.section.5.2.p.16">Macintosh Universal Type Identifier code: org.ietf.senml-etch-json conforms to public.text</p>
-<p id="rfc.section.5.2.p.17">Person &amp; email address to contact for further information: Ari Keranen ari.keranen@ericsson.com</p>
-<p id="rfc.section.5.2.p.18">Intended usage: COMMON</p>
-<p id="rfc.section.5.2.p.19">Restrictions on usage: None</p>
-<p id="rfc.section.5.2.p.20">Author: Ari Keranen ari.keranen@ericsson.com</p>
-<p id="rfc.section.5.2.p.21">Change controller: IESG</p>
-<h1 id="rfc.section.5.3">
-<a href="#rfc.section.5.3">5.3.</a> <a href="#senml-etchcbor-media-type" id="senml-etchcbor-media-type">senml-etch+cbor Media Type</a>
+<p id="rfc.section.6.2.p.1">Type name: application</p>
+<p id="rfc.section.6.2.p.2">Subtype name: senml-etch+json</p>
+<p id="rfc.section.6.2.p.3">Required parameters: none</p>
+<p id="rfc.section.6.2.p.4">Optional parameters: none</p>
+<p id="rfc.section.6.2.p.5">Encoding considerations: binary</p>
+<p id="rfc.section.6.2.p.6">Security considerations: See <a href="#seccons" class="xref">Section 5</a> of RFC-AAAA.</p>
+<p id="rfc.section.6.2.p.7">Interoperability considerations: Applications MUST ignore any key value pairs that they do not understand unless the key ends with the &#8216;_&#8217; character in which case an error MUST be generated. This allows backwards compatible extensions to this specification.</p>
+<p id="rfc.section.6.2.p.8">Published specification: RFC-AAAA</p>
+<p id="rfc.section.6.2.p.9">Applications that use this media type: Applications that use the SenML media type for resource representation.</p>
+<p id="rfc.section.6.2.p.10">Fragment identifier considerations: Fragment identification for application/senml-etch+json is supported by using fragment identifiers as specified by RFC AAAA.</p>
+<p id="rfc.section.6.2.p.11">Additional information:</p>
+<p id="rfc.section.6.2.p.12">Magic number(s): none</p>
+<p id="rfc.section.6.2.p.13">File extension(s): senml-etchj</p>
+<p id="rfc.section.6.2.p.14">Windows Clipboard Name: &#8220;SenML FETCH/PATCH format&#8221;</p>
+<p id="rfc.section.6.2.p.15">Macintosh file type code(s): none</p>
+<p id="rfc.section.6.2.p.16">Macintosh Universal Type Identifier code: org.ietf.senml-etch-json conforms to public.text</p>
+<p id="rfc.section.6.2.p.17">Person &amp; email address to contact for further information: Ari Keranen ari.keranen@ericsson.com</p>
+<p id="rfc.section.6.2.p.18">Intended usage: COMMON</p>
+<p id="rfc.section.6.2.p.19">Restrictions on usage: None</p>
+<p id="rfc.section.6.2.p.20">Author: Ari Keranen ari.keranen@ericsson.com</p>
+<p id="rfc.section.6.2.p.21">Change controller: IESG</p>
+<h1 id="rfc.section.6.3">
+<a href="#rfc.section.6.3">6.3.</a> <a href="#senml-etchcbor-media-type" id="senml-etchcbor-media-type">senml-etch+cbor Media Type</a>
 </h1>
-<p id="rfc.section.5.3.p.1">Type name: application</p>
-<p id="rfc.section.5.3.p.2">Subtype name: senml-etch+cbor</p>
-<p id="rfc.section.5.3.p.3">Required parameters: none</p>
-<p id="rfc.section.5.3.p.4">Optional parameters: none</p>
-<p id="rfc.section.5.3.p.5">Encoding considerations: binary</p>
-<p id="rfc.section.5.3.p.6">Security considerations: See <a href="#seccons" class="xref">Section 4</a> of RFC-AAAA.</p>
-<p id="rfc.section.5.3.p.7">Interoperability considerations: Applications MUST ignore any key value pairs that they do not understand unless the key ends with the &#8216;_&#8217; character in which case an error MUST be generated. This allows backwards compatible extensions to this specification.</p>
-<p id="rfc.section.5.3.p.8">Published specification: RFC-AAAA</p>
-<p id="rfc.section.5.3.p.9">Applications that use this media type: Applications that use the SenML media type for resource representation.</p>
-<p id="rfc.section.5.3.p.10">Fragment identifier considerations: The syntax and semantics of fragment identifiers specified for senml-etch+cbor SHOULD be as specified for &#8220;application/cbor&#8221;. (At publication of this document, there is no fragment identification syntax defined for &#8220;application/cbor&#8221;.)</p>
-<p id="rfc.section.5.3.p.11">Additional information:</p>
-<p id="rfc.section.5.3.p.12">Magic number(s): none</p>
-<p id="rfc.section.5.3.p.13">File extension(s): senml-etchc</p>
-<p id="rfc.section.5.3.p.14">Macintosh file type code(s): none</p>
-<p id="rfc.section.5.3.p.15">Macintosh Universal Type Identifier code: org.ietf.senml-etch-cbor conforms to public.data</p>
-<p id="rfc.section.5.3.p.16">Person &amp; email address to contact for further information: Ari Keranen ari.keranen@ericsson.com</p>
-<p id="rfc.section.5.3.p.17">Intended usage: COMMON</p>
-<p id="rfc.section.5.3.p.18">Restrictions on usage: None</p>
-<p id="rfc.section.5.3.p.19">Author: Ari Keranen ari.keranen@ericsson.com</p>
-<p id="rfc.section.5.3.p.20">Change controller: IESG</p>
-<h1 id="rfc.section.6">
-<a href="#rfc.section.6">6.</a> <a href="#acks" id="acks">Acknowledgements</a>
+<p id="rfc.section.6.3.p.1">Type name: application</p>
+<p id="rfc.section.6.3.p.2">Subtype name: senml-etch+cbor</p>
+<p id="rfc.section.6.3.p.3">Required parameters: none</p>
+<p id="rfc.section.6.3.p.4">Optional parameters: none</p>
+<p id="rfc.section.6.3.p.5">Encoding considerations: binary</p>
+<p id="rfc.section.6.3.p.6">Security considerations: See <a href="#seccons" class="xref">Section 5</a> of RFC-AAAA.</p>
+<p id="rfc.section.6.3.p.7">Interoperability considerations: Applications MUST ignore any key value pairs that they do not understand unless the key ends with the &#8216;_&#8217; character in which case an error MUST be generated. This allows backwards compatible extensions to this specification.</p>
+<p id="rfc.section.6.3.p.8">Published specification: RFC-AAAA</p>
+<p id="rfc.section.6.3.p.9">Applications that use this media type: Applications that use the SenML media type for resource representation.</p>
+<p id="rfc.section.6.3.p.10">Fragment identifier considerations: Fragment identification for application/senml-etch+cbor is supported by using fragment identifiers as specified by RFC AAAA.</p>
+<p id="rfc.section.6.3.p.11">Additional information:</p>
+<p id="rfc.section.6.3.p.12">Magic number(s): none</p>
+<p id="rfc.section.6.3.p.13">File extension(s): senml-etchc</p>
+<p id="rfc.section.6.3.p.14">Macintosh file type code(s): none</p>
+<p id="rfc.section.6.3.p.15">Macintosh Universal Type Identifier code: org.ietf.senml-etch-cbor conforms to public.data</p>
+<p id="rfc.section.6.3.p.16">Person &amp; email address to contact for further information: Ari Keranen ari.keranen@ericsson.com</p>
+<p id="rfc.section.6.3.p.17">Intended usage: COMMON</p>
+<p id="rfc.section.6.3.p.18">Restrictions on usage: None</p>
+<p id="rfc.section.6.3.p.19">Author: Ari Keranen ari.keranen@ericsson.com</p>
+<p id="rfc.section.6.3.p.20">Change controller: IESG</p>
+<h1 id="rfc.section.7">
+<a href="#rfc.section.7">7.</a> <a href="#acks" id="acks">Acknowledgements</a>
 </h1>
-<p id="rfc.section.6.p.1">The use of FETCH and (i)PATCH methods with SenML was first introduced by the OMA SpecWorks LwM2M v1.1 specification. This document generalizes the use to any SenML representation. The authors would like to thank Carsten Bormann, Christian Amsuess, Jaime Jimenez, Klaus Hartke, Michael Richardson, and other participants from the IETF CoRE and OMA SpecWorks DMSE working groups who have contributed ideas and reviews.</p>
+<p id="rfc.section.7.p.1">The use of FETCH and (i)PATCH methods with SenML was first introduced by the OMA SpecWorks LwM2M v1.1 specification. This document generalizes the use to any SenML representation. The authors would like to thank Carsten Bormann, Christian Amsuess, Jaime Jimenez, Klaus Hartke, Michael Richardson, and other participants from the IETF CoRE and OMA SpecWorks DMSE working groups who have contributed ideas and reviews.</p>
 <h1 id="rfc.references">
-<a href="#rfc.references">7.</a> References</h1>
+<a href="#rfc.references">8.</a> References</h1>
 <h1 id="rfc.references.1">
-<a href="#rfc.references.1">7.1.</a> Normative References</h1>
+<a href="#rfc.references.1">8.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
@@ -613,7 +629,7 @@ ul.toc li {
 </tr>
 </tbody></table>
 <h1 id="rfc.references.2">
-<a href="#rfc.references.2">7.2.</a> Informative References</h1>
+<a href="#rfc.references.2">8.2.</a> Informative References</h1>
 <table><tbody><tr>
 <td class="reference"><b id="IPSO">[IPSO]</b></td>
 <td class="top">
