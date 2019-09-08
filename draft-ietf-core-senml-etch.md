@@ -116,6 +116,9 @@ Target Record:
 a Fetch or Patch Record and hence is a target for a Fetch or Patch
 operation.
 
+Target Pack:
+: A SenML Pack that is a target for a Fetch or Patch operation.
+
 (i)PATCH:
 : A term that refers to both CoAP "PATCH" and "iPATCH" methods when
 there is no difference in this specification in which one is used.
@@ -190,8 +193,8 @@ If a Patch Record contains a name, or combination of a time value and
 a name, that do not exist in any existing Record in the Pack, the
 given Record, with all the fields it contains, is added to the Pack.
 
-If a Patch Record has a value ("v") field with value null, the matched
-Record (if any) is removed from the Pack.
+If a Patch Record has a value ("v") field with value null, it MUST NOT be
+added but the matched Record (if any) is removed from the Target Pack.
 
 For example, the following document could be given as an (i)PATCH payload
 to change/set values of two SenML Records for the example in
