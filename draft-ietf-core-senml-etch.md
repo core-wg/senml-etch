@@ -171,6 +171,16 @@ with SenML Records, lack of time field in a Fetch Record does not imply
 time value zero). When time is given in the Fetch Record, only a SenML
 Record (if any) with equal resolved time value and name is matched.
 
+For example, if the IPSO resource "5850" would have multiple sensor
+readings (SenML Records) with different time values, the following Fetch
+Pack can be used to retrieve the Record with time "1.276020091e+09":
+
+~~~
+[
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "t":1.276020091e+09}
+]
+~~~
+
 The resolved form of records (Section 4.6 of {{RFC8428}}) is used when
 comparing the names and times of the Target and Fetch Records to
 accommodate for differences in use of the base values. All other Fetch
