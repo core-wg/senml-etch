@@ -43,10 +43,10 @@ informative:
 
 The Sensor Measurement Lists (SenML) media type and data model can be
 used to send collections of resources, such as batches of sensor data or
-configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods
+configuration parameters. The CoAP FETCH, PATCH, and iPATCH methods
 enable accessing and updating parts of a resource or multiple resources
 with one request. This document defines new media types for the CoAP
-iPATCH, PATCH, and FETCH methods for resources represented with the SenML
+FETCH, PATCH, and iPATCH methods for resources represented with the SenML
 data model.
 
 --- middle
@@ -74,14 +74,14 @@ a single SenML Pack with three SenML Records. All resources share the
 same base name "2001:db8::2/3311/0/", hence full names for resources
 are "2001:db8::2/3311/0/5850", etc.
 
-The CoAP {{!RFC7252}} iPATCH, PATCH, and FETCH methods {{!RFC8132}}
+The CoAP {{!RFC7252}} FETCH, PATCH, and iPATCH methods {{!RFC8132}}
 enable accessing and updating parts of a resource or multiple resources
 with one request.
 
 This document defines two new media types, one using the JavaScript
 Object Notation (JSON) {{!RFC8259}} and one using the Concise Binary
 Object Representation (CBOR) {{!RFC7049}}, that can be used with the CoAP
-iPATCH, PATCH, and FETCH methods for resources represented with the SenML
+FETCH, PATCH, and iPATCH methods for resources represented with the SenML
 data model. The semantics of the new media types are the same for the
 CoAP PATCH and iPATCH methods. The rest of the document uses term
 "(i)PATCH" when referring to both methods.
