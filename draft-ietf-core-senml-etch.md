@@ -177,7 +177,7 @@ accommodate for differences in use of the base values.
 
 ## SenML (i)PATCH
 
-The (i)PATCH method can be used to change the values of SenML Records,
+The (i)PATCH method can be used to change the fields of SenML Records,
 to add new Records, and to remove existing Records. The names and
 times of the Patch Records are given and matched in same way as for
 the Fetch Records, except each Patch Record can match at most one
@@ -187,7 +187,9 @@ Fields for the Records. Application of Patch Packs is idempotent.
 When the name in a Patch Record matches with the name in an existing
 Record, the resolved time values are compared. If the time values either
 do not exist in both Records or are equal, the Target Record is replaced
-with the contents of the Patch Record.
+with the contents of the Patch Record. All Patch Records MUST contain at
+least a SenML Value or Sum field. A Patch Pack with invalid Records MUST
+be rejected.
 
 If a Patch Record contains a name, or combination of a time value and
 a name, that do not exist in any existing Record in the Pack, the
