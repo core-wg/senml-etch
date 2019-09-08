@@ -141,9 +141,9 @@ have default time or base version when the fields are omitted.
 The FETCH method can be used to select and return a subset of records, in
 sequence, of one or more SenML Packs. The SenML Records are selected by
 giving a set of names that, when resolved, match resolved names in a
-SenML Pack. The names for a Fetch Pack are given using the SenML "name"
-and/or "base name" Fields. The names are resolved by concatenating the
-base name with the name field as defined in {{RFC8428}}.
+Target SenML Pack. The names for a Fetch Pack are given using the SenML
+"name" and/or "base name" Fields. The names are resolved by concatenating
+the base name with the name field as defined in {{RFC8428}}.
 
 For example, to select the IPSO resources "5850" and "5851" from the
 example in {{intro}}, the following Fetch Pack can be used:
