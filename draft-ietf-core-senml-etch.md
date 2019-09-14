@@ -227,9 +227,12 @@ payload to remove the two SenML Records:
 
 # Fragment Identification
 
-Fragment identification is supported by analogously applying fragment
-identifiers as specified in Section 9 of {{RFC8428}} to the Fetch/Patch
-Records.
+Fragment identification for Records of Fetch and Patch Packs uses the
+same mechanism as SenML JSON/CBOR fragment identification (see Section 9
+of {{RFC8428}}), i.e., "rec" scheme followed by a comma-separated list of
+Record positions or range(s) of Records. For example, to select the 3rd
+and 5th Record of a Fetch or Patch Pack, a fragment identifier "rec=3,5"
+can be used in the URI of the Fetch or Patch Pack resource.
 
 # Security Considerations {#seccons}
 
