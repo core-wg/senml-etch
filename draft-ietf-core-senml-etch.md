@@ -112,7 +112,7 @@ Patch Pack:
 : One or more Patch Records in an array structure.
 
 Target Record:
-: A Record in a SenML Pack that is matching the selection criteria of
+: A Record in a SenML Pack that matches the selection criteria of
 a Fetch or Patch Record and hence is a target for a Fetch or Patch
 operation.
 
