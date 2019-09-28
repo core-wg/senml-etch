@@ -272,9 +272,9 @@ Type name: application
 
 Subtype name: senml-etch+json
 
-Required parameters: none
+Required parameters: N/A
 
-Optional parameters: none
+Optional parameters: N/A
 
 Encoding considerations: binary
 
@@ -296,13 +296,15 @@ specified by RFC AAAA.
 
 Additional information:
 
-Magic number(s): none
+Deprecated alias names for this type: N/A
+
+Magic number(s): N/A
 
 File extension(s): senml-etchj
 
 Windows Clipboard Name: "SenML FETCH/PATCH format"
 
-Macintosh file type code(s): none
+Macintosh file type code(s): N/A
 
 Macintosh Universal Type Identifier code: org.ietf.senml-etch-json
 conforms to public.text
@@ -312,7 +314,7 @@ Ari Keranen ari.keranen@ericsson.com
 
 Intended usage: COMMON
 
-Restrictions on usage: None
+Restrictions on usage: N/A
 
 Author: Ari Keranen ari.keranen@ericsson.com
 
@@ -324,9 +326,9 @@ Type name: application
 
 Subtype name: senml-etch+cbor
 
-Required parameters: none
+Required parameters: N/A
 
-Optional parameters: none
+Optional parameters: N/A
 
 Encoding considerations: binary
 
@@ -348,11 +350,13 @@ specified by RFC AAAA.
 
 Additional information:
 
-Magic number(s): none
+Deprecated alias names for this type: N/A
+
+Magic number(s): N/A
 
 File extension(s): senml-etchc
 
-Macintosh file type code(s): none
+Macintosh file type code(s): N/A
 
 Macintosh Universal Type Identifier code: org.ietf.senml-etch-cbor
 conforms to public.data
@@ -362,7 +366,7 @@ Ari Keranen ari.keranen@ericsson.com
 
 Intended usage: COMMON
 
-Restrictions on usage: None
+Restrictions on usage: N/A
 
 Author: Ari Keranen ari.keranen@ericsson.com
 
