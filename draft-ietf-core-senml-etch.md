@@ -191,31 +191,34 @@ the SenML name in the example above becomes "2001:db8::2/3311/0/5850".
 Since there is no base time in the Pack, the time in resolved form is
 equal to the time in the example.
 
+Finally, Fetch Records can contain a unit field to select only SenML
+Records with an equal unit identifier.
+
 If no SenML Records match, empty SenML Pack (i.e., array with no
 elements) is returned as a response.
 
-All other Fetch Record fields than name, base name, time, and base time
-MUST be ignored.
+All other Fetch Record fields than name, base name, time, base time,
+unit, and base unit MUST be ignored.
 
 ## SenML (i)PATCH
 
-The (i)PATCH method can be used to change the fields of SenML Records,
-to add new Records, and to remove existing Records. The names and
-times of the Patch Records are given and matched in same way as for
-the Fetch Records, except each Patch Record can match at most one
-Target Record. Patch Packs can also include new values and other SenML
-fields for the Records. Application of Patch Packs is idempotent; hence
-PATCH and iPATCH methods for SenML Packs are equivalent.
+The (i)PATCH method can be used to change the fields of SenML Records, to
+add new Records, and to remove existing Records. The names, times, and
+units of the Patch Records are given and matched in same way as for the
+Fetch Records, except each Patch Record MUST match at most one Target
+Record. Patch Packs can also include new values and other SenML fields
+for the Records. Application of Patch Packs is idempotent; hence PATCH
+and iPATCH methods for SenML Packs are equivalent.
 
 When the name in a Patch Record matches with the name in an existing
-Record, the resolved time values are compared. If the time values either
-do not exist in both Records or are equal, the Target Record is replaced
-with the contents of the Patch Record. All Patch Records MUST contain at
-least a SenML Value or Sum field. A Patch Pack with invalid Records MUST
-be rejected.
+Record, the resolved time values and units (if any) are compared. If the
+time values and units either do not exist in both Records or are equal,
+the Target Record is replaced with the contents of the Patch Record. All
+Patch Records MUST contain at least a SenML Value or Sum field. A Patch
+Pack with invalid Records MUST be rejected.
 
-If a Patch Record contains a name, or combination of a time value and
-a name, that do not exist in any existing Record in the Pack, the
+If a Patch Record contains a name, or combination of a time value, unit,
+and a name, that do not exist in any existing Record in the Pack, the
 given Record, with all the fields it contains, is added to the Pack.
 
 If a Patch Record has a value ("v") field with value null, it MUST NOT be
