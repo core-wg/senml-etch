@@ -144,9 +144,9 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
    Patch Pack:  One or more Patch Records in an array structure.
 
-   Target Record:  A Record in a SenML Pack that is matching the
-      selection criteria of a Fetch or Patch Record and hence is a
-      target for a Fetch or Patch operation.
+   Target Record:  A Record in a SenML Pack that matches the selection
+      criteria of a Fetch or Patch Record and hence is a target for a
+      Fetch or Patch operation.
 
    (i)PATCH:  A term that refers to both CoAP "PATCH" and "iPATCH"
       methods when there is no difference in this specification in which
@@ -179,7 +179,7 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    records, in sequence, of one or more SenML Packs.  The SenML Records
    are selected by giving a set of names that, when resolved, match
    resolved names in a SenML Pack.  The names for a Fetch Pack are given
-   using the SenML "name" and/or "base name" Fields.  The names are
+   using the SenML "name" and/or "base name" fields.  The names are
    resolved by concatenating the base name with the name field as
    defined in [RFC8428].
 
@@ -226,7 +226,7 @@ Keranen & Mohajer          Expires May 6, 2020                  [Page 4]
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
-   other SenML Fields for the Records.  Application of Patch Packs is
+   other SenML fields for the Records.  Application of Patch Packs is
    idempotent.
 
    When the name in a Patch Record matches with the name in an existing
