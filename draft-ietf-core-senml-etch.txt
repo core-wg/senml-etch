@@ -72,7 +72,7 @@ Table of Contents
    4.  Fragment Identification . . . . . . . . . . . . . . . . . . .   6
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-     6.1.  CoAP Content-Format Registration  . . . . . . . . . . . .   6
+     6.1.  CoAP Content-Format Registration  . . . . . . . . . . . .   7
      6.2.  senml-etch+json Media Type  . . . . . . . . . . . . . . .   7
      6.3.  senml-etch+cbor Media Type  . . . . . . . . . . . . . . .   8
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
@@ -298,9 +298,13 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 4.  Fragment Identification
 
-   Fragment identification is supported by analogously applying fragment
-   identifiers as specified in Section 9 of [RFC8428] to the Fetch/Patch
-   Records.
+   Fragment identification for Records of Fetch and Patch Packs uses the
+   same mechanism as SenML JSON/CBOR fragment identification (see
+   Section 9 of [RFC8428]), i.e., "rec" scheme followed by a comma-
+   separated list of Record positions or range(s) of Records.  For
+   example, to select the 3rd and 5th Record of a Fetch or Patch Pack, a
+   fragment identifier "rec=3,5" can be used in the URI of the Fetch or
+   Patch Pack resource.
 
 5.  Security Considerations
 
@@ -324,12 +328,8 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    Note to RFC Editor: Please replace all occurrences of "RFC-AAAA" with
    the RFC number of this document.
 
-6.1.  CoAP Content-Format Registration
 
-   IANA is requested to assign CoAP Content-Format IDs for the SenML
-   PATCH and FETCH media types in the "CoAP Content-Formats" sub-
-   registry, within the "CoRE Parameters" registry [RFC7252].  The
-   assigned IDs are shown in Table 1.
+
 
 
 
@@ -337,6 +337,13 @@ Keranen & Mohajer          Expires May 6, 2020                  [Page 6]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
+
+6.1.  CoAP Content-Format Registration
+
+   IANA is requested to assign CoAP Content-Format IDs for the SenML
+   PATCH and FETCH media types in the "CoAP Content-Formats" sub-
+   registry, within the "CoRE Parameters" registry [RFC7252].  The
+   assigned IDs are shown in Table 1.
 
            +-----------------------------+----------+---------+
            | Media type                  | Encoding | ID      |
@@ -380,19 +387,18 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
    Deprecated alias names for this type: N/A
 
-   Magic number(s): N/A
-
-   File extension(s): senml-etchj
-
-   Windows Clipboard Name: "SenML FETCH/PATCH format"
-
-
 
 
 Keranen & Mohajer          Expires May 6, 2020                  [Page 7]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
+
+   Magic number(s): N/A
+
+   File extension(s): senml-etchj
+
+   Windows Clipboard Name: "SenML FETCH/PATCH format"
 
    Macintosh file type code(s): N/A
 
@@ -434,13 +440,7 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    Applications that use this media type: Applications that use the
    SenML media type for resource representation.
 
-   Fragment identifier considerations: Fragment identification for
-   application/senml-etch+cbor is supported by using fragment
-   identifiers as specified by RFC AAAA.
 
-   Additional information:
-
-   Deprecated alias names for this type: N/A
 
 
 
@@ -449,6 +449,14 @@ Keranen & Mohajer          Expires May 6, 2020                  [Page 8]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
+
+   Fragment identifier considerations: Fragment identification for
+   application/senml-etch+cbor is supported by using fragment
+   identifiers as specified by RFC AAAA.
+
+   Additional information:
+
+   Deprecated alias names for this type: N/A
 
    Magic number(s): N/A
 
@@ -489,14 +497,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC7049]  Bormann, C. and P. Hoffman, "Concise Binary Object
-              Representation (CBOR)", RFC 7049, DOI 10.17487/RFC7049,
-              October 2013, <https://www.rfc-editor.org/info/rfc7049>.
-
-   [RFC7252]  Shelby, Z., Hartke, K., and C. Bormann, "The Constrained
-              Application Protocol (CoAP)", RFC 7252,
-              DOI 10.17487/RFC7252, June 2014,
-              <https://www.rfc-editor.org/info/rfc7252>.
 
 
 
@@ -505,6 +505,15 @@ Keranen & Mohajer          Expires May 6, 2020                  [Page 9]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
+
+   [RFC7049]  Bormann, C. and P. Hoffman, "Concise Binary Object
+              Representation (CBOR)", RFC 7049, DOI 10.17487/RFC7049,
+              October 2013, <https://www.rfc-editor.org/info/rfc7049>.
+
+   [RFC7252]  Shelby, Z., Hartke, K., and C. Bormann, "The Constrained
+              Application Protocol (CoAP)", RFC 7252,
+              DOI 10.17487/RFC7252, June 2014,
+              <https://www.rfc-editor.org/info/rfc7252>.
 
    [RFC8132]  van der Stok, P., Bormann, C., and A. Sehgal, "PATCH and
               FETCH Methods for the Constrained Application Protocol
@@ -543,15 +552,6 @@ Authors' Addresses
    u-blox UK
 
    Email: Mojan.Mohajer@u-blox.com
-
-
-
-
-
-
-
-
-
 
 
 

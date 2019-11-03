@@ -498,7 +498,7 @@ ul.toc li {
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#fragment-identification" id="fragment-identification">Fragment Identification</a>
 </h1>
-<p id="rfc.section.4.p.1">Fragment identification is supported by analogously applying fragment identifiers as specified in Section 9 of <a href="#RFC8428" class="xref">[RFC8428]</a> to the Fetch/Patch Records.</p>
+<p id="rfc.section.4.p.1">Fragment identification for Records of Fetch and Patch Packs uses the same mechanism as SenML JSON/CBOR fragment identification (see Section 9 of <a href="#RFC8428" class="xref">[RFC8428]</a>), i.e., &#8220;rec&#8221; scheme followed by a comma-separated list of Record positions or range(s) of Records. For example, to select the 3rd and 5th Record of a Fetch or Patch Pack, a fragment identifier &#8220;rec=3,5&#8221; can be used in the URI of the Fetch or Patch Pack resource.</p>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#seccons" id="seccons">Security Considerations</a>
 </h1>
