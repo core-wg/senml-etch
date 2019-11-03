@@ -191,6 +191,9 @@ the SenML name in the example above becomes "2001:db8::2/3311/0/5850".
 Since there is no base time in the Pack, the time in resolved form is
 equal to the time in the example.
 
+If no SenML Records match, empty SenML Pack (i.e., array with no
+elements) is returned as a response.
+
 All other Fetch Record fields than name, base name, time, and base time
 MUST be ignored.
 
@@ -263,7 +266,7 @@ can be used in the URI of the Fetch or Patch Pack resource.
 
 The security and privacy considerations of SenML apply also with the
 FETCH and (i)PATCH methods. CoAP's security mechanisms are used to
-provide security for FETCH and (i)PATCH.
+provide security for the FETCH and (i)PATCH methods.
 
 In FETCH and (i)PATCH requests, the client can pass arbitrary names to
 the target resource for manipulation. The resource implementer must
