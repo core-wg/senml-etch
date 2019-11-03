@@ -466,7 +466,8 @@ ul.toc li {
 ]
 </pre>
 <p id="rfc.section.3.1.p.7">The resolved form of records (Section 4.6 of <a href="#RFC8428" class="xref">[RFC8428]</a>) is used when comparing the names and times of the Target and Fetch Records to accommodate for differences in use of the base values. In resolved form the SenML name in the example above becomes &#8220;2001:db8::2/3311/0/5850&#8221;.  Since there is no base time in the Pack, the time in resolved form is equal to the time in the example.</p>
-<p id="rfc.section.3.1.p.8">All other Fetch Record fields than name, base name, time, and base time MUST be ignored.</p>
+<p id="rfc.section.3.1.p.8">If no SenML Records match, empty SenML Pack (i.e., array with no elements) is returned as a response.</p>
+<p id="rfc.section.3.1.p.9">All other Fetch Record fields than name, base name, time, and base time MUST be ignored.</p>
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> <a href="#senml-ipatch" id="senml-ipatch">SenML (i)PATCH</a>
 </h1>
@@ -503,7 +504,7 @@ ul.toc li {
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#seccons" id="seccons">Security Considerations</a>
 </h1>
-<p id="rfc.section.5.p.1">The security and privacy considerations of SenML apply also with the FETCH and (i)PATCH methods. CoAP&#8217;s security mechanisms are used to provide security for FETCH and (i)PATCH.</p>
+<p id="rfc.section.5.p.1">The security and privacy considerations of SenML apply also with the FETCH and (i)PATCH methods. CoAP&#8217;s security mechanisms are used to provide security for the FETCH and (i)PATCH methods.</p>
 <p id="rfc.section.5.p.2">In FETCH and (i)PATCH requests, the client can pass arbitrary names to the target resource for manipulation. The resource implementer must take care to only allow access to names that are actually part of (or accessible through) the target resource.</p>
 <p id="rfc.section.5.p.3">If the client is not allowed to do a GET or PUT on the full target resource (and thus all the names accessible through it), access control rules must be evaluated for each record in the pack.</p>
 <h1 id="rfc.section.6">

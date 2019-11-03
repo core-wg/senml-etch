@@ -71,13 +71,13 @@ Table of Contents
      3.2.  SenML (i)PATCH  . . . . . . . . . . . . . . . . . . . . .   5
    4.  Fragment Identification . . . . . . . . . . . . . . . . . . .   6
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
      6.1.  CoAP Content-Format Registration  . . . . . . . . . . . .   7
      6.2.  senml-etch+json Media Type  . . . . . . . . . . . . . . .   7
      6.3.  senml-etch+cbor Media Type  . . . . . . . . . . . . . . .   8
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
@@ -237,6 +237,9 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    "2001:db8::2/3311/0/5850".  Since there is no base time in the Pack,
    the time in resolved form is equal to the time in the example.
 
+   If no SenML Records match, empty SenML Pack (i.e., array with no
+   elements) is returned as a response.
+
    All other Fetch Record fields than name, base name, time, and base
    time MUST be ignored.
 
@@ -270,10 +273,7 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    payload to change/set values of two SenML Records for the example in
    Section 1:
 
-   [
-    {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":false},
-    {"n":"5851", "v":10}
-   ]
+
 
 
 
@@ -281,6 +281,11 @@ Keranen & Mohajer          Expires May 6, 2020                  [Page 5]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
+
+   [
+    {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":false},
+    {"n":"5851", "v":10}
+   ]
 
    If the request is successful, the resulting representation of the
    example SenML Pack would be as follows:
@@ -313,7 +318,7 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
    The security and privacy considerations of SenML apply also with the
    FETCH and (i)PATCH methods.  CoAP's security mechanisms are used to
-   provide security for FETCH and (i)PATCH.
+   provide security for the FETCH and (i)PATCH methods.
 
    In FETCH and (i)PATCH requests, the client can pass arbitrary names
    to the target resource for manipulation.  The resource implementer
@@ -324,11 +329,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    resource (and thus all the names accessible through it), access
    control rules must be evaluated for each record in the pack.
 
-6.  IANA Considerations
-
-   This document registers two new media types and CoAP Content-Format
-   IDs for both media types.
-
 
 
 
@@ -337,6 +337,11 @@ Keranen & Mohajer          Expires May 6, 2020                  [Page 6]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
+
+6.  IANA Considerations
+
+   This document registers two new media types and CoAP Content-Format
+   IDs for both media types.
 
    Note to RFC Editor: Please replace all occurrences of "RFC-AAAA" with
    the RFC number of this document.
@@ -382,17 +387,16 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    Applications that use this media type: Applications that use the
    SenML media type for resource representation.
 
-   Fragment identifier considerations: Fragment identification for
-   application/senml-etch+json is supported by using fragment
-   identifiers as specified by RFC AAAA.
-
-
 
 
 Keranen & Mohajer          Expires May 6, 2020                  [Page 7]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
+
+   Fragment identifier considerations: Fragment identification for
+   application/senml-etch+json is supported by using fragment
+   identifiers as specified by RFC AAAA.
 
    Additional information:
 
@@ -439,16 +443,14 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    '_' character in which case an error MUST be generated.  This allows
    backwards compatible extensions to this specification.
 
-   Published specification: RFC-AAAA
-
-
-
 
 
 Keranen & Mohajer          Expires May 6, 2020                  [Page 8]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
+
+   Published specification: RFC-AAAA
 
    Applications that use this media type: Applications that use the
    SenML media type for resource representation.
@@ -493,8 +495,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 8.  References
 
-8.1.  Normative References
-
 
 
 
@@ -505,6 +505,8 @@ Keranen & Mohajer          Expires May 6, 2020                  [Page 9]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
+
+8.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -551,8 +553,6 @@ Authors' Addresses
    Ericsson
 
    Email: ari.keranen@ericsson.com
-
-
 
 
 
