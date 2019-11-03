@@ -112,7 +112,7 @@ Patch Pack:
 : One or more Patch Records in an array structure.
 
 Target Record:
-: A Record in a SenML Pack that is matching the selection criteria of
+: A Record in a SenML Pack that matches the selection criteria of
 a Fetch or Patch Record and hence is a target for a Fetch or Patch
 operation.
 
@@ -142,7 +142,7 @@ The FETCH method can be used to select and return a subset of records, in
 sequence, of one or more SenML Packs. The SenML Records are selected by
 giving a set of names that, when resolved, match resolved names in a
 Target SenML Pack. The names for a Fetch Pack are given using the SenML
-"name" and/or "base name" Fields. The names are resolved by concatenating
+"name" and/or "base name" fields. The names are resolved by concatenating
 the base name with the name field as defined in {{RFC8428}}.
 
 For example, to select the IPSO resources "5850" and "5851" from the
@@ -198,7 +198,7 @@ to add new Records, and to remove existing Records. The names and
 times of the Patch Records are given and matched in same way as for
 the Fetch Records, except each Patch Record can match at most one
 Target Record. Patch Packs can also include new values and other SenML
-Fields for the Records. Application of Patch Packs is idempotent; hence
+fields for the Records. Application of Patch Packs is idempotent; hence
 PATCH and iPATCH methods for SenML Packs are equivalent.
 
 When the name in a Patch Record matches with the name in an existing
@@ -294,9 +294,9 @@ Type name: application
 
 Subtype name: senml-etch+json
 
-Required parameters: none
+Required parameters: N/A
 
-Optional parameters: none
+Optional parameters: N/A
 
 Encoding considerations: binary
 
@@ -318,13 +318,15 @@ specified by RFC AAAA.
 
 Additional information:
 
-Magic number(s): none
+Deprecated alias names for this type: N/A
+
+Magic number(s): N/A
 
 File extension(s): senml-etchj
 
 Windows Clipboard Name: "SenML FETCH/PATCH format"
 
-Macintosh file type code(s): none
+Macintosh file type code(s): N/A
 
 Macintosh Universal Type Identifier code: org.ietf.senml-etch-json
 conforms to public.text
@@ -334,7 +336,7 @@ Ari Keranen ari.keranen@ericsson.com
 
 Intended usage: COMMON
 
-Restrictions on usage: None
+Restrictions on usage: N/A
 
 Author: Ari Keranen ari.keranen@ericsson.com
 
@@ -346,9 +348,9 @@ Type name: application
 
 Subtype name: senml-etch+cbor
 
-Required parameters: none
+Required parameters: N/A
 
-Optional parameters: none
+Optional parameters: N/A
 
 Encoding considerations: binary
 
@@ -370,11 +372,13 @@ specified by RFC AAAA.
 
 Additional information:
 
-Magic number(s): none
+Deprecated alias names for this type: N/A
+
+Magic number(s): N/A
 
 File extension(s): senml-etchc
 
-Macintosh file type code(s): none
+Macintosh file type code(s): N/A
 
 Macintosh Universal Type Identifier code: org.ietf.senml-etch-cbor
 conforms to public.data
@@ -384,7 +388,7 @@ Ari Keranen ari.keranen@ericsson.com
 
 Intended usage: COMMON
 
-Restrictions on usage: None
+Restrictions on usage: N/A
 
 Author: Ari Keranen ari.keranen@ericsson.com
 
