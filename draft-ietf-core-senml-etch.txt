@@ -5,8 +5,8 @@
 Network Working Group                                         A. Keranen
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                              M. Mohajer
-Expires: February 18, 2020                                     u-blox UK
-                                                         August 17, 2019
+Expires: May 6, 2020                                           u-blox UK
+                                                        November 3, 2019
 
 
           FETCH & PATCH with Sensor Measurement Lists (SenML)
@@ -37,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 18, 2020.
+   This Internet-Draft will expire on May 6, 2020.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Keranen & Mohajer       Expires February 18, 2020               [Page 1]
+Keranen & Mohajer          Expires May 6, 2020                  [Page 1]
 
-Internet-Draft          FETCH & PATCH with SenML             August 2019
+Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
    include Simplified BSD License text as described in Section 4.e of
@@ -74,7 +74,7 @@ Table of Contents
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
      6.1.  CoAP Content-Format Registration  . . . . . . . . . . . .   6
      6.2.  senml-etch+json Media Type  . . . . . . . . . . . . . . .   6
-     6.3.  senml-etch+cbor Media Type  . . . . . . . . . . . . . . .   7
+     6.3.  senml-etch+cbor Media Type  . . . . . . . . . . . . . . .   8
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Keranen & Mohajer       Expires February 18, 2020               [Page 2]
+Keranen & Mohajer          Expires May 6, 2020                  [Page 2]
 
-Internet-Draft          FETCH & PATCH with SenML             August 2019
+Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
    This document defines two new media types, one using the JavaScript
@@ -165,9 +165,9 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 
 
 
-Keranen & Mohajer       Expires February 18, 2020               [Page 3]
+Keranen & Mohajer          Expires May 6, 2020                  [Page 3]
 
-Internet-Draft          FETCH & PATCH with SenML             August 2019
+Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
    Fetch and Patch Records do not have default time or base version when
@@ -221,9 +221,9 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 
 
 
-Keranen & Mohajer       Expires February 18, 2020               [Page 4]
+Keranen & Mohajer          Expires May 6, 2020                  [Page 4]
 
-Internet-Draft          FETCH & PATCH with SenML             August 2019
+Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
    other SenML Fields for the Records.  Application of Patch Packs is
@@ -277,9 +277,9 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 
 
 
-Keranen & Mohajer       Expires February 18, 2020               [Page 5]
+Keranen & Mohajer          Expires May 6, 2020                  [Page 5]
 
-Internet-Draft          FETCH & PATCH with SenML             August 2019
+Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
 5.  Security Considerations
@@ -327,15 +327,15 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 
    Subtype name: senml-etch+json
 
-   Required parameters: none
+   Required parameters: N/A
 
-   Optional parameters: none
+   Optional parameters: N/A
 
 
 
-Keranen & Mohajer       Expires February 18, 2020               [Page 6]
+Keranen & Mohajer          Expires May 6, 2020                  [Page 6]
 
-Internet-Draft          FETCH & PATCH with SenML             August 2019
+Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
    Encoding considerations: binary
@@ -358,13 +358,15 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 
    Additional information:
 
-   Magic number(s): none
+   Deprecated alias names for this type: N/A
+
+   Magic number(s): N/A
 
    File extension(s): senml-etchj
 
    Windows Clipboard Name: "SenML FETCH/PATCH format"
 
-   Macintosh file type code(s): none
+   Macintosh file type code(s): N/A
 
    Macintosh Universal Type Identifier code: org.ietf.senml-etch-json
    conforms to public.text
@@ -374,11 +376,23 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 
    Intended usage: COMMON
 
-   Restrictions on usage: None
+   Restrictions on usage: N/A
 
    Author: Ari Keranen ari.keranen@ericsson.com
 
    Change controller: IESG
+
+
+
+
+
+
+
+
+Keranen & Mohajer          Expires May 6, 2020                  [Page 7]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
 
 6.3.  senml-etch+cbor Media Type
 
@@ -386,17 +400,9 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 
    Subtype name: senml-etch+cbor
 
+   Required parameters: N/A
 
-
-
-Keranen & Mohajer       Expires February 18, 2020               [Page 7]
-
-Internet-Draft          FETCH & PATCH with SenML             August 2019
-
-
-   Required parameters: none
-
-   Optional parameters: none
+   Optional parameters: N/A
 
    Encoding considerations: binary
 
@@ -418,11 +424,13 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 
    Additional information:
 
-   Magic number(s): none
+   Deprecated alias names for this type: N/A
+
+   Magic number(s): N/A
 
    File extension(s): senml-etchc
 
-   Macintosh file type code(s): none
+   Macintosh file type code(s): N/A
 
    Macintosh Universal Type Identifier code: org.ietf.senml-etch-cbor
    conforms to public.data
@@ -432,23 +440,19 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
 
    Intended usage: COMMON
 
-   Restrictions on usage: None
+   Restrictions on usage: N/A
+
+
+
+
+Keranen & Mohajer          Expires May 6, 2020                  [Page 8]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
 
    Author: Ari Keranen ari.keranen@ericsson.com
 
    Change controller: IESG
-
-
-
-
-
-
-
-
-Keranen & Mohajer       Expires February 18, 2020               [Page 8]
-
-Internet-Draft          FETCH & PATCH with SenML             August 2019
-
 
 7.  Acknowledgements
 
@@ -492,19 +496,20 @@ Internet-Draft          FETCH & PATCH with SenML             August 2019
               DOI 10.17487/RFC8259, December 2017,
               <https://www.rfc-editor.org/info/rfc8259>.
 
+
+
+
+
+
+Keranen & Mohajer          Expires May 6, 2020                  [Page 9]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
+
    [RFC8428]  Jennings, C., Shelby, Z., Arkko, J., Keranen, A., and C.
               Bormann, "Sensor Measurement Lists (SenML)", RFC 8428,
               DOI 10.17487/RFC8428, August 2018,
               <https://www.rfc-editor.org/info/rfc8428>.
-
-
-
-
-
-Keranen & Mohajer       Expires February 18, 2020               [Page 9]
-
-Internet-Draft          FETCH & PATCH with SenML             August 2019
-
 
 8.2.  Informative References
 
@@ -552,9 +557,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-Keranen & Mohajer       Expires February 18, 2020              [Page 10]
+Keranen & Mohajer          Expires May 6, 2020                 [Page 10]
