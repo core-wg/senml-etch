@@ -145,6 +145,9 @@ Target SenML Pack. The names for a Fetch Pack are given using the SenML
 "name" and/or "base name" fields. The names are resolved by concatenating
 the base name with the name field as defined in {{RFC8428}}.
 
+A Fetch Pack MUST contain at least one Fetch Record. A Fetch Record MUST
+contain a name and/or a base name field.
+
 For example, to select the IPSO resources "5850" and "5851" from the
 example in {{intro}}, the following Fetch Pack can be used:
 
@@ -164,12 +167,12 @@ The result to a FETCH request with the example above would be:
 ]
 ~~~
 
-When SenML Records contain also time values, a name may no longer
-uniquely identify a single Record. When no time is given in a Fetch
+The SenML time field can be used in a Fetch Record to further narrow the
+selection of matched SenML Records. When no time is given in a Fetch
 Record, all SenML Records with the given name are matched (i.e., unlike
 with SenML Records, lack of time field in a Fetch Record does not imply
-time value zero). When time is given in the Fetch Record, only a SenML
-Record (if any) with equal resolved time value and name is matched.
+time value zero). When time is given in the Fetch Record, only the SenML
+Records (if any) with equal resolved time value and name are matched.
 
 For example, if the IPSO resource "5850" would have multiple sensor
 readings (SenML Records) with different time values, the following Fetch
