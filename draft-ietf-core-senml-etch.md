@@ -43,10 +43,10 @@ informative:
 
 The Sensor Measurement Lists (SenML) media type and data model can be
 used to send collections of resources, such as batches of sensor data or
-configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods
+configuration parameters. The CoAP FETCH, PATCH, and iPATCH methods
 enable accessing and updating parts of a resource or multiple resources
 with one request. This document defines new media types for the CoAP
-iPATCH, PATCH, and FETCH methods for resources represented with the SenML
+FETCH, PATCH, and iPATCH methods for resources represented with the SenML
 data model.
 
 --- middle
@@ -74,17 +74,17 @@ a single SenML Pack with three SenML Records. All resources share the
 same base name "2001:db8::2/3311/0/", hence full names for resources
 are "2001:db8::2/3311/0/5850", etc.
 
-The CoAP {{!RFC7252}} iPATCH, PATCH, and FETCH methods {{!RFC8132}}
+The CoAP {{!RFC7252}} FETCH, PATCH, and iPATCH methods {{!RFC8132}}
 enable accessing and updating parts of a resource or multiple resources
 with one request.
 
 This document defines two new media types, one using the JavaScript
 Object Notation (JSON) {{!RFC8259}} and one using the Concise Binary
-Object Representation (CBOR) {{!RFC7049}}, that can be used with the CoAP
-iPATCH, PATCH, and FETCH methods for resources represented with the SenML
-data model. The semantics of the new media types are the same for the
-CoAP PATCH and iPATCH methods. The rest of the document uses term
-"(i)PATCH" when referring to both methods.
+Object Representation (CBOR) {{!RFC7049}}, which can be used with the CoAP
+FETCH, PATCH, and iPATCH methods for resources represented with the SenML
+data model. The rest of the document uses term "(i)PATCH" when referring
+to both methods as the semantics of the new media types are the same for
+the CoAP PATCH and iPATCH methods.
 
 # Terminology
 
@@ -95,7 +95,7 @@ BCP 14 {{!RFC2119}} {{!RFC8174}} when, and only when, they appear in
 all capitals, as shown here.
 
 Readers should also be familiar with the terms and concepts discussed
-in {{RFC8132}} and {{RFC8428}}. Also the following terms are used in
+in {{RFC8132}} and {{RFC8428}}. The following additional terms are used in
 this document:
 
 Fetch Record:
@@ -116,6 +116,9 @@ Target Record:
 a Fetch or Patch Record and hence is a target for a Fetch or Patch
 operation.
 
+Target Pack:
+: A SenML Pack that is a target for a Fetch or Patch operation.
+
 (i)PATCH:
 : A term that refers to both CoAP "PATCH" and "iPATCH" methods when
 there is no difference in this specification in which one is used.
@@ -128,19 +131,19 @@ generators, in particular on constrained devices. Unless mentioned
 otherwise, FETCH and PATCH Packs are constructed with the same rules and
 constraints as SenML Packs.
 
-The key difference to the SenML media type is allowing the use of a
-"null" value for removing records with the (i)PATCH method. Also the
-Fetch and Patch Records do not have default time or base version when the
-fields are omitted.
+The key differences to the SenML media type are allowing the use of a
+"null" value for removing records with the (i)PATCH method and lack of
+value fields in Fetch Records. Also the Fetch and Patch Records do not
+have default time or base version when the fields are omitted.
 
 ## SenML FETCH
 
 The FETCH method can be used to select and return a subset of records, in
 sequence, of one or more SenML Packs. The SenML Records are selected by
 giving a set of names that, when resolved, match resolved names in a
-SenML Pack. The names for a Fetch Pack are given using the SenML "name"
-and/or "base name" fields. The names are resolved by concatenating the
-base name with the name field as defined in {{RFC8428}}.
+Target SenML Pack. The names for a Fetch Pack are given using the SenML
+"name" and/or "base name" fields. The names are resolved by concatenating
+the base name with the name field as defined in {{RFC8428}}.
 
 For example, to select the IPSO resources "5850" and "5851" from the
 example in {{intro}}, the following Fetch Pack can be used:
@@ -168,30 +171,49 @@ with SenML Records, lack of time field in a Fetch Record does not imply
 time value zero). When time is given in the Fetch Record, only a SenML
 Record (if any) with equal resolved time value and name is matched.
 
+For example, if the IPSO resource "5850" would have multiple sensor
+readings (SenML Records) with different time values, the following Fetch
+Pack can be used to retrieve the Record with time "1.276020091e+09":
+
+~~~
+[
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "t":1.276020091e+09}
+]
+~~~
+
 The resolved form of records (Section 4.6 of {{RFC8428}}) is used when
 comparing the names and times of the Target and Fetch Records to
-accommodate for differences in use of the base values.
+accommodate for differences in use of the base values. In resolved form
+the SenML name in the example above becomes "2001:db8::2/3311/0/5850".
+Since there is no base time in the Pack, the time in resolved form is
+equal to the time in the example.
+
+All other Fetch Record fields than name, base name, time, and base time
+MUST be ignored.
 
 ## SenML (i)PATCH
 
-The (i)PATCH method can be used to change the values of SenML Records,
+The (i)PATCH method can be used to change the fields of SenML Records,
 to add new Records, and to remove existing Records. The names and
 times of the Patch Records are given and matched in same way as for
 the Fetch Records, except each Patch Record can match at most one
 Target Record. Patch Packs can also include new values and other SenML
-fields for the Records. Application of Patch Packs is idempotent.
+fields for the Records. Application of Patch Packs is idempotent; hence
+PATCH and iPATCH methods for SenML Packs are equivalent.
 
 When the name in a Patch Record matches with the name in an existing
 Record, the resolved time values are compared. If the time values either
 do not exist in both Records or are equal, the Target Record is replaced
-with the contents of the Patch Record.
+with the contents of the Patch Record. All Patch Records MUST contain at
+least a SenML Value or Sum field. A Patch Pack with invalid Records MUST
+be rejected.
 
 If a Patch Record contains a name, or combination of a time value and
 a name, that do not exist in any existing Record in the Pack, the
 given Record, with all the fields it contains, is added to the Pack.
 
-If a Patch Record has a value ("v") field with value null, the matched
-Record (if any) is removed from the Pack.
+If a Patch Record has a value ("v") field with value null, it MUST NOT be
+added but the matched Record (if any) is removed from the Target Pack.
 
 For example, the following document could be given as an (i)PATCH payload
 to change/set values of two SenML Records for the example in
