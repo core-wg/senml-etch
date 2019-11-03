@@ -306,8 +306,8 @@ ul.toc li {
   <meta name="dct.creator" content="Keranen, A. and M. Mohajer" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-core-senml-etch-latest" />
   <meta name="dct.issued" scheme="ISO8601" content="2019-03" />
-  <meta name="dct.abstract" content="The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP iPATCH, PATCH, and FETCH methods for resources represented with the SenML data model." />
-  <meta name="description" content="The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP iPATCH, PATCH, and FETCH methods for resources represented with the SenML data model." />
+  <meta name="dct.abstract" content="The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP FETCH, PATCH, and iPATCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP FETCH, PATCH, and iPATCH methods for resources represented with the SenML data model." />
+  <meta name="description" content="The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP FETCH, PATCH, and iPATCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP FETCH, PATCH, and iPATCH methods for resources represented with the SenML data model." />
 
 </head>
 
@@ -345,7 +345,7 @@ ul.toc li {
   <span class="filename">draft-ietf-core-senml-etch-latest</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-<p>The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP iPATCH, PATCH, and FETCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP iPATCH, PATCH, and FETCH methods for resources represented with the SenML data model.</p>
+<p>The Sensor Measurement Lists (SenML) media type and data model can be used to send collections of resources, such as batches of sensor data or configuration parameters. The CoAP FETCH, PATCH, and iPATCH methods enable accessing and updating parts of a resource or multiple resources with one request. This document defines new media types for the CoAP FETCH, PATCH, and iPATCH methods for resources represented with the SenML data model.</p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
@@ -409,13 +409,13 @@ ul.toc li {
 ]
 </pre>
 <p id="rfc.section.1.p.3">Here three resources &#8220;3311/0/5850&#8221;, &#8220;3311/0/5851&#8221;, and &#8220;3311/0/5750&#8221;, of an IPSO dimmable light smart object <a href="#IPSO" class="xref">[IPSO]</a> are represented using a single SenML Pack with three SenML Records. All resources share the same base name &#8220;2001:db8::2/3311/0/&#8221;, hence full names for resources are &#8220;2001:db8::2/3311/0/5850&#8221;, etc.</p>
-<p id="rfc.section.1.p.4">The CoAP <a href="#RFC7252" class="xref">[RFC7252]</a> iPATCH, PATCH, and FETCH methods <a href="#RFC8132" class="xref">[RFC8132]</a> enable accessing and updating parts of a resource or multiple resources with one request.</p>
-<p id="rfc.section.1.p.5">This document defines two new media types, one using the JavaScript Object Notation (JSON) <a href="#RFC8259" class="xref">[RFC8259]</a> and one using the Concise Binary Object Representation (CBOR) <a href="#RFC7049" class="xref">[RFC7049]</a>, that can be used with the CoAP iPATCH, PATCH, and FETCH methods for resources represented with the SenML data model. The semantics of the new media types are the same for the CoAP PATCH and iPATCH methods. The rest of the document uses term &#8220;(i)PATCH&#8221; when referring to both methods.</p>
+<p id="rfc.section.1.p.4">The CoAP <a href="#RFC7252" class="xref">[RFC7252]</a> FETCH, PATCH, and iPATCH methods <a href="#RFC8132" class="xref">[RFC8132]</a> enable accessing and updating parts of a resource or multiple resources with one request.</p>
+<p id="rfc.section.1.p.5">This document defines two new media types, one using the JavaScript Object Notation (JSON) <a href="#RFC8259" class="xref">[RFC8259]</a> and one using the Concise Binary Object Representation (CBOR) <a href="#RFC7049" class="xref">[RFC7049]</a>, which can be used with the CoAP FETCH, PATCH, and iPATCH methods for resources represented with the SenML data model. The rest of the document uses term &#8220;(i)PATCH&#8221; when referring to both methods as the semantics of the new media types are the same for the CoAP PATCH and iPATCH methods.</p>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#terminology" id="terminology">Terminology</a>
 </h1>
 <p id="rfc.section.2.p.1">The key words &#8220;MUST&#8221;, &#8220;MUST NOT&#8221;, &#8220;REQUIRED&#8221;, &#8220;SHALL&#8221;, &#8220;SHALL NOT&#8221;, &#8220;SHOULD&#8221;, &#8220;SHOULD NOT&#8221;, &#8220;RECOMMENDED&#8221;, &#8220;NOT RECOMMENDED&#8221;, &#8220;MAY&#8221;, and &#8220;OPTIONAL&#8221; in this document are to be interpreted as described in BCP 14 <a href="#RFC2119" class="xref">[RFC2119]</a> <a href="#RFC8174" class="xref">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.</p>
-<p id="rfc.section.2.p.2">Readers should also be familiar with the terms and concepts discussed in <a href="#RFC8132" class="xref">[RFC8132]</a> and <a href="#RFC8428" class="xref">[RFC8428]</a>. Also the following terms are used in this document:</p>
+<p id="rfc.section.2.p.2">Readers should also be familiar with the terms and concepts discussed in <a href="#RFC8132" class="xref">[RFC8132]</a> and <a href="#RFC8428" class="xref">[RFC8428]</a>. The following additional terms are used in this document:</p>
 <p></p>
 
 <dl>
@@ -429,6 +429,8 @@ ul.toc li {
 <dd style="margin-left: 8">One or more Patch Records in an array structure.</dd>
 <dt>Target Record:</dt>
 <dd style="margin-left: 8">A Record in a SenML Pack that matches the selection criteria of a Fetch or Patch Record and hence is a target for a Fetch or Patch operation.</dd>
+<dt>Target Pack:</dt>
+<dd style="margin-left: 8">A SenML Pack that is a target for a Fetch or Patch operation.</dd>
 <dt>(i)PATCH:</dt>
 <dd style="margin-left: 8">A term that refers to both CoAP &#8220;PATCH&#8221; and &#8220;iPATCH&#8221; methods when there is no difference in this specification in which one is used.</dd>
 </dl>
@@ -436,11 +438,11 @@ ul.toc li {
 <a href="#rfc.section.3">3.</a> <a href="#using-fetch-and-ipatch-with-senml" id="using-fetch-and-ipatch-with-senml">Using FETCH and (i)PATCH with SenML</a>
 </h1>
 <p id="rfc.section.3.p.1">The FETCH/(i)PATCH media types for SenML are modeled as extensions to the SenML media type to enable re-use of existing SenML parsers and generators, in particular on constrained devices. Unless mentioned otherwise, FETCH and PATCH Packs are constructed with the same rules and constraints as SenML Packs.</p>
-<p id="rfc.section.3.p.2">The key difference to the SenML media type is allowing the use of a &#8220;null&#8221; value for removing records with the (i)PATCH method. Also the Fetch and Patch Records do not have default time or base version when the fields are omitted.</p>
+<p id="rfc.section.3.p.2">The key differences to the SenML media type are allowing the use of a &#8220;null&#8221; value for removing records with the (i)PATCH method and lack of value fields in Fetch Records. Also the Fetch and Patch Records do not have default time or base version when the fields are omitted.</p>
 <h1 id="rfc.section.3.1">
 <a href="#rfc.section.3.1">3.1.</a> <a href="#senml-fetch" id="senml-fetch">SenML FETCH</a>
 </h1>
-<p id="rfc.section.3.1.p.1">The FETCH method can be used to select and return a subset of records, in sequence, of one or more SenML Packs. The SenML Records are selected by giving a set of names that, when resolved, match resolved names in a SenML Pack. The names for a Fetch Pack are given using the SenML &#8220;name&#8221; and/or &#8220;base name&#8221; fields. The names are resolved by concatenating the base name with the name field as defined in <a href="#RFC8428" class="xref">[RFC8428]</a>.</p>
+<p id="rfc.section.3.1.p.1">The FETCH method can be used to select and return a subset of records, in sequence, of one or more SenML Packs. The SenML Records are selected by giving a set of names that, when resolved, match resolved names in a Target SenML Pack. The names for a Fetch Pack are given using the SenML &#8220;name&#8221; and/or &#8220;base name&#8221; fields. The names are resolved by concatenating the base name with the name field as defined in <a href="#RFC8428" class="xref">[RFC8428]</a>.</p>
 <p id="rfc.section.3.1.p.2">For example, to select the IPSO resources &#8220;5850&#8221; and &#8220;5851&#8221; from the example in <a href="#intro" class="xref">Section 1</a>, the following Fetch Pack can be used:</p>
 <pre>
 [
@@ -456,14 +458,21 @@ ul.toc li {
 ]
 </pre>
 <p id="rfc.section.3.1.p.4">When SenML Records contain also time values, a name may no longer uniquely identify a single Record. When no time is given in a Fetch Record, all SenML Records with the given name are matched (i.e., unlike with SenML Records, lack of time field in a Fetch Record does not imply time value zero). When time is given in the Fetch Record, only a SenML Record (if any) with equal resolved time value and name is matched.</p>
-<p id="rfc.section.3.1.p.5">The resolved form of records (Section 4.6 of <a href="#RFC8428" class="xref">[RFC8428]</a>) is used when comparing the names and times of the Target and Fetch Records to accommodate for differences in use of the base values.</p>
+<p id="rfc.section.3.1.p.5">For example, if the IPSO resource &#8220;5850&#8221; would have multiple sensor readings (SenML Records) with different time values, the following Fetch Pack can be used to retrieve the Record with time &#8220;1.276020091e+09&#8221;:</p>
+<pre>
+[
+ {"bn":"2001:db8::2/3311/0/", "n":"5850", "t":1.276020091e+09}
+]
+</pre>
+<p id="rfc.section.3.1.p.6">The resolved form of records (Section 4.6 of <a href="#RFC8428" class="xref">[RFC8428]</a>) is used when comparing the names and times of the Target and Fetch Records to accommodate for differences in use of the base values. In resolved form the SenML name in the example above becomes &#8220;2001:db8::2/3311/0/5850&#8221;.  Since there is no base time in the Pack, the time in resolved form is equal to the time in the example.</p>
+<p id="rfc.section.3.1.p.7">All other Fetch Record fields than name, base name, time, and base time MUST be ignored.</p>
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> <a href="#senml-ipatch" id="senml-ipatch">SenML (i)PATCH</a>
 </h1>
-<p id="rfc.section.3.2.p.1">The (i)PATCH method can be used to change the values of SenML Records, to add new Records, and to remove existing Records. The names and times of the Patch Records are given and matched in same way as for the Fetch Records, except each Patch Record can match at most one Target Record. Patch Packs can also include new values and other SenML fields for the Records. Application of Patch Packs is idempotent.</p>
-<p id="rfc.section.3.2.p.2">When the name in a Patch Record matches with the name in an existing Record, the resolved time values are compared. If the time values either do not exist in both Records or are equal, the Target Record is replaced with the contents of the Patch Record.</p>
+<p id="rfc.section.3.2.p.1">The (i)PATCH method can be used to change the fields of SenML Records, to add new Records, and to remove existing Records. The names and times of the Patch Records are given and matched in same way as for the Fetch Records, except each Patch Record can match at most one Target Record. Patch Packs can also include new values and other SenML fields for the Records. Application of Patch Packs is idempotent; hence PATCH and iPATCH methods for SenML Packs are equivalent.</p>
+<p id="rfc.section.3.2.p.2">When the name in a Patch Record matches with the name in an existing Record, the resolved time values are compared. If the time values either do not exist in both Records or are equal, the Target Record is replaced with the contents of the Patch Record. All Patch Records MUST contain at least a SenML Value or Sum field. A Patch Pack with invalid Records MUST be rejected.</p>
 <p id="rfc.section.3.2.p.3">If a Patch Record contains a name, or combination of a time value and a name, that do not exist in any existing Record in the Pack, the given Record, with all the fields it contains, is added to the Pack.</p>
-<p id="rfc.section.3.2.p.4">If a Patch Record has a value (&#8220;v&#8221;) field with value null, the matched Record (if any) is removed from the Pack.</p>
+<p id="rfc.section.3.2.p.4">If a Patch Record has a value (&#8220;v&#8221;) field with value null, it MUST NOT be added but the matched Record (if any) is removed from the Target Pack.</p>
 <p id="rfc.section.3.2.p.5">For example, the following document could be given as an (i)PATCH payload to change/set values of two SenML Records for the example in <a href="#intro" class="xref">Section 1</a>:</p>
 <pre>
 [

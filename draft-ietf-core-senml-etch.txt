@@ -16,10 +16,10 @@ Abstract
 
    The Sensor Measurement Lists (SenML) media type and data model can be
    used to send collections of resources, such as batches of sensor data
-   or configuration parameters.  The CoAP iPATCH, PATCH, and FETCH
+   or configuration parameters.  The CoAP FETCH, PATCH, and iPATCH
    methods enable accessing and updating parts of a resource or multiple
    resources with one request.  This document defines new media types
-   for the CoAP iPATCH, PATCH, and FETCH methods for resources
+   for the CoAP FETCH, PATCH, and iPATCH methods for resources
    represented with the SenML data model.
 
 Status of This Memo
@@ -68,12 +68,12 @@ Table of Contents
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  Using FETCH and (i)PATCH with SenML . . . . . . . . . . . . .   3
      3.1.  SenML FETCH . . . . . . . . . . . . . . . . . . . . . . .   4
-     3.2.  SenML (i)PATCH  . . . . . . . . . . . . . . . . . . . . .   4
-   4.  Fragment Identification . . . . . . . . . . . . . . . . . . .   5
+     3.2.  SenML (i)PATCH  . . . . . . . . . . . . . . . . . . . . .   5
+   4.  Fragment Identification . . . . . . . . . . . . . . . . . . .   6
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
      6.1.  CoAP Content-Format Registration  . . . . . . . . . . . .   6
-     6.2.  senml-etch+json Media Type  . . . . . . . . . . . . . . .   6
+     6.2.  senml-etch+json Media Type  . . . . . . . . . . . . . . .   7
      6.3.  senml-etch+cbor Media Type  . . . . . . . . . . . . . . .   8
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
@@ -101,7 +101,7 @@ Table of Contents
    same base name "2001:db8::2/3311/0/", hence full names for resources
    are "2001:db8::2/3311/0/5850", etc.
 
-   The CoAP [RFC7252] iPATCH, PATCH, and FETCH methods [RFC8132] enable
+   The CoAP [RFC7252] FETCH, PATCH, and iPATCH methods [RFC8132] enable
    accessing and updating parts of a resource or multiple resources with
    one request.
 
@@ -116,11 +116,11 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
    This document defines two new media types, one using the JavaScript
    Object Notation (JSON) [RFC8259] and one using the Concise Binary
-   Object Representation (CBOR) [RFC7049], that can be used with the
-   CoAP iPATCH, PATCH, and FETCH methods for resources represented with
-   the SenML data model.  The semantics of the new media types are the
-   same for the CoAP PATCH and iPATCH methods.  The rest of the document
-   uses term "(i)PATCH" when referring to both methods.
+   Object Representation (CBOR) [RFC7049], which can be used with the
+   CoAP FETCH, PATCH, and iPATCH methods for resources represented with
+   the SenML data model.  The rest of the document uses term "(i)PATCH"
+   when referring to both methods as the semantics of the new media
+   types are the same for the CoAP PATCH and iPATCH methods.
 
 2.  Terminology
 
@@ -131,8 +131,8 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    capitals, as shown here.
 
    Readers should also be familiar with the terms and concepts discussed
-   in [RFC8132] and [RFC8428].  Also the following terms are used in
-   this document:
+   in [RFC8132] and [RFC8428].  The following additional terms are used
+   in this document:
 
    Fetch Record:  One set of parameters that is used to match SenML
       Record(s).
@@ -148,6 +148,9 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
       criteria of a Fetch or Patch Record and hence is a target for a
       Fetch or Patch operation.
 
+   Target Pack:  A SenML Pack that is a target for a Fetch or Patch
+      operation.
+
    (i)PATCH:  A term that refers to both CoAP "PATCH" and "iPATCH"
       methods when there is no difference in this specification in which
       one is used.
@@ -160,9 +163,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    otherwise, FETCH and PATCH Packs are constructed with the same rules
    and constraints as SenML Packs.
 
-   The key difference to the SenML media type is allowing the use of a
-   "null" value for removing records with the (i)PATCH method.  Also the
-
 
 
 Keranen & Mohajer          Expires May 6, 2020                  [Page 3]
@@ -170,18 +170,20 @@ Keranen & Mohajer          Expires May 6, 2020                  [Page 3]
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
-   Fetch and Patch Records do not have default time or base version when
-   the fields are omitted.
+   The key differences to the SenML media type are allowing the use of a
+   "null" value for removing records with the (i)PATCH method and lack
+   of value fields in Fetch Records.  Also the Fetch and Patch Records
+   do not have default time or base version when the fields are omitted.
 
 3.1.  SenML FETCH
 
    The FETCH method can be used to select and return a subset of
    records, in sequence, of one or more SenML Packs.  The SenML Records
    are selected by giving a set of names that, when resolved, match
-   resolved names in a SenML Pack.  The names for a Fetch Pack are given
-   using the SenML "name" and/or "base name" fields.  The names are
-   resolved by concatenating the base name with the name field as
-   defined in [RFC8428].
+   resolved names in a Target SenML Pack.  The names for a Fetch Pack
+   are given using the SenML "name" and/or "base name" fields.  The
+   names are resolved by concatenating the base name with the name field
+   as defined in [RFC8428].
 
    For example, to select the IPSO resources "5850" and "5851" from the
    example in Section 1, the following Fetch Pack can be used:
@@ -206,17 +208,15 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    only a SenML Record (if any) with equal resolved time value and name
    is matched.
 
-   The resolved form of records (Section 4.6 of [RFC8428]) is used when
-   comparing the names and times of the Target and Fetch Records to
-   accommodate for differences in use of the base values.
+   For example, if the IPSO resource "5850" would have multiple sensor
+   readings (SenML Records) with different time values, the following
+   Fetch Pack can be used to retrieve the Record with time
+   "1.276020091e+09":
 
-3.2.  SenML (i)PATCH
+   [
+    {"bn":"2001:db8::2/3311/0/", "n":"5850", "t":1.276020091e+09}
+   ]
 
-   The (i)PATCH method can be used to change the values of SenML
-   Records, to add new Records, and to remove existing Records.  The
-   names and times of the Patch Records are given and matched in same
-   way as for the Fetch Records, except each Patch Record can match at
-   most one Target Record.  Patch Packs can also include new values and
 
 
 
@@ -226,20 +226,41 @@ Keranen & Mohajer          Expires May 6, 2020                  [Page 4]
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
+   The resolved form of records (Section 4.6 of [RFC8428]) is used when
+   comparing the names and times of the Target and Fetch Records to
+   accommodate for differences in use of the base values.  In resolved
+   form the SenML name in the example above becomes
+   "2001:db8::2/3311/0/5850".  Since there is no base time in the Pack,
+   the time in resolved form is equal to the time in the example.
+
+   All other Fetch Record fields than name, base name, time, and base
+   time MUST be ignored.
+
+3.2.  SenML (i)PATCH
+
+   The (i)PATCH method can be used to change the fields of SenML
+   Records, to add new Records, and to remove existing Records.  The
+   names and times of the Patch Records are given and matched in same
+   way as for the Fetch Records, except each Patch Record can match at
+   most one Target Record.  Patch Packs can also include new values and
    other SenML fields for the Records.  Application of Patch Packs is
-   idempotent.
+   idempotent; hence PATCH and iPATCH methods for SenML Packs are
+   equivalent.
 
    When the name in a Patch Record matches with the name in an existing
    Record, the resolved time values are compared.  If the time values
    either do not exist in both Records or are equal, the Target Record
-   is replaced with the contents of the Patch Record.
+   is replaced with the contents of the Patch Record.  All Patch Records
+   MUST contain at least a SenML Value or Sum field.  A Patch Pack with
+   invalid Records MUST be rejected.
 
    If a Patch Record contains a name, or combination of a time value and
    a name, that do not exist in any existing Record in the Pack, the
    given Record, with all the fields it contains, is added to the Pack.
 
-   If a Patch Record has a value ("v") field with value null, the
-   matched Record (if any) is removed from the Pack.
+   If a Patch Record has a value ("v") field with value null, it MUST
+   NOT be added but the matched Record (if any) is removed from the
+   Target Pack.
 
    For example, the following document could be given as an (i)PATCH
    payload to change/set values of two SenML Records for the example in
@@ -252,6 +273,14 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
    If the request is successful, the resulting representation of the
    example SenML Pack would be as follows:
+
+
+
+
+Keranen & Mohajer          Expires May 6, 2020                  [Page 5]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
 
    [
     {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":false},
@@ -272,15 +301,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    Fragment identification is supported by analogously applying fragment
    identifiers as specified in Section 9 of [RFC8428] to the Fetch/Patch
    Records.
-
-
-
-
-
-Keranen & Mohajer          Expires May 6, 2020                  [Page 5]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
 
 5.  Security Considerations
 
@@ -311,6 +331,13 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    registry, within the "CoRE Parameters" registry [RFC7252].  The
    assigned IDs are shown in Table 1.
 
+
+
+Keranen & Mohajer          Expires May 6, 2020                  [Page 6]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
+
            +-----------------------------+----------+---------+
            | Media type                  | Encoding | ID      |
            +-----------------------------+----------+---------+
@@ -330,13 +357,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    Required parameters: N/A
 
    Optional parameters: N/A
-
-
-
-Keranen & Mohajer          Expires May 6, 2020                  [Page 6]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
 
    Encoding considerations: binary
 
@@ -366,6 +386,14 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
    Windows Clipboard Name: "SenML FETCH/PATCH format"
 
+
+
+
+Keranen & Mohajer          Expires May 6, 2020                  [Page 7]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
+
    Macintosh file type code(s): N/A
 
    Macintosh Universal Type Identifier code: org.ietf.senml-etch-json
@@ -381,18 +409,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    Author: Ari Keranen ari.keranen@ericsson.com
 
    Change controller: IESG
-
-
-
-
-
-
-
-
-Keranen & Mohajer          Expires May 6, 2020                  [Page 7]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
 
 6.3.  senml-etch+cbor Media Type
 
@@ -426,6 +442,14 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
    Deprecated alias names for this type: N/A
 
+
+
+
+Keranen & Mohajer          Expires May 6, 2020                  [Page 8]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
+
    Magic number(s): N/A
 
    File extension(s): senml-etchc
@@ -441,14 +465,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    Intended usage: COMMON
 
    Restrictions on usage: N/A
-
-
-
-
-Keranen & Mohajer          Expires May 6, 2020                  [Page 8]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
 
    Author: Ari Keranen ari.keranen@ericsson.com
 
@@ -482,6 +498,14 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
               DOI 10.17487/RFC7252, June 2014,
               <https://www.rfc-editor.org/info/rfc7252>.
 
+
+
+
+Keranen & Mohajer          Expires May 6, 2020                  [Page 9]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
+
    [RFC8132]  van der Stok, P., Bormann, C., and A. Sehgal, "PATCH and
               FETCH Methods for the Constrained Application Protocol
               (CoAP)", RFC 8132, DOI 10.17487/RFC8132, April 2017,
@@ -495,16 +519,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
               Interchange Format", STD 90, RFC 8259,
               DOI 10.17487/RFC8259, December 2017,
               <https://www.rfc-editor.org/info/rfc8259>.
-
-
-
-
-
-
-Keranen & Mohajer          Expires May 6, 2020                  [Page 9]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
 
    [RFC8428]  Jennings, C., Shelby, Z., Arkko, J., Keranen, A., and C.
               Bormann, "Sensor Measurement Lists (SenML)", RFC 8428,
@@ -529,20 +543,6 @@ Authors' Addresses
    u-blox UK
 
    Email: Mojan.Mohajer@u-blox.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
