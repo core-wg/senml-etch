@@ -259,7 +259,8 @@ can be used in the URI of the Fetch or Patch Pack resource.
 # Security Considerations {#seccons}
 
 The security and privacy considerations of SenML apply also with the
-FETCH and (i)PATCH methods.
+FETCH and (i)PATCH methods. CoAP's security mechanisms are used to
+provide security for FETCH and (i)PATCH.
 
 In FETCH and (i)PATCH requests, the client can pass arbitrary names to
 the target resource for manipulation. The resource implementer must
