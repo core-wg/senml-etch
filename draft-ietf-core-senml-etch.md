@@ -145,6 +145,9 @@ Target SenML Pack. The names for a Fetch Pack are given using the SenML
 "name" and/or "base name" fields. The names are resolved by concatenating
 the base name with the name field as defined in {{RFC8428}}.
 
+A Fetch Pack MUST contain at least one Fetch Record. A Fetch Record MUST
+contain a name and/or a base name field.
+
 For example, to select the IPSO resources "5850" and "5851" from the
 example in {{intro}}, the following Fetch Pack can be used:
 
@@ -164,12 +167,12 @@ The result to a FETCH request with the example above would be:
 ]
 ~~~
 
-When SenML Records contain also time values, a name may no longer
-uniquely identify a single Record. When no time is given in a Fetch
+The SenML time field can be used in a Fetch Record to further narrow the
+selection of matched SenML Records. When no time is given in a Fetch
 Record, all SenML Records with the given name are matched (i.e., unlike
 with SenML Records, lack of time field in a Fetch Record does not imply
-time value zero). When time is given in the Fetch Record, only a SenML
-Record (if any) with equal resolved time value and name is matched.
+time value zero). When time is given in the Fetch Record, only the SenML
+Records (if any) with equal resolved time value and name are matched.
 
 For example, if the IPSO resource "5850" would have multiple sensor
 readings (SenML Records) with different time values, the following Fetch
@@ -187,6 +190,9 @@ accommodate for differences in use of the base values. In resolved form
 the SenML name in the example above becomes "2001:db8::2/3311/0/5850".
 Since there is no base time in the Pack, the time in resolved form is
 equal to the time in the example.
+
+If no SenML Records match, empty SenML Pack (i.e., array with no
+elements) is returned as a response.
 
 All other Fetch Record fields than name, base name, time, and base time
 MUST be ignored.
@@ -259,7 +265,8 @@ can be used in the URI of the Fetch or Patch Pack resource.
 # Security Considerations {#seccons}
 
 The security and privacy considerations of SenML apply also with the
-FETCH and (i)PATCH methods.
+FETCH and (i)PATCH methods. CoAP's security mechanisms are used to
+provide security for the FETCH and (i)PATCH methods.
 
 In FETCH and (i)PATCH requests, the client can pass arbitrary names to
 the target resource for manipulation. The resource implementer must
