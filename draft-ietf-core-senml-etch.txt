@@ -5,8 +5,8 @@
 Network Working Group                                         A. Keranen
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                              M. Mohajer
-Expires: May 6, 2020                                           u-blox UK
-                                                        November 3, 2019
+Expires: May 9, 2020                                           u-blox UK
+                                                        November 6, 2019
 
 
           FETCH & PATCH with Sensor Measurement Lists (SenML)
@@ -37,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 6, 2020.
+   This Internet-Draft will expire on May 9, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Keranen & Mohajer          Expires May 6, 2020                  [Page 1]
+Keranen & Mohajer          Expires May 9, 2020                  [Page 1]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
@@ -71,13 +71,13 @@ Table of Contents
      3.2.  SenML (i)PATCH  . . . . . . . . . . . . . . . . . . . . .   5
    4.  Fragment Identification . . . . . . . . . . . . . . . . . . .   6
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
      6.1.  CoAP Content-Format Registration  . . . . . . . . . . . .   7
      6.2.  senml-etch+json Media Type  . . . . . . . . . . . . . . .   7
      6.3.  senml-etch+cbor Media Type  . . . . . . . . . . . . . . .   8
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Keranen & Mohajer          Expires May 6, 2020                  [Page 2]
+Keranen & Mohajer          Expires May 9, 2020                  [Page 2]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
@@ -165,7 +165,7 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
 
-Keranen & Mohajer          Expires May 6, 2020                  [Page 3]
+Keranen & Mohajer          Expires May 9, 2020                  [Page 3]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
@@ -185,6 +185,9 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    names are resolved by concatenating the base name with the name field
    as defined in [RFC8428].
 
+   A Fetch Pack MUST contain at least one Fetch Record.  A Fetch Record
+   MUST contain a name and/or a base name field.
+
    For example, to select the IPSO resources "5850" and "5851" from the
    example in Section 1, the following Fetch Pack can be used:
 
@@ -200,31 +203,32 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
     {"n":"5851", "v":42},
    ]
 
-   When SenML Records contain also time values, a name may no longer
-   uniquely identify a single Record.  When no time is given in a Fetch
-   Record, all SenML Records with the given name are matched (i.e.,
-   unlike with SenML Records, lack of time field in a Fetch Record does
-   not imply time value zero).  When time is given in the Fetch Record,
-   only a SenML Record (if any) with equal resolved time value and name
-   is matched.
+   The SenML time field can be used in a Fetch Record to further narrow
+   the selection of matched SenML Records.  When no time is given in a
+   Fetch Record, all SenML Records with the given name are matched
+   (i.e., unlike with SenML Records, lack of time field in a Fetch
+   Record does not imply time value zero).  When time is given in the
+   Fetch Record, only the SenML Records (if any) with equal resolved
+   time value and name are matched.
 
    For example, if the IPSO resource "5850" would have multiple sensor
    readings (SenML Records) with different time values, the following
    Fetch Pack can be used to retrieve the Record with time
    "1.276020091e+09":
 
-   [
-    {"bn":"2001:db8::2/3311/0/", "n":"5850", "t":1.276020091e+09}
-   ]
 
 
 
 
 
-Keranen & Mohajer          Expires May 6, 2020                  [Page 4]
+Keranen & Mohajer          Expires May 9, 2020                  [Page 4]
 
 Internet-Draft          FETCH & PATCH with SenML           November 2019
 
+
+   [
+    {"bn":"2001:db8::2/3311/0/", "n":"5850", "t":1.276020091e+09}
+   ]
 
    The resolved form of records (Section 4.6 of [RFC8428]) is used when
    comparing the names and times of the Target and Fetch Records to
@@ -232,6 +236,9 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    form the SenML name in the example above becomes
    "2001:db8::2/3311/0/5850".  Since there is no base time in the Pack,
    the time in resolved form is equal to the time in the example.
+
+   If no SenML Records match, empty SenML Pack (i.e., array with no
+   elements) is returned as a response.
 
    All other Fetch Record fields than name, base name, time, and base
    time MUST be ignored.
@@ -266,6 +273,15 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    payload to change/set values of two SenML Records for the example in
    Section 1:
 
+
+
+
+
+Keranen & Mohajer          Expires May 9, 2020                  [Page 5]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
+
    [
     {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":false},
     {"n":"5851", "v":10}
@@ -273,14 +289,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
    If the request is successful, the resulting representation of the
    example SenML Pack would be as follows:
-
-
-
-
-Keranen & Mohajer          Expires May 6, 2020                  [Page 5]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
 
    [
     {"bn":"2001:db8::2/3311/0/", "n":"5850", "vb":false},
@@ -309,7 +317,8 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 5.  Security Considerations
 
    The security and privacy considerations of SenML apply also with the
-   FETCH and (i)PATCH methods.
+   FETCH and (i)PATCH methods.  CoAP's security mechanisms are used to
+   provide security for the FETCH and (i)PATCH methods.
 
    In FETCH and (i)PATCH requests, the client can pass arbitrary names
    to the target resource for manipulation.  The resource implementer
@@ -320,6 +329,15 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    resource (and thus all the names accessible through it), access
    control rules must be evaluated for each record in the pack.
 
+
+
+
+
+Keranen & Mohajer          Expires May 9, 2020                  [Page 6]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
+
 6.  IANA Considerations
 
    This document registers two new media types and CoAP Content-Format
@@ -327,16 +345,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
    Note to RFC Editor: Please replace all occurrences of "RFC-AAAA" with
    the RFC number of this document.
-
-
-
-
-
-
-Keranen & Mohajer          Expires May 6, 2020                  [Page 6]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
 
 6.1.  CoAP Content-Format Registration
 
@@ -379,6 +387,13 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    Applications that use this media type: Applications that use the
    SenML media type for resource representation.
 
+
+
+Keranen & Mohajer          Expires May 9, 2020                  [Page 7]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
+
    Fragment identifier considerations: Fragment identification for
    application/senml-etch+json is supported by using fragment
    identifiers as specified by RFC AAAA.
@@ -386,13 +401,6 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    Additional information:
 
    Deprecated alias names for this type: N/A
-
-
-
-Keranen & Mohajer          Expires May 6, 2020                  [Page 7]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
 
    Magic number(s): N/A
 
@@ -435,20 +443,17 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    '_' character in which case an error MUST be generated.  This allows
    backwards compatible extensions to this specification.
 
+
+
+Keranen & Mohajer          Expires May 9, 2020                  [Page 8]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
+
    Published specification: RFC-AAAA
 
    Applications that use this media type: Applications that use the
    SenML media type for resource representation.
-
-
-
-
-
-
-Keranen & Mohajer          Expires May 6, 2020                  [Page 8]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
 
    Fragment identifier considerations: Fragment identification for
    application/senml-etch+cbor is supported by using fragment
@@ -490,21 +495,23 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 8.  References
 
+
+
+
+
+
+
+Keranen & Mohajer          Expires May 9, 2020                  [Page 9]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
+
 8.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
-
-
-
-
-
-Keranen & Mohajer          Expires May 6, 2020                  [Page 9]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
 
    [RFC7049]  Bormann, C. and P. Hoffman, "Concise Binary Object
               Representation (CBOR)", RFC 7049, DOI 10.17487/RFC7049,
@@ -548,6 +555,13 @@ Authors' Addresses
    Email: ari.keranen@ericsson.com
 
 
+
+
+Keranen & Mohajer          Expires May 9, 2020                 [Page 10]
+
+Internet-Draft          FETCH & PATCH with SenML           November 2019
+
+
    Mojan Mohajer
    u-blox UK
 
@@ -557,4 +571,46 @@ Authors' Addresses
 
 
 
-Keranen & Mohajer          Expires May 6, 2020                 [Page 10]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Keranen & Mohajer          Expires May 9, 2020                 [Page 11]
