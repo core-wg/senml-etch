@@ -5,8 +5,8 @@
 Network Working Group                                         A. Keranen
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                              M. Mohajer
-Expires: May 9, 2020                                           u-blox UK
-                                                        November 6, 2019
+Expires: 29 June 2020                                          u-blox UK
+                                                        27 December 2019
 
 
           FETCH & PATCH with Sensor Measurement Lists (SenML)
@@ -37,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 9, 2020.
+   This Internet-Draft will expire on 29 June 2020.
 
 Copyright Notice
 
@@ -45,22 +45,21 @@ Copyright Notice
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (https://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Simplified BSD License text
 
 
 
-Keranen & Mohajer          Expires May 9, 2020                  [Page 1]
+Keranen & Mohajer         Expires 29 June 2020                  [Page 1]
 
-Internet-Draft          FETCH & PATCH with SenML           November 2019
+Internet-Draft          FETCH & PATCH with SenML           December 2019
 
 
-   include Simplified BSD License text as described in Section 4.e of
-   the Trust Legal Provisions and are provided without warranty as
-   described in the Simplified BSD License.
+   as described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Simplified BSD License.
 
 Table of Contents
 
@@ -77,7 +76,7 @@ Table of Contents
      6.3.  senml-etch+cbor Media Type  . . . . . . . . . . . . . . .   8
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
@@ -105,17 +104,16 @@ Table of Contents
    accessing and updating parts of a resource or multiple resources with
    one request.
 
-
-
-
-
-Keranen & Mohajer          Expires May 9, 2020                  [Page 2]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
-
    This document defines two new media types, one using the JavaScript
    Object Notation (JSON) [RFC8259] and one using the Concise Binary
+
+
+
+Keranen & Mohajer         Expires 29 June 2020                  [Page 2]
+
+Internet-Draft          FETCH & PATCH with SenML           December 2019
+
+
    Object Representation (CBOR) [RFC7049], which can be used with the
    CoAP FETCH, PATCH, and iPATCH methods for resources represented with
    the SenML data model.  The rest of the document uses term "(i)PATCH"
@@ -165,9 +163,11 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
 
-Keranen & Mohajer          Expires May 9, 2020                  [Page 3]
+
+
+Keranen & Mohajer         Expires 29 June 2020                  [Page 3]
 
-Internet-Draft          FETCH & PATCH with SenML           November 2019
+Internet-Draft          FETCH & PATCH with SenML           December 2019
 
 
    The key differences to the SenML media type are allowing the use of a
@@ -203,13 +203,16 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
     {"n":"5851", "v":42},
    ]
 
-   The SenML time field can be used in a Fetch Record to further narrow
-   the selection of matched SenML Records.  When no time is given in a
-   Fetch Record, all SenML Records with the given name are matched
-   (i.e., unlike with SenML Records, lack of time field in a Fetch
-   Record does not imply time value zero).  When time is given in the
-   Fetch Record, only the SenML Records (if any) with equal resolved
-   time value and name are matched.
+   The SenML time and unit fields can be used in a Fetch Record to
+   further narrow the selection of matched SenML Records.  When no time
+   or unit is given in a Fetch Record, all SenML Records with the given
+   name are matched (i.e., unlike with SenML Records, lack of time field
+   in a Fetch Record does not imply time value zero).  When time is
+   given in the Fetch Record, only the SenML Records (if any) with equal
+   resolved time value and name are matched.  Similarly, when unit is
+   given, only the SenML Records with equal resolved unit and name are
+   matched.  If both time and unit are given in the Fetch Record, both
+   MUST to match for the SenML Record to match.
 
    For example, if the IPSO resource "5850" would have multiple sensor
    readings (SenML Records) with different time values, the following
@@ -218,12 +221,9 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
 
-
-
-
-Keranen & Mohajer          Expires May 9, 2020                  [Page 4]
+Keranen & Mohajer         Expires 29 June 2020                  [Page 4]
 
-Internet-Draft          FETCH & PATCH with SenML           November 2019
+Internet-Draft          FETCH & PATCH with SenML           December 2019
 
 
    [
@@ -231,39 +231,40 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
    ]
 
    The resolved form of records (Section 4.6 of [RFC8428]) is used when
-   comparing the names and times of the Target and Fetch Records to
-   accommodate for differences in use of the base values.  In resolved
-   form the SenML name in the example above becomes
+   comparing the names, times, and units of the Target and Fetch Records
+   to accommodate for differences in use of the base values.  In
+   resolved form the SenML name in the example above becomes
    "2001:db8::2/3311/0/5850".  Since there is no base time in the Pack,
    the time in resolved form is equal to the time in the example.
 
    If no SenML Records match, empty SenML Pack (i.e., array with no
    elements) is returned as a response.
 
-   All other Fetch Record fields than name, base name, time, and base
-   time MUST be ignored.
+   All other Fetch Record fields than name, base name, time, base time,
+   unit, and base unit MUST be ignored.
 
 3.2.  SenML (i)PATCH
 
    The (i)PATCH method can be used to change the fields of SenML
    Records, to add new Records, and to remove existing Records.  The
-   names and times of the Patch Records are given and matched in same
-   way as for the Fetch Records, except each Patch Record can match at
-   most one Target Record.  Patch Packs can also include new values and
-   other SenML fields for the Records.  Application of Patch Packs is
-   idempotent; hence PATCH and iPATCH methods for SenML Packs are
-   equivalent.
+   names, times, and units of the Patch Records are given and matched in
+   same way as for the Fetch Records, except each Patch Record MUST
+   match at most one Target Record.  Patch Packs can also include new
+   values and other SenML fields for the Records.  Application of Patch
+   Packs is idempotent; hence PATCH and iPATCH methods for SenML Packs
+   are equivalent.
 
    When the name in a Patch Record matches with the name in an existing
-   Record, the resolved time values are compared.  If the time values
-   either do not exist in both Records or are equal, the Target Record
-   is replaced with the contents of the Patch Record.  All Patch Records
-   MUST contain at least a SenML Value or Sum field.  A Patch Pack with
-   invalid Records MUST be rejected.
+   Record, the resolved time values and units (if any) are compared.  If
+   the time values and units either do not exist in both Records or are
+   equal, the Target Record is replaced with the contents of the Patch
+   Record.  All Patch Records MUST contain at least a SenML Value or Sum
+   field.  A Patch Pack with invalid Records MUST be rejected.
 
-   If a Patch Record contains a name, or combination of a time value and
-   a name, that do not exist in any existing Record in the Pack, the
-   given Record, with all the fields it contains, is added to the Pack.
+   If a Patch Record contains a name, or combination of a time value,
+   unit, and a name, that do not exist in any existing Record in the
+   Pack, the given Record, with all the fields it contains, is added to
+   the Pack.
 
    If a Patch Record has a value ("v") field with value null, it MUST
    NOT be added but the matched Record (if any) is removed from the
@@ -276,10 +277,9 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
 
-
-Keranen & Mohajer          Expires May 9, 2020                  [Page 5]
+Keranen & Mohajer         Expires 29 June 2020                  [Page 5]
 
-Internet-Draft          FETCH & PATCH with SenML           November 2019
+Internet-Draft          FETCH & PATCH with SenML           December 2019
 
 
    [
@@ -333,9 +333,9 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
 
-Keranen & Mohajer          Expires May 9, 2020                  [Page 6]
+Keranen & Mohajer         Expires 29 June 2020                  [Page 6]
 
-Internet-Draft          FETCH & PATCH with SenML           November 2019
+Internet-Draft          FETCH & PATCH with SenML           December 2019
 
 
 6.  IANA Considerations
@@ -355,9 +355,9 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
            +-----------------------------+----------+---------+
            | Media type                  | Encoding | ID      |
-           +-----------------------------+----------+---------+
+           +=============================+==========+=========+
            | application/senml-etch+json | -        | TBD-320 |
-           |                             |          |         |
+           +-----------------------------+----------+---------+
            | application/senml-etch+cbor | -        | TBD-322 |
            +-----------------------------+----------+---------+
 
@@ -389,9 +389,9 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
 
-Keranen & Mohajer          Expires May 9, 2020                  [Page 7]
+Keranen & Mohajer         Expires 29 June 2020                  [Page 7]
 
-Internet-Draft          FETCH & PATCH with SenML           November 2019
+Internet-Draft          FETCH & PATCH with SenML           December 2019
 
 
    Fragment identifier considerations: Fragment identification for
@@ -445,9 +445,9 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
 
-Keranen & Mohajer          Expires May 9, 2020                  [Page 8]
+Keranen & Mohajer         Expires 29 June 2020                  [Page 8]
 
-Internet-Draft          FETCH & PATCH with SenML           November 2019
+Internet-Draft          FETCH & PATCH with SenML           December 2019
 
 
    Published specification: RFC-AAAA
@@ -495,18 +495,16 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 8.  References
 
-
-
-
-
-
-
-Keranen & Mohajer          Expires May 9, 2020                  [Page 9]
-
-Internet-Draft          FETCH & PATCH with SenML           November 2019
-
-
 8.1.  Normative References
+
+
+
+
+
+Keranen & Mohajer         Expires 29 June 2020                  [Page 9]
+
+Internet-Draft          FETCH & PATCH with SenML           December 2019
+
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -557,9 +555,11 @@ Authors' Addresses
 
 
 
-Keranen & Mohajer          Expires May 9, 2020                 [Page 10]
+
+
+Keranen & Mohajer         Expires 29 June 2020                 [Page 10]
 
-Internet-Draft          FETCH & PATCH with SenML           November 2019
+Internet-Draft          FETCH & PATCH with SenML           December 2019
 
 
    Mojan Mohajer
@@ -613,4 +613,4 @@ Internet-Draft          FETCH & PATCH with SenML           November 2019
 
 
 
-Keranen & Mohajer          Expires May 9, 2020                 [Page 11]
+Keranen & Mohajer         Expires 29 June 2020                 [Page 11]
