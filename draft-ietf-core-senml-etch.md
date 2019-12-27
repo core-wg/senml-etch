@@ -167,12 +167,16 @@ The result to a FETCH request with the example above would be:
 ]
 ~~~
 
-The SenML time field can be used in a Fetch Record to further narrow the
-selection of matched SenML Records. When no time is given in a Fetch
-Record, all SenML Records with the given name are matched (i.e., unlike
-with SenML Records, lack of time field in a Fetch Record does not imply
-time value zero). When time is given in the Fetch Record, only the SenML
-Records (if any) with equal resolved time value and name are matched.
+The SenML time and unit fields can be used in a Fetch Record to further
+narrow the selection of matched SenML Records. When no time or unit is
+given in a Fetch Record, all SenML Records with the given name are
+matched (i.e., unlike with SenML Records, lack of time field in a Fetch
+Record does not imply time value zero). When time is given in the Fetch
+Record, only the SenML Records (if any) with equal resolved time value
+and name are matched. Similarly, when unit is given, only the SenML
+Records with equal resolved unit and name are matched. If both time and
+unit are given in the Fetch Record, both MUST to match for the SenML
+Record to match.
 
 For example, if the IPSO resource "5850" would have multiple sensor
 readings (SenML Records) with different time values, the following Fetch
@@ -185,14 +189,11 @@ Pack can be used to retrieve the Record with time "1.276020091e+09":
 ~~~
 
 The resolved form of records (Section 4.6 of {{RFC8428}}) is used when
-comparing the names and times of the Target and Fetch Records to
+comparing the names, times, and units of the Target and Fetch Records to
 accommodate for differences in use of the base values. In resolved form
 the SenML name in the example above becomes "2001:db8::2/3311/0/5850".
 Since there is no base time in the Pack, the time in resolved form is
 equal to the time in the example.
-
-Finally, Fetch Records can contain a unit field to select only SenML
-Records with an equal unit identifier.
 
 If no SenML Records match, empty SenML Pack (i.e., array with no
 elements) is returned as a response.
