@@ -271,9 +271,9 @@ can be used in the URI of the Fetch or Patch Pack resource.
 # Extensibility
 
 The SenML mandatory to understand fields extensibility mechanism (see
-section 4.4 in {RFC8428}) does not apply to Patch Packs, i.e., unknown
-fields MUST NOT generate error but such fields are treated like any other
-field (e.g., added to Patch target records where applicable).
+section 4.4 in {{RFC8428}}) does not apply to Patch Packs, i.e., unknown
+fields MUST NOT generate an error but such fields are treated like any
+other field (e.g., added to Patch target records where applicable).
 
 This specification allows only a small subset of SenML fields in Fetch
 Records but future specifications may enable new fields for Fetch Records
