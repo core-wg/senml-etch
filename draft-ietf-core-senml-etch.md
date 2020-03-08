@@ -80,11 +80,12 @@ with one request.
 
 This document defines two new media types, one using the JavaScript
 Object Notation (JSON) {{!RFC8259}} and one using the Concise Binary
-Object Representation (CBOR) {{!RFC7049}}, which can be used with the CoAP
-FETCH, PATCH, and iPATCH methods for resources represented with the SenML
-data model. The rest of the document uses term "(i)PATCH" when referring
-to both methods as the semantics of the new media types are the same for
-the CoAP PATCH and iPATCH methods.
+Object Representation (CBOR) {{!RFC7049}}, which can be used with the
+CoAP FETCH, PATCH, and iPATCH methods for resources represented with the
+SenML data model (i.e., for both SenML and Sensor Streaming Measurement
+Lists (SenSML) data). The rest of the document uses term "(i)PATCH" when
+referring to both methods as the semantics of the new media types are the
+same for the CoAP PATCH and iPATCH methods.
 
 # Terminology
 
@@ -198,8 +199,9 @@ equal to the time in the example.
 If no SenML Records match, empty SenML Pack (i.e., array with no
 elements) is returned as a response.
 
-All other Fetch Record fields than name, base name, time, base time,
-unit, and base unit MUST be ignored.
+Fetch Records MUST NOT contain other fields than name, base name, time,
+base time, unit, and base unit. Implementations MUST reject and generate
+an error for a Fetch Pack with other fields.
 
 ## SenML (i)PATCH
 
@@ -266,6 +268,17 @@ Record positions or range(s) of Records. For example, to select the 3rd
 and 5th Record of a Fetch or Patch Pack, a fragment identifier "rec=3,5"
 can be used in the URI of the Fetch or Patch Pack resource.
 
+# Extensibility
+
+The SenML mandatory to understand fields extensibility mechanism (see
+section 4.4 in {RFC8428}) does not apply to Patch Packs, i.e., unknown
+fields MUST NOT generate error but such fields are treated like any other
+field (e.g., added to Patch target records where applicable).
+
+This specification allows only a small subset of SenML fields in Fetch
+Records but future specifications may enable new fields for Fetch Records
+and possibly also new fields for selecting targets for Patch Records.
+
 # Security Considerations {#seccons}
 
 The security and privacy considerations of SenML apply also with the
@@ -273,9 +286,11 @@ FETCH and (i)PATCH methods. CoAP's security mechanisms are used to
 provide security for the FETCH and (i)PATCH methods.
 
 In FETCH and (i)PATCH requests, the client can pass arbitrary names to
-the target resource for manipulation. The resource implementer must
-take care to only allow access to names that are actually part of (or
-accessible through) the target resource.
+the target resource for manipulation. The resource implementer must take
+care to only allow access to names that are actually part of (or
+accessible through) the target resource. In particular the receiver needs
+to ensure that any input does not lead to uncontrolled special
+interpretation by the system.
 
 If the client is not allowed to do a GET or PUT on the full target
 resource (and thus all the names accessible through it), access
@@ -316,10 +331,7 @@ Encoding considerations: binary
 
 Security considerations: See {{seccons}} of RFC-AAAA.
 
-Interoperability considerations: Applications MUST ignore any key
-value pairs that they do not understand unless the key ends with the
-'_' character in which case an error MUST be generated. This allows
-backwards compatible extensions to this specification.
+Interoperability considerations: N/A
 
 Published specification: RFC-AAAA
 
@@ -370,10 +382,7 @@ Encoding considerations: binary
 
 Security considerations: See {{seccons}} of RFC-AAAA.
 
-Interoperability considerations: Applications MUST ignore any key
-value pairs that they do not understand unless the key ends with the
-'_' character in which case an error MUST be generated. This allows
-backwards compatible extensions to this specification.
+Interoperability considerations: N/A
 
 Published specification: RFC-AAAA
 
