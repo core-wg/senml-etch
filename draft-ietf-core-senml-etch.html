@@ -1127,8 +1127,9 @@ Record, only the SenML Records (if any) with equal resolved time value
 and name are matched. Similarly, when unit is given, only the SenML
 Records with equal resolved unit and name are matched. If both time and
 unit are given in the Fetch Record, both MUST to match for the SenML
-Record to match. Each Target Record MUST be included in the response only
-once, even if multiple Fetch Records match with the same Target Record.<a href="#section-3.1-7" class="pilcrow">¶</a></p>
+Record to match. Each Target Record MUST be included in the response at
+most once, even if multiple Fetch Records match with the same Target
+Record.<a href="#section-3.1-7" class="pilcrow">¶</a></p>
 <p id="section-3.1-8">For example, if the IPSO resource "5850" would have multiple sensor
 readings (SenML Records) with different time values, the following Fetch
 Pack can be used to retrieve the Record with time "1.276020091e+09":<a href="#section-3.1-8" class="pilcrow">¶</a></p>

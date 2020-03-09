@@ -229,8 +229,8 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
    given, only the SenML Records with equal resolved unit and name are
    matched.  If both time and unit are given in the Fetch Record, both
    MUST to match for the SenML Record to match.  Each Target Record MUST
-   be included in the response only once, even if multiple Fetch Records
-   match with the same Target Record.
+   be included in the response at most once, even if multiple Fetch
+   Records match with the same Target Record.
 
    For example, if the IPSO resource "5850" would have multiple sensor
    readings (SenML Records) with different time values, the following
