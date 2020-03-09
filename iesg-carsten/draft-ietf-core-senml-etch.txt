@@ -71,7 +71,7 @@ Table of Contents
    4.  Fragment Identification . . . . . . . . . . . . . . . . . . .   7
    5.  Extensibility . . . . . . . . . . . . . . . . . . . . . . . .   7
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .   7
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
      7.1.  CoAP Content-Format Registration  . . . . . . . . . . . .   8
      7.2.  senml-etch+json Media Type  . . . . . . . . . . . . . . .   8
      7.3.  senml-etch+cbor Media Type  . . . . . . . . . . . . . . .   9
@@ -254,7 +254,8 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
    Fetch Records MUST NOT contain other fields than name, base name,
    time, base time, unit, and base unit.  Implementations MUST reject
    and generate an error for a Fetch Pack with other fields.  [RFC8132]
-   Section 2.2 provides guidance for FETCH request error handling.
+   Section 2.2 provides guidance for FETCH request error handling, e.g.,
+   using the 4.22 (Unprocessable Entity) CoAP error response code.
 
 3.2.  SenML (i)PATCH
 
@@ -273,7 +274,6 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
    When the name in a Patch Record matches with the name in an existing
    Record, the resolved time values and units (if any) are compared.  If
    the time values and units either do not exist in both Records or are
-   equal, the Target Record is replaced with the contents of the Patch
 
 
 
@@ -282,6 +282,7 @@ Keranen & Mohajer       Expires 10 September 2020               [Page 5]
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
 
+   equal, the Target Record is replaced with the contents of the Patch
    Record.  All Patch Records MUST contain at least a SenML Value or Sum
    field.
 
@@ -303,7 +304,8 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
    with invalid Records.  If a Patch Pack is rejected, the state of the
    Target Pack is not changed, i.e., either all or none of the Patch
    Records are applied.  [RFC8132] Section 3.4 provides guidance for
-   error handling with PATCH and iPATCH requests.
+   error handling with PATCH and iPATCH requests, e.g., using the 4.22
+   (Unprocessable Entity) and 4.09 (Conflict) CoAP error response codes.
 
    For example, the following document could be given as an (i)PATCH
    payload to change/set values of two SenML Records for the example in
@@ -326,10 +328,8 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
    As another example, the following document could be given as an
    (i)PATCH payload to remove the two SenML Records:
 
-   [
-    {"bn":"2001:db8::2/3311/0/", "n":"5850", "v":null},
-    {"n":"5851", "v":null}
-   ]
+
+
 
 
 
@@ -337,6 +337,11 @@ Keranen & Mohajer       Expires 10 September 2020               [Page 6]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
+
+   [
+    {"bn":"2001:db8::2/3311/0/", "n":"5850", "v":null},
+    {"n":"5851", "v":null}
+   ]
 
 4.  Fragment Identification
 
@@ -378,13 +383,8 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
    resource (and thus all the names accessible through it), access
    control rules must be evaluated for each record in the pack.
 
-7.  IANA Considerations
 
-   This document registers two new media types and CoAP Content-Format
-   IDs for both media types.
 
-   Note to RFC Editor: Please replace all occurrences of "RFC-AAAA" with
-   the RFC number of this document.
 
 
 
@@ -393,6 +393,14 @@ Keranen & Mohajer       Expires 10 September 2020               [Page 7]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
+
+7.  IANA Considerations
+
+   This document registers two new media types and CoAP Content-Format
+   IDs for both media types.
+
+   Note to RFC Editor: Please replace all occurrences of "RFC-AAAA" with
+   the RFC number of this document.
 
 7.1.  CoAP Content-Format Registration
 
@@ -433,14 +441,6 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
    SenML media type for resource representation.
 
    Fragment identifier considerations: Fragment identification for
-   application/senml-etch+json is supported by using fragment
-   identifiers as specified by RFC AAAA.
-
-   Additional information:
-
-   Deprecated alias names for this type: N/A
-
-   Magic number(s): N/A
 
 
 
@@ -449,6 +449,15 @@ Keranen & Mohajer       Expires 10 September 2020               [Page 8]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
+
+   application/senml-etch+json is supported by using fragment
+   identifiers as specified by RFC AAAA.
+
+   Additional information:
+
+   Deprecated alias names for this type: N/A
+
+   Magic number(s): N/A
 
    File extension(s): senml-etchj
 
@@ -488,6 +497,15 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
 
    Published specification: RFC-AAAA
 
+
+
+
+
+Keranen & Mohajer       Expires 10 September 2020               [Page 9]
+
+Internet-Draft          FETCH & PATCH with SenML              March 2020
+
+
    Applications that use this media type: Applications that use the
    SenML media type for resource representation.
 
@@ -498,13 +516,6 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
    Additional information:
 
    Deprecated alias names for this type: N/A
-
-
-
-Keranen & Mohajer       Expires 10 September 2020               [Page 9]
-
-Internet-Draft          FETCH & PATCH with SenML              March 2020
-
 
    Magic number(s): N/A
 
@@ -542,6 +553,15 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
+
+
+
+
+Keranen & Mohajer       Expires 10 September 2020              [Page 10]
+
+Internet-Draft          FETCH & PATCH with SenML              March 2020
+
+
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
@@ -553,14 +573,6 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
               Application Protocol (CoAP)", RFC 7252,
               DOI 10.17487/RFC7252, June 2014,
               <https://www.rfc-editor.org/info/rfc7252>.
-
-
-
-
-Keranen & Mohajer       Expires 10 September 2020              [Page 10]
-
-Internet-Draft          FETCH & PATCH with SenML              March 2020
-
 
    [RFC8132]  van der Stok, P., Bormann, C., and A. Sehgal, "PATCH and
               FETCH Methods for the Constrained Application Protocol
@@ -598,18 +610,6 @@ Authors' Addresses
    Mojan Mohajer
 
    Email: mojanm@hotmail.com
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

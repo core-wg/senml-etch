@@ -1150,7 +1150,8 @@ elements) is returned as a response.<a href="#section-3.1-11" class="pilcrow">¶
 <p id="section-3.1-12">Fetch Records MUST NOT contain other fields than name, base name, time,
 base time, unit, and base unit. Implementations MUST reject and generate
 an error for a Fetch Pack with other fields. <span>[<a href="#RFC8132" class="xref">RFC8132</a>]</span> Section 2.2
-provides guidance for FETCH request error handling.<a href="#section-3.1-12" class="pilcrow">¶</a></p>
+provides guidance for FETCH request error handling, e.g., using the 4.22
+(Unprocessable Entity) CoAP error response code.<a href="#section-3.1-12" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="senml-ipatch">
@@ -1185,7 +1186,8 @@ the result MUST be equivalent to applying them in one sequence.<a href="#section
 invalid Records. If a Patch Pack is rejected, the state of the Target
 Pack is not changed, i.e., either all or none of the Patch Records are
 applied. <span>[<a href="#RFC8132" class="xref">RFC8132</a>]</span> Section 3.4 provides guidance for error handling
-with PATCH and iPATCH requests.<a href="#section-3.2-6" class="pilcrow">¶</a></p>
+with PATCH and iPATCH requests, e.g., using the 4.22 (Unprocessable
+Entity) and 4.09 (Conflict) CoAP error response codes.<a href="#section-3.2-6" class="pilcrow">¶</a></p>
 <p id="section-3.2-7">For example, the following document could be given as an (i)PATCH payload
 to change/set values of two SenML Records for the example in
 <a href="#intro" class="xref">Section 1</a>:<a href="#section-3.2-7" class="pilcrow">¶</a></p>
