@@ -18,7 +18,7 @@ pi:
   subcompact: 'no'
 title: FETCH & PATCH with Sensor Measurement Lists (SenML)
 abbrev: FETCH & PATCH with SenML
-date: 2019
+date: 2020
 author:
 - ins: A. Keranen
   name: Ari Keranen
@@ -26,8 +26,7 @@ author:
   email: ari.keranen@ericsson.com
 - ins: M. Mohajer
   name: Mojan Mohajer
-  org: u-blox UK
-  email: Mojan.Mohajer@u-blox.com
+  email: mojanm@hotmail.com
 normative:
   RFC8428:
 informative:
@@ -176,7 +175,8 @@ Record, only the SenML Records (if any) with equal resolved time value
 and name are matched. Similarly, when unit is given, only the SenML
 Records with equal resolved unit and name are matched. If both time and
 unit are given in the Fetch Record, both MUST to match for the SenML
-Record to match.
+Record to match. Each Target Record MUST be included in the response only
+once, even if multiple Fetch Records match with the same Target Record.
 
 For example, if the IPSO resource "5850" would have multiple sensor
 readings (SenML Records) with different time values, the following Fetch
@@ -207,7 +207,8 @@ The (i)PATCH method can be used to change the fields of SenML Records, to
 add new Records, and to remove existing Records. The names, times, and
 units of the Patch Records are given and matched in same way as for the
 Fetch Records, except each Patch Record MUST match at most one Target
-Record. Patch Packs can also include new values and other SenML fields
+Record. A Patch Record matching more than one Target Record is considered
+invalid. Patch Packs can also include new values and other SenML fields
 for the Records. Application of Patch Packs is idempotent; hence PATCH
 and iPATCH methods for SenML Packs are equivalent.
 
@@ -215,8 +216,7 @@ When the name in a Patch Record matches with the name in an existing
 Record, the resolved time values and units (if any) are compared. If the
 time values and units either do not exist in both Records or are equal,
 the Target Record is replaced with the contents of the Patch Record. All
-Patch Records MUST contain at least a SenML Value or Sum field. A Patch
-Pack with invalid Records MUST be rejected.
+Patch Records MUST contain at least a SenML Value or Sum field.
 
 If a Patch Record contains a name, or combination of a time value, unit,
 and a name, that do not exist in any existing Record in the Pack, the
@@ -224,6 +224,14 @@ given Record, with all the fields it contains, is added to the Pack.
 
 If a Patch Record has a value ("v") field with value null, it MUST NOT be
 added but the matched Record (if any) is removed from the Target Pack.
+
+The Patch Records MUST be applied in the same sequence they are in the
+Patch Pack.
+
+Implementations MUST reject and generate an error for Patch Packs with
+invalid Records. If a Patch Pack is rejected, the state of the Target
+Pack is not changed, i.e., either all or none of the Patch Records are
+applied.
 
 For example, the following document could be given as an (i)PATCH payload
 to change/set values of two SenML Records for the example in
