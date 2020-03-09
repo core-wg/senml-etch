@@ -5,7 +5,7 @@
 Network Working Group                                         A. Keranen
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                              M. Mohajer
-Expires: 9 September 2020                                   8 March 2020
+Expires: 10 September 2020                                  9 March 2020
 
 
           FETCH & PATCH with Sensor Measurement Lists (SenML)
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 September 2020.
+   This Internet-Draft will expire on 10 September 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Keranen & Mohajer       Expires 9 September 2020                [Page 1]
+Keranen & Mohajer       Expires 10 September 2020               [Page 1]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Keranen & Mohajer       Expires 9 September 2020                [Page 2]
+Keranen & Mohajer       Expires 10 September 2020               [Page 2]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
@@ -165,7 +165,7 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
 
 
 
-Keranen & Mohajer       Expires 9 September 2020                [Page 3]
+Keranen & Mohajer       Expires 10 September 2020               [Page 3]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
@@ -213,15 +213,15 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
    given, only the SenML Records with equal resolved unit and name are
    matched.  If both time and unit are given in the Fetch Record, both
    MUST to match for the SenML Record to match.  Each Target Record MUST
-   be included in the response only once, even if multiple Fetch Records
-   match with the same Target Record.
+   be included in the response at most once, even if multiple Fetch
+   Records match with the same Target Record.
 
    For example, if the IPSO resource "5850" would have multiple sensor
    readings (SenML Records) with different time values, the following
 
 
 
-Keranen & Mohajer       Expires 9 September 2020                [Page 4]
+Keranen & Mohajer       Expires 10 September 2020               [Page 4]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
@@ -277,7 +277,7 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
 
 
 
-Keranen & Mohajer       Expires 9 September 2020                [Page 5]
+Keranen & Mohajer       Expires 10 September 2020               [Page 5]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
@@ -333,7 +333,7 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
 
 
 
-Keranen & Mohajer       Expires 9 September 2020                [Page 6]
+Keranen & Mohajer       Expires 10 September 2020               [Page 6]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
@@ -389,7 +389,7 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
 
 
 
-Keranen & Mohajer       Expires 9 September 2020                [Page 7]
+Keranen & Mohajer       Expires 10 September 2020               [Page 7]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
@@ -445,7 +445,7 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
 
 
 
-Keranen & Mohajer       Expires 9 September 2020                [Page 8]
+Keranen & Mohajer       Expires 10 September 2020               [Page 8]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
@@ -501,7 +501,7 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
 
 
 
-Keranen & Mohajer       Expires 9 September 2020                [Page 9]
+Keranen & Mohajer       Expires 10 September 2020               [Page 9]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
@@ -557,7 +557,7 @@ Internet-Draft          FETCH & PATCH with SenML              March 2020
 
 
 
-Keranen & Mohajer       Expires 9 September 2020               [Page 10]
+Keranen & Mohajer       Expires 10 September 2020              [Page 10]
 
 Internet-Draft          FETCH & PATCH with SenML              March 2020
 
@@ -613,4 +613,4 @@ Authors' Addresses
 
 
 
-Keranen & Mohajer       Expires 9 September 2020               [Page 11]
+Keranen & Mohajer       Expires 10 September 2020              [Page 11]
