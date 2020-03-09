@@ -201,7 +201,9 @@ elements) is returned as a response.
 
 Fetch Records MUST NOT contain other fields than name, base name, time,
 base time, unit, and base unit. Implementations MUST reject and generate
-an error for a Fetch Pack with other fields.
+an error for a Fetch Pack with other fields. {{RFC8132}} Section 2.2
+provides guidance for FETCH request error handling, e.g., using the 4.22
+(Unprocessable Entity) CoAP error response code.
 
 ## SenML (i)PATCH
 
@@ -210,9 +212,11 @@ add new Records, and to remove existing Records. The names, times, and
 units of the Patch Records are given and matched in same way as for the
 Fetch Records, except each Patch Record MUST match at most one Target
 Record. A Patch Record matching more than one Target Record is considered
-invalid. Patch Packs can also include new values and other SenML fields
-for the Records. Application of Patch Packs is idempotent; hence PATCH
-and iPATCH methods for SenML Packs are equivalent.
+invalid (patching multiple Target Records with one Patch Record would
+result in multiple copies of the same record). Patch Packs can also
+include new values and other SenML fields for the Records. Application of
+Patch Packs is idempotent; hence PATCH and iPATCH methods for SenML Packs
+are equivalent.
 
 When the name in a Patch Record matches with the name in an existing
 Record, the resolved time values and units (if any) are compared. If the
@@ -228,12 +232,15 @@ If a Patch Record has a value ("v") field with value null, it MUST NOT be
 added but the matched Record (if any) is removed from the Target Pack.
 
 The Patch Records MUST be applied in the same sequence they are in the
-Patch Pack.
+Patch Pack. If multiple Patch Packs are being processed at the same time,
+the result MUST be equivalent to applying them in one sequence.
 
 Implementations MUST reject and generate an error for Patch Packs with
 invalid Records. If a Patch Pack is rejected, the state of the Target
 Pack is not changed, i.e., either all or none of the Patch Records are
-applied.
+applied. {{RFC8132}} Section 3.4 provides guidance for error handling
+with PATCH and iPATCH requests, e.g., using the 4.22 (Unprocessable
+Entity) and 4.09 (Conflict) CoAP error response codes.
 
 For example, the following document could be given as an (i)PATCH payload
 to change/set values of two SenML Records for the example in
