@@ -202,7 +202,8 @@ elements) is returned as a response.
 Fetch Records MUST NOT contain other fields than name, base name, time,
 base time, unit, and base unit. Implementations MUST reject and generate
 an error for a Fetch Pack with other fields. {{RFC8132}} Section 2.2
-provides guidance for FETCH request error handling.
+provides guidance for FETCH request error handling, e.g., using the 4.22
+(Unprocessable Entity) CoAP error response code.
 
 ## SenML (i)PATCH
 
@@ -238,7 +239,8 @@ Implementations MUST reject and generate an error for Patch Packs with
 invalid Records. If a Patch Pack is rejected, the state of the Target
 Pack is not changed, i.e., either all or none of the Patch Records are
 applied. {{RFC8132}} Section 3.4 provides guidance for error handling
-with PATCH and iPATCH requests.
+with PATCH and iPATCH requests, e.g., using the 4.22 (Unprocessable
+Entity) and 4.09 (Conflict) CoAP error response codes.
 
 For example, the following document could be given as an (i)PATCH payload
 to change/set values of two SenML Records for the example in
